@@ -43,6 +43,13 @@ local git branch where you add the ignored `salesking_app.yml` file:
 
 DON'T FORGET: never push production to your public branch, if you do you need to setup NEW app credentials
 
+## Translating line-item-importer
+
+- Edit the translations directly on the [salesking/line-item-importer](http://www.localeapp.com/projects/6762) project on Locale.
+- **That's it!**
+- The maintainer will then pull translations from the Locale project and push to Github.
+
+Happy translating!
 
 ## Test
 

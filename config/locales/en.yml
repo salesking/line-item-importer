@@ -1,77 +1,82 @@
 en:
   activerecord:
+    attributes:
+      attachment:
+        col_sep: Column Separator
+        quote_char: Quote character
+      data_row:
+        log: Log
+        sk_id: SalesKing ID
+        source: Source data
+      import:
+        col_sep: Column Separator
+        created_at: Created at
+        kind: Data type
+        quote_char: Quote character
+      mapping_element:
+        conv_opts: Convert Options
+        conv_type: Convert type
+        source: Source field
+        target: Target field
     models:
       attachment:
         one: Uploaded File
         other: Uploaded Files
+      data_row:
+        one: Data Row
+        other: Data Rows
       import:
         one: Import
         other: Imports
       mapping:
         one: Mapping
         other: Mappings
-      data_row:
-        one: Data Row
-        other: Data Rows
-    attributes:
-      attachment:
-        col_sep: Column Separator
-        quote_char: Quote character
-      import:
-        created_at: Created at
-        col_sep: Column Separator
-        quote_char: Quote character
-        kind: Data type
-      data_row:
-        sk_id: SalesKing ID
-        log: Log
-        source: Source data
-      mapping_element:
-        target: Target field
-        source: Source field
-        conv_type: Convert type
-        conv_opts: Convert Options
   attachments:
+    csv_import_error: Try with different 'Column Separator' and/or 'Quote character'.
+    delete_confirm: Please note that, this is irreversible process. This will delete associated imports. Are you sure?
     new:
+      can_use_tab_character_html: You can use <tt>\t</tt> as a tabulator desigator.
       page_title: Upload new CSV file
-      can_use_tab_character_html: 'You can use <tt>\t</tt> as a tabulator desigator.'
-    upload: Upload
     proceed_to_mapping: Proceed to mapping
-    delete_confirm: "Please note that, this is irreversible process. This will delete associated imports. Are you sure?"
-    csv_import_error: "Try with different 'Column Separator' and/or 'Quote character'."
-  mappings:
-    title:
-      one: "%{count} field: %{fields}"
-      other: "%{count} fields: %{fields}"
-    new: Create mapping
-    proceed_to_import: Proceed to import
-    source_fields: Source fields
-    target_fields: Target fields
-    reuse: Select an existing mapping from the list to reuse that or create a new mapping in the below section.
-    dnd_info: "Please drag&drop fields above onto their targets below. Drop multiple fields on a target to join values (space-delimited) e.g for the tag list."
-  imports:
-    title_success:
-      one: "%{count} rows imported"
-      other: "%{count} rows imported"
-    title_failed:
-      one: "%{count} row failed"
-      other: "%{count} rows failed"
-    new: Create import
-    create: Import data
-    total:
-      one: "Total %{count} row"
-      other: "Total %{count} rows"
+    upload: Upload
   data_rows:
     failed: Failed rows
     success: Successfull rows
+  errors:
+    sk_login_required: Please login to SalesKing and navigate to this app from inside there.
+  imports:
+    create: Import data
+    new: Create import
+    title_failed:
+      one: ! '%{count} row failed'
+      other: ! '%{count} rows failed'
+    title_success:
+      one: ! '%{count} rows imported'
+      other: ! '%{count} rows imported'
+    total:
+      one: Total %{count} row
+      other: Total %{count} rows
+  layouts:
+    application:
+      attachments: Attachments
+      imports: Imports
+      mappings: Mappings
   link:
     actions: Actions
-    show: Show
+    back_to_list: Back to list
+    confirm_destroy: Really delete this record?
+    destroy: Delete
     edit: Edit
     revert: Revert
-    back_to_list: Back to list
-    destroy: Delete
-    confirm_destroy: Really delete this record?
-    step: "Step %{count} from %{total}:"
-  errors:
-    sk_login_required: "Please login to SalesKing and navigate to this app from inside there."
+    show: Show
+    step: ! 'Step %{count} from %{total}:'
+  mappings:
+    dnd_info: Please drag&drop fields above onto their targets below. Drop multiple fields on a target to join values (space-delimited) e.g for the tag list.
+    new: Create mapping
+    proceed_to_import: Proceed to import
+    reuse: Select an existing mapping from the list to reuse that or create a new mapping in the below section.
+    source_fields: Source fields
+    target_fields: Target fields
+    title:
+      one: ! '%{count} field: %{fields}'
+      other: ! '%{count} fields: %{fields}'

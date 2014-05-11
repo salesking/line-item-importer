@@ -14,3 +14,4 @@ config/salesking_app.yml
 coverage
 .idea
 public/assets
+.localeapp

@@ -9,9 +9,9 @@
   %body
     .container
       %ul.top_menu
-        %li= link_to 'Attachments', attachments_path, class: ('current' if request.fullpath =~ /attachments/)
-        %li= link_to 'Mappings', mappings_path, class: ('current' if request.fullpath =~ /mappings/)
-        %li= link_to 'Imports', imports_path, class: ('current' if request.fullpath =~ /imports/)
+        %li= link_to t('.attachments'), attachments_path, class: cp(attachments_path)
+        %li= link_to t('.mappings'),    mappings_path,    class: cp(mappings_path)
+        %li= link_to t('.imports'),     imports_path,     class: cp(imports_path)
       .clear
       %hr.seperator
       = yield

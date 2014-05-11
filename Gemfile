@@ -32,4 +32,6 @@ group :development do
   gem 'capistrano', '<3'
   gem 'capistrano-ext'
   gem 'quiet_assets'
+  gem 'i18n-spec'
+  gem 'localeapp'
 end
