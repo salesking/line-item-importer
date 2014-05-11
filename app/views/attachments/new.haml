@@ -1,0 +1,37 @@
+%h2
+  = t('link.step', count: 1, total: 3)
+  = t('.page_title')
+
+- if @attachment.errors.any?
+  .alert-message.block-message.error
+    %ul
+      - @attachment.errors.full_messages.each do |i|
+        %li=i
+
+= form_for @attachment, method: 'patch' do |f|
+  .clearfix
+    = label_tag :col_sep, "#{Attachment.human_attribute_name(:col_sep)} <span class='required'> *</span>".html_safe
+    .input
+      = f.text_field :col_sep, class: 'minimi'
+      %span.help-inline= t('.can_use_tab_character_html')
+  .clearfix
+    = label_tag :quote_char, "#{Attachment.human_attribute_name(:quote_charp)} <span class='required'> *</span>".html_safe
+    .input
+      = f.text_field :quote_char, class: 'minimi'
+  .clearfix
+    = label_tag :encoding, "#{Attachment.human_attribute_name(:encoding)} <span class='required'> *</span>".html_safe
+    .input
+      = f.text_field :encoding, class: 'input-mini'
+  - if @attachment.new_record?
+    .clearfix
+      %label=t(:'attachments.upload')
+      .input
+        #file-upload
+          %noscript
+            %p Please enable JavaScript to use file uploader
+  #csv-table.clearfix{style: ("display: none" if @attachment.new_record?)}
+    = link_to(image_tag("refresh.png", size: "16x16") + "Reload", "#", id: "csv-refresh")
+
+  .actions
+    = f.submit t('attachments.proceed_to_mapping'), class: "btn primary large"
+    = link_to t('link.back_to_list'), attachments_path, class: "btn secondary"

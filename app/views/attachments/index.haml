@@ -1,0 +1,34 @@
+%h2
+  = Attachment.model_name.human(count: 5)
+  %small= @attachments.size
+
+%p= link_to t(:'attachments.new.page_title'), new_attachment_path
+
+%table.attachments.table.table-striped
+  %thead
+    %tr
+      %th= Attachment.model_name.human(count: 1)
+      %th= Mapping.model_name.human(count: 1)
+      %th= Import.model_name.human(count: 1)
+      %th
+  %tbody
+    - @attachments.each do |attachment|
+      %tr
+        %td
+          = link_to(attachment.filename, attachment)
+          .created= attachment.created_at
+        %td
+          - if attachment.mapping
+            = link_to(attachment.mapping.title, attachment.mapping)
+            .created= attachment.mapping.created_at
+          - else
+            = link_to(t('mappings.new'), new_attachment_mapping_path(attachment))
+        %td
+          - if attachment.imports.any?
+            - attachment.imports.each do |import|
+              = link_to(import.title, import)
+              .created= import.created_at
+          - elsif attachment.mapping
+            = link_to(t('imports.new'), new_attachment_import_path(attachment))
+        %td
+          = link_to(image_tag('destroy.png'), attachment, data: {confirm: t('attachments.delete_confirm'), method: :delete})

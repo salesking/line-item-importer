@@ -1,0 +1,16 @@
+%h2
+  = Import.model_name.human(count: 5)
+  %small= @imports.size
+
+%table.table.table-striped
+  %thead
+    %tr
+      %th= Import.model_name.human(count: 1)
+      %th= Import.human_attribute_name(:created_at)
+      %th= t('link.actions')
+  %tbody
+    - @imports.each do |import|
+      %tr
+        %td= import.title
+        %td= import.created_at
+        %td= link_to(t('link.show'), import)
