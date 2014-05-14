@@ -1,10 +1,22 @@
 /*
- *= require bootstrap
  *= require schmuugle
+ *= require bootstrap
  *= require fileuploader
  *= require mappings
  *= require attachments
 */
+
+* {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+*:before,
+*:after {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
 
 ul.top_menu{margin:0;padding:0}
 ul.top_menu li{display:inline;float:left;border-right:1px solid #ddd;margin:0;padding:0}
