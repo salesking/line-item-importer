@@ -33,7 +33,7 @@ en:
         other: Mappings
   attachments:
     csv_import_error: Try with different 'Column Separator' and/or 'Quote character'.
-    delete_confirm: Please note that, this is irreversible process. This will delete associated imports. Are you sure?
+    delete_confirm: This is an irreversible process. This will delete associated imports. Are you sure?
     new:
       can_use_tab_character_html: You can use <tt>\t</tt> as a tabulator desigator.
       page_title: Upload new CSV file
