@@ -18,20 +18,20 @@ gem 'uglifier'
 gem 'therubyracer'
 
 group :test, :development do
+  gem 'mysql2'
+  gem 'pry-rails'
   gem 'rspec-rails', '~> 2.6'
+end
+group :test do
   gem 'factory_girl_rails'
   gem 'shoulda-matchers'
   gem 'simplecov'
-  gem 'mysql2'
-  gem 'pry-rails'
 end
-
 group :development do
   gem 'better_errors'
   gem 'thin'
   gem 'capistrano', '<3'
   gem 'capistrano-ext'
   gem 'quiet_assets'
-  gem 'i18n-spec'
-  gem 'localeapp'
+  gem 'binding_of_caller'
 end
