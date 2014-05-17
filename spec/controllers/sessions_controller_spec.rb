@@ -16,9 +16,14 @@ describe SessionsController do
     it "should set session var with user_id" do
       @request.session['sub_domain'] = 'abc'
       # construct signed param
-      param_hash = {'sub_domain' =>'abc', 'company_id'=>'xyz',
-                    'access_token'=>'a-long-token',
-                    'user_id'=>'xyz', 'algorithm' => 'HMAC-SHA256' }
+      param_hash = {
+        'sub_domain' =>'abc',
+        'company_id'=>'xyz',
+        'access_token'=>'a-long-token',
+        'user_id'=>'xyz',
+        'algorithm' => 'HMAC-SHA256',
+        'language' => 'en_GB'
+      }
       param = SK::SDK::SignedRequest.signed_param( ActiveSupport::JSON.encode(param_hash), Sk::App.secret)
 
       post :create, :signed_request => param

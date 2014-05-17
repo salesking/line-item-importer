@@ -1,5 +1,5 @@
-require "sk_sdk/oauth"
-require "sk_sdk/signed_request"
+require 'sk_sdk/oauth'
+require 'sk_sdk/signed_request'
 
 class SessionsController < ApplicationController
   skip_before_filter :verify_authenticity_token
@@ -9,12 +9,16 @@ class SessionsController < ApplicationController
   def create
     signed_request = SK::SDK::SignedRequest.new(params[:signed_request], Sk::App.secret)
     raise "Invalid SalesKing app signed request #{signed_request.data.inspect}" unless signed_request.valid?
+
     # always save and set subdomain
     Sk::App.sub_domain = session['sub_domain'] = signed_request.data['sub_domain']
+
     if signed_request.data['user_id'] # logged in
-      allowed_keys = %w(access_token user_id company_id)
+      session['language'] = find_locale(signed_request.data['language'])
+
+      allowed_keys        = %w(access_token user_id company_id)
       session.merge!(signed_request.data.reject {|key,_| !allowed_keys.include?(key) })
-      session['language'] =  find_locale(signed_request.data['language'])
+
       redirect_to attachments_url
     else # must authorize redirect to oauth dialog
       render inline: "<script> top.location.href='#{Sk::App.auth_dialog}'</script>"
@@ -35,6 +39,6 @@ class SessionsController < ApplicationController
   private
 
   def find_locale(locale)
-    locale.try(:match, /\A(?<country>[a-z]{2})_[A-Z]{2}\Z/).try(:[], :country) || locale
+    locale.match(/\A(?<country>[a-z]{2})_[A-Z]{2}\Z/).try(:[], :country) || locale
   end
 end
