@@ -4,29 +4,29 @@ describe Attachment do
   it { should belong_to(:mapping) }
   it { should have_many(:imports).dependent(:destroy) }
 
-  ['filename', 'quote_char', 'encoding', 'disk_filename'].each do |attribute|
+  ['filename', 'quote_character', 'encoding', 'disk_filename'].each do |attribute|
     it { should validate_presence_of(attribute)}
   end
 
   describe 'validations' do
-    context :col_sep do
-      let(:attachment) { build(:attachment, col_sep: separator) }
+    context :column_separator do
+      let(:attachment) { build(:attachment, column_separator: separator) }
       before           { attachment.valid? }
       subject          { attachment }
       context 'when present' do
         let(:separator) { ',' }
-        its(:errors) { should_not include :col_sep }
+        its(:errors) { should_not include :column_separator }
       end
 
       context 'when blank' do
         let(:separator) { '' }
-        its(:errors) { should include :col_sep }
+        its(:errors) { should include :column_separator }
       end
 
       # "\t" is blank,
       context 'when blank, but \t' do
         let(:separator) { "\\t" }
-        its(:errors) { should_not include :col_sep }
+        its(:errors) { should_not include :column_separator }
       end
     end
   end

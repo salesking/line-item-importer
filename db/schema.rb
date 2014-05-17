@@ -11,15 +11,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20120213113143) do
+ActiveRecord::Schema.define(version: 20140517145304) do
 
   create_table "attachments", force: true do |t|
-    t.string   "filename",      limit: 100
+    t.string   "filename",         limit: 100
     t.string   "disk_filename"
-    t.string   "company_id",    limit: 22
-    t.string   "user_id",       limit: 22
-    t.string   "col_sep",       limit: 1
-    t.string   "quote_char",    limit: 1
+    t.string   "company_id",       limit: 22
+    t.string   "user_id",          limit: 22
+    t.string   "column_separator", limit: 1
+    t.string   "quote_character",  limit: 1
     t.integer  "mapping_id"
     t.string   "encoding"
     t.datetime "created_at"
@@ -28,11 +28,11 @@ ActiveRecord::Schema.define(version: 20120213113143) do
 
   create_table "data_rows", force: true do |t|
     t.integer  "import_id"
-    t.string   "sk_id",      limit: 22
+    t.string   "external_id", limit: 22
     t.text     "source"
     t.text     "log"
-    t.string   "company_id", limit: 22
-    t.string   "user_id",    limit: 22
+    t.string   "company_id",  limit: 22
+    t.string   "user_id",     limit: 22
     t.datetime "created_at"
     t.datetime "updated_at"
   end

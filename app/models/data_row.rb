@@ -3,8 +3,8 @@ class DataRow < ActiveRecord::Base
 
   attr_writer :data
 
-  scope :failed, -> {where(sk_id: nil)}
-  scope :success, -> {where('data_rows.sk_id IS NOT NULL')}
+  scope :failed, -> {where(external_id: nil)}
+  scope :success, -> {where('data_rows.external_id IS NOT NULL')}
 
   before_save :populate_contact
 
@@ -26,9 +26,9 @@ class DataRow < ActiveRecord::Base
     contact.addresses = [address]
 
     if contact.save
-      self.sk_id = contact.id
+      self.external_id = contact.id
     else
-      self.source = @data.to_csv(col_sep: import.attachment.col_sep, quote_char: import.attachment.quote_char)
+      self.source = @data.to_csv(column_separator: import.attachment.column_separator, quote_character: import.attachment.quote_character)
       self.log = contact.errors.full_messages.to_sentence
     end
   end

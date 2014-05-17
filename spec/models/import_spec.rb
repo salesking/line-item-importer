@@ -35,7 +35,7 @@ describe Import do
       @contact.errors.should_receive(:full_messages).and_return(['some error message'])
       lambda { @import.save }.should change(DataRow, :count).by(1)
       data_row = @import.data_rows.first
-      data_row.sk_id.should be_nil
+      data_row.external_id.should be_nil
       data_row.log.should == 'some error message'
     end
 

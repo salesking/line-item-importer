@@ -57,3 +57,5 @@ module LineItemImporter
     config.action_dispatch.default_headers['X-Frame-Options'] = nil
   end
 end
+
+FileUtils.mkdir_p(Rails.root.join('tmp', 'attachments'))

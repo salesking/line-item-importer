@@ -95,38 +95,38 @@ describe AttachmentsController do
         response.should render_template(:new)
       end
 
-      it "reveals new attachment with default col_sep and quote_char" do
+      it "reveals new attachment with default column_separator and quote_character" do
         get :new
         assigns[:attachment].should_not be_nil
-        assigns[:attachment].col_sep.should_not be_nil
-        assigns[:attachment].quote_char.should_not be_nil
+        assigns[:attachment].column_separator.should_not be_nil
+        assigns[:attachment].quote_character.should_not be_nil
       end
     end
 
     describe "POST #create" do
       it "creates new attachment" do
         lambda {
-          post :create, file: file_upload('test1.csv'), col_sep: ';', quote_char: '"', encoding: 'utf-8'
+          post :create, file: file_upload('test1.csv'), column_separator: ';', quote_character: '"', encoding: 'utf-8'
         }.should change(Attachment, :count).by(1)
       end
 
       it "reveals new attachment" do
-        post :create, file: file_upload('test1.csv'), col_sep: ';', quote_char: '"', encoding: 'utf-8'
+        post :create, file: file_upload('test1.csv'), column_separator: ';', quote_character: '"', encoding: 'utf-8'
         assigns[:attachment].should_not be_nil
       end
 
       it "sets attachment user_id" do
-        post :create, file: file_upload('test1.csv'), col_sep: ';', quote_char: '"', encoding: 'utf-8'
+        post :create, file: file_upload('test1.csv'), column_separator: ';', quote_character: '"', encoding: 'utf-8'
         assigns[:attachment].user_id.should == @user_id
       end
 
       it "sets attachment company_id" do
-        post :create, file: file_upload('test1.csv'), col_sep: ';', quote_char: '"', encoding: 'utf-8'
+        post :create, file: file_upload('test1.csv'), column_separator: ';', quote_character: '"', encoding: 'utf-8'
         assigns[:attachment].company_id.should == @company_id
       end
 
       it "renders successful json response" do
-        post :create, file: file_upload('test1.csv'), col_sep: ';', quote_char: '"', encoding: 'utf-8'
+        post :create, file: file_upload('test1.csv'), column_separator: ';', quote_character: '"', encoding: 'utf-8'
         response.content_type.should == "application/json"
         response.code.should == "200"
       end
@@ -136,51 +136,51 @@ describe AttachmentsController do
       context "unauthorized" do
         it "triggers access_denied" do
           controller.should_receive(:access_denied)
-          patch :update, id: @unauthorized_attachment, attachment: {col_sep: ';'}
+          patch :update, id: @unauthorized_attachment, attachment: {column_separator: ';'}
         end
       end
 
       context "with valid parameters" do
         it "reveals requested attachment" do
-          patch :update, id: @authorized_attachment, attachment: {col_sep: '/'}
+          patch :update, id: @authorized_attachment, attachment: {column_separator: '/'}
           assigns[:attachment].should == @authorized_attachment
         end
 
         it "updates attachment attributes" do
-          patch :update, id: @authorized_attachment, attachment: {col_sep: '/', quote_char: '^'}
-          assigns[:attachment].col_sep.should == '/'
-          assigns[:attachment].quote_char.should == '^'
+          patch :update, id: @authorized_attachment, attachment: {column_separator: '/', quote_character: '^'}
+          assigns[:attachment].column_separator.should == '/'
+          assigns[:attachment].quote_character.should == '^'
         end
 
         it "redirects to new attachment mapping on html request if mapping is not set" do
-          patch :update, id: @authorized_attachment, attachment: {col_sep: ';', mapping_id: ''}
+          patch :update, id: @authorized_attachment, attachment: {column_separator: ';', mapping_id: ''}
           response.should redirect_to(new_attachment_mapping_url(@authorized_attachment))
         end
 
         it "redirects to new attachment import on html request if mapping is set" do
           mapping = create(:mapping)
-          patch :update, id: @authorized_attachment, attachment: {col_sep: ';', mapping_id: mapping.id}
+          patch :update, id: @authorized_attachment, attachment: {column_separator: ';', mapping_id: mapping.id}
           response.should redirect_to(new_attachment_import_url(@authorized_attachment))
         end
         it "reneders successful json response on js request" do
-          patch :update, id: @authorized_attachment, attachment: {col_sep: ';'}, format: 'js'
+          patch :update, id: @authorized_attachment, attachment: {column_separator: ';'}, format: 'js'
           response.code.should == "200"
         end
       end
 
       context "with invalid parameters" do
         it "reveals requested attachment" do
-          patch :update, id: @authorized_attachment, attachment: {col_sep: ''}
+          patch :update, id: @authorized_attachment, attachment: {column_separator: ''}
           assigns[:attachment].should == @authorized_attachment
         end
 
         it "renders new template on html request" do
-          patch :update, id: @authorized_attachment, attachment: {col_sep: ''}
+          patch :update, id: @authorized_attachment, attachment: {column_separator: ''}
           response.should render_template(:new)
         end
 
         it "reneders successful json response on js request" do
-          patch :update, id: @authorized_attachment, attachment: {col_sep: ''}, format: 'js'
+          patch :update, id: @authorized_attachment, attachment: {column_separator: ''}, format: 'js'
           response.code.should == "200"
         end
       end
@@ -188,16 +188,16 @@ describe AttachmentsController do
 
     describe "DELETE destroy" do
       it "destroys the requested attachment" do
-		    expect {
-		      delete :destroy, :id => @authorized_attachment.id
-		    }.to change(Attachment, :count).by(-1)
-		  end
+        expect {
+          delete :destroy, :id => @authorized_attachment.id
+        }.to change(Attachment, :count).by(-1)
+      end
 
-		  it "redirects to the attachments list after destroying the requested attachment" do
-		    delete :destroy, :id => @authorized_attachment.id
-		    response.should redirect_to(attachments_path)
-		  end
-		end
+      it "redirects to the attachments list after destroying the requested attachment" do
+        delete :destroy, :id => @authorized_attachment.id
+        response.should redirect_to(attachments_path)
+      end
+    end
 
   end
 end

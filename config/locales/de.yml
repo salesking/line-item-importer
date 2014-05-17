@@ -2,17 +2,17 @@ de:
   activerecord:
     attributes:
       attachment:
-        col_sep: Feldtrenner
-        quote_char: Texttrenner
+        column_separator: Feldtrenner
+        quote_character: Texttrenner
       data_row:
         log: Log
-        sk_id: SalesKing ID
+        external_id: SalesKing ID
         source: Quelldaten
       import:
-        col_sep: Feldtrenner
+        column_separator: Feldtrenner
         created_at: Erstellt am
         kind: Dateityp
-        quote_char: Texttrenner
+        quote_character: Texttrenner
       mapping_element:
         conv_opts: Konvertierungsoptionen
         conv_type: Konvertierungstyp

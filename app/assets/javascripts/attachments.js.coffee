@@ -6,8 +6,8 @@ jQuery ->
       dataType: 'json',
       data:
         '_method': 'put',
-        'attachment[col_sep]': $('#attachment_col_sep').val(),
-        'attachment[quote_char]': $("#attachment_quote_char").val(),
+        'attachment[column_separator]': $('#attachment_column_separator').val(),
+        'attachment[quote_character]': $("#attachment_quote_character").val(),
         'attachment[encoding]': $("#attachment_encoding").val()
       ,
       success: (data) -> insertFields(data)
@@ -23,8 +23,8 @@ jQuery ->
       onSubmit: (id, fileName) ->
         uploader.setParams
           authenticity_token: $("input[name='authenticity_token']").val()
-          col_sep: $("#attachment_col_sep").val()
-          quote_char: $("#attachment_quote_char").val()
+          column_separator: $("#attachment_column_separator").val()
+          quote_character: $("#attachment_quote_character").val()
           encoding: $("#attachment_encoding").val()
       ,
       onComplete: (id, fileName, data) ->

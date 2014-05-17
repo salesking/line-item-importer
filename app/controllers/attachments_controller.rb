@@ -2,7 +2,7 @@ class AttachmentsController < ApplicationController
   load_and_authorize_resource
 
   def new
-    @attachment = Attachment.new(col_sep: ',', quote_char: '"', encoding: 'utf-8')
+    @attachment = Attachment.new(column_separator: ',', quote_character: '"', encoding: 'utf-8')
   end
 
   # TODO:
@@ -10,7 +10,7 @@ class AttachmentsController < ApplicationController
   # - hide headers/fields which are potentially empty
   # - find or construct a row with all data set, so we can show examples
   def create
-    @attachment = Attachment.new(uploaded_data: params[:file], col_sep: params[:col_sep], quote_char: params[:quote_char], encoding: params[:encoding])
+    @attachment = Attachment.new(uploaded_data: params[:file], column_separator: params[:column_separator], quote_character: params[:quote_character], encoding: params[:encoding])
     @attachment.user = current_user
     @attachment.save!
     # TODO rescue parser errors -> rows empty
@@ -40,6 +40,6 @@ class AttachmentsController < ApplicationController
   private
 
   def attachment_params
-    params.require(:attachment).permit(:col_sep, :quote_char, :uploaded_data, :encoding, :mapping_id)
+    params.require(:attachment).permit(:column_separator, :quote_character, :uploaded_data, :encoding, :mapping_id)
   end
 end

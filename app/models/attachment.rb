@@ -7,7 +7,6 @@
 require 'csv'
 
 class Attachment < ActiveRecord::Base
-  FILE_DIR = Rails.root.join('tmp', 'attachments')
 
   include UserReference
 
@@ -19,15 +18,14 @@ class Attachment < ActiveRecord::Base
   after_create :store_file
   after_destroy :delete_file
 
-  validates :filename, :disk_filename, presence: true
-  validates :quote_char, :encoding, presence: true
-  validate :col_sep_presence
+  validates :filename, :disk_filename, :quote_character, :encoding, presence: true
+  validate :column_separator_presence
 
-  #attr_accessible :col_sep, :quote_char, :uploaded_data, :encoding, :mapping_id
+  #attr_accessible :column_separator, :quote_character, :uploaded_data, :encoding, :mapping_id
   attr_reader :error_rows
 
-  def col_sep=(original_value)
-    self.send(:write_attribute, :col_sep, original_value == "\\t" ? "\t" : original_value)
+  def column_separator=(original_value)
+    self.send(:write_attribute, :column_separator, original_value == "\\t" ? "\t" : original_value)
   end
 
   # Any upload file gets passed in as uploaded_data attribute
@@ -40,14 +38,24 @@ class Attachment < ActiveRecord::Base
     return if data.nil? #&& data.size > 0
     #set new values
     self.filename = data.original_filename.strip.gsub(/[^\w\d\.\-]+/, '_')
-    self.disk_filename = Attachment.disk_filename(filename)
+
+    #%L milliseconds 000-999
+    used_disk_filename = Time.zone.now.strftime('%y%m%d%H%M%S%L_')
+    if filename =~ /^[a-zA-Z0-9_\.\-]*$/
+      used_disk_filename << filename
+    else
+      used_disk_filename << Digest::MD5.hexdigest(filename)
+      used_disk_filename << File.extname(filename)
+    end
+    self.disk_filename = used_disk_filename
+
     #check for small files indicated by beeing a StringIO
     @uploaded_file = data
   end
 
   # full path with filename
   def full_filename
-    File.join(path, self.disk_filename)
+    File.join(Rails.root, 'tmp', 'attachments', self.disk_filename)
   end
 
   def rows(size = 0)
@@ -60,13 +68,13 @@ class Attachment < ActiveRecord::Base
   # TODO rescue parser errors -> rows empty
   def parsed_data
     @parsed_data ||= begin
-      CSV.read(full_filename, col_sep: col_sep, quote_char: quote_char, encoding: encoding)
+      CSV.read(full_filename, column_separator: column_separator, quote_character: quote_character, encoding: encoding)
     rescue #CSV::MalformedCSVError => er
       rows = []
       #one more attempt. If BOM is present in the file.
       begin
-        f = File.open(full_filename, "rb:bom|utf-8")
-        rows = CSV.parse(f.read.force_encoding("ISO-8859-1"))
+        file = File.open(full_filename, 'rb:bom|utf-8')
+        rows = CSV.parse(file.read.force_encoding('ISO-8859-1'))
       ensure
         return rows
       end
@@ -91,27 +99,7 @@ class Attachment < ActiveRecord::Base
     File.delete(full_filename) rescue true #catch Errno::ENOENT exception for deleted files
   end
 
-  def path
-    FileUtils.mkdir_p(FILE_DIR) unless File.directory?(FILE_DIR)
-    FILE_DIR
-  end
-
-  # Returns an ASCII or hashed filename prefixed with the current timestamp
-  def self.disk_filename(filename)
-    filename = filename.strip.gsub(/[^\w\d\.\-]+/, '_')
-    #%L milliseconds 000-999
-    df = DateTime.now.strftime("%y%m%d%H%M%S%L") + "_"
-    if filename =~ %r{^[a-zA-Z0-9_\.\-]*$}
-      df << filename
-    else
-      df << Digest::MD5.hexdigest(filename)
-      # keep the extension if any
-      df << $1 if filename =~ %r{(\.[a-zA-Z0-9]+)$}
-    end
-    df
-  end
-
-  def col_sep_presence
-    (self.col_sep.present? || self.col_sep == "\t" ) || self.errors.add(:col_sep, :must_be_present)
+  def column_separator_presence
+    (self.column_separator.present? || self.column_separator == "\t" ) || self.errors.add(:column_separator, :must_be_present)
   end
 end

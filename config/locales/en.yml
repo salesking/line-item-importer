@@ -2,17 +2,17 @@ en:
   activerecord:
     attributes:
       attachment:
-        col_sep: Column Separator
-        quote_char: Quote character
+        column_separator: Column Separator
+        quote_character: Quote character
       data_row:
         log: Log
-        sk_id: SalesKing ID
+        external_id: SalesKing ID
         source: Source data
       import:
-        col_sep: Column Separator
+        column_separator: Column Separator
         created_at: Created at
         kind: Data type
-        quote_char: Quote character
+        quote_character: Quote character
       mapping_element:
         conv_opts: Convert Options
         conv_type: Convert type

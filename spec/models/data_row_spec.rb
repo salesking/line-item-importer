@@ -33,7 +33,7 @@ describe DataRow do
         end
 
         it "should save Contact ID in corresponding data row" do
-          @data_row.sk_id.should == 'some_uuid'
+          @data_row.external_id.should == 'some_uuid'
         end
 
         it "should have organization field value" do
@@ -69,11 +69,11 @@ describe DataRow do
         end
 
         it "should not save Contact ID in corresponding data row" do
-          @data_row.sk_id.should be_nil
+          @data_row.external_id.should be_nil
         end
 
         it "should save failed row as source" do
-          @data_row.source.should == @csv_row.to_csv(col_sep: @attachment.col_sep, quote_char: @attachment.quote_char)
+          @data_row.source.should == @csv_row.to_csv(column_separator: @attachment.column_separator, quote_character: @attachment.quote_character)
         end
 
         it "should save error log returned from contact" do
