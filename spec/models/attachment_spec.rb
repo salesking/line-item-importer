@@ -23,7 +23,7 @@ describe Attachment do
         its(:errors) { should include :column_separator }
       end
 
-      # "\t" is blank,
+      # "\t" is blank, yet tabulator is often used in CSV files
       context 'when blank, but \t' do
         let(:separator) { "\\t" }
         its(:errors) { should_not include :column_separator }
@@ -31,34 +31,32 @@ describe Attachment do
     end
   end
 
-  before :each do
-    @attachment = create(:attachment)
-  end
+  let(:attachment) { create(:attachment) }
 
   it 'should set filename and disk_filename' do
-    @attachment.filename.should == 'test1.csv'
-    @attachment.disk_filename.should_not be_empty
+    attachment.filename.should == 'test1.csv'
+    attachment.disk_filename.should_not be_empty
   end
 
   it 'should remove file on destroy' do
-    file_path = @attachment.full_filename
-    @attachment.destroy
+    file_path = attachment.full_filename
+    attachment.destroy
     File.exist?(file_path).should be_false
   end
 
   it 'should silently ignore missing files on destroy' do
-    file_path = @attachment.full_filename
+    file_path = attachment.full_filename
     File.delete(file_path)
-    lambda {@attachment.destroy}.should_not raise_error #(Errno::ENOENT)
+    lambda {attachment.destroy}.should_not raise_error #(Errno::ENOENT)
   end
 
   it 'parses csv data' do
-    @attachment.rows.size.should == 2
-    @attachment.rows.first.size.should be > 1
+    attachment.rows.size.should == 2
+    attachment.rows.first.size.should be > 1
   end
 
   it 'reveals specified number of rows' do
-    @attachment.rows(1).size.should == 1
+    attachment.rows(1).size.should == 1
   end
 
   describe 'formats' do

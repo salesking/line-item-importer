@@ -35,7 +35,7 @@ class Attachment < ActiveRecord::Base
   # stored to its final destination after save
 
   def uploaded_data=(data)
-    return if data.nil? #&& data.size > 0
+    return unless data.present?
     #set new values
     self.filename = data.original_filename.strip.gsub(/[^\w\d\.\-]+/, '_')
 
@@ -68,7 +68,7 @@ class Attachment < ActiveRecord::Base
   # TODO rescue parser errors -> rows empty
   def parsed_data
     @parsed_data ||= begin
-      CSV.read(full_filename, column_separator: column_separator, quote_character: quote_character, encoding: encoding)
+      CSV.read(full_filename, col_sep: column_separator, quote_char: quote_character, encoding: encoding)
     rescue #CSV::MalformedCSVError => er
       rows = []
       #one more attempt. If BOM is present in the file.
