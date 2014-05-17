@@ -15,12 +15,14 @@ class ApplicationController < ActionController::Base
   end
 
   def current_user
-    return nil unless session['user_id'] && session['company_id'] && session['access_token']
-    @current_user ||= User.new(user_id: session['user_id'], company_id: session['company_id'])
+    user_id, company_id, access_token = session['user_id'], session['company_id'], session['access_token']
+    if [user_id, company_id, access_token].all?(&:present?)
+      @current_user ||= User.new(user_id: user_id, company_id: company_id)
+    end
   end
 
   def access_denied(message)
-    if session['sub_domain'] && Sk::App.sub_domain == session['sub_domain'] # go to sk url if
+    if session['sub_domain'] && Sk::App.sub_domain == session['sub_domain']
       render inline:  "<script> top.location.href='#{Sk::App.sk_url}'</script>"
     else
       redirect_to root_url, alert: message
