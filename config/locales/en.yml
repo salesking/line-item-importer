@@ -17,7 +17,7 @@ en:
         conv_opts: Convert Options
         conv_type: Convert type
         source: Source field
-        target: Target field
+        target: SalesKing-field
     models:
       attachment:
         one: Uploaded File
@@ -29,13 +29,13 @@ en:
         one: Import
         other: Imports
       mapping:
-        one: Mapping
-        other: Mappings
+        one: Field-mapping
+        other: Field-mappings
   attachments:
     csv_import_error: Try with different 'Column Separator' and/or 'Quote character'.
     delete_confirm: This is an irreversible process. This will delete associated imports. Are you sure?
     new:
-      can_use_tab_character_html: You can use <tt>\t</tt> as a tabulator desigator.
+      can_use_tab_character_html: You can use <tt>\t</tt> to designate tabulators.
       page_title: Upload new CSV file
     proceed_to_mapping: Proceed to mapping
     upload: Upload
@@ -43,7 +43,7 @@ en:
     failed: Failed rows
     success: Successfull rows
   errors:
-    sk_login_required: Please login to SalesKing and navigate to this app from inside there.
+    sk_login_required: Please login to SalesKing.eu and navigate to "Settings" > "Apps" to activate.
   imports:
     create: Import data
     new: Create import
@@ -51,14 +51,14 @@ en:
       one: ! '%{count} row failed'
       other: ! '%{count} rows failed'
     title_success:
-      one: ! '%{count} rows imported'
+      one: ! '%{count} row imported'
       other: ! '%{count} rows imported'
     total:
       one: Total %{count} row
       other: Total %{count} rows
   layouts:
     application:
-      attachments: Attachments
+      attachments: Datasets
       imports: Imports
       mappings: Mappings
   link:
@@ -72,11 +72,11 @@ en:
     step: ! 'Step %{count} from %{total}:'
   mappings:
     dnd_info: Please drag&drop fields above onto their targets below. Drop multiple fields on a target to join values (space-delimited) e.g for the tag list.
-    new: Create mapping
+    new: Create field-mapping
     proceed_to_import: Proceed to import
     reuse: Select an existing mapping from the list to reuse that or create a new mapping in the below section.
     source_fields: Source fields
-    target_fields: Target fields
+    target_fields: SalesKing-fields
     title:
       one: ! '%{count} field: %{fields}'
       other: ! '%{count} fields: %{fields}'

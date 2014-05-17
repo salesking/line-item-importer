@@ -1,0 +1,82 @@
+de:
+  activerecord:
+    attributes:
+      attachment:
+        col_sep: Feldtrenner
+        quote_char: Texttrenner
+      data_row:
+        log: Log
+        sk_id: SalesKing ID
+        source: Quelldaten
+      import:
+        col_sep: Feldtrenner
+        created_at: Erstellt am
+        kind: Dateityp
+        quote_char: Texttrenner
+      mapping_element:
+        conv_opts: Konvertierungsoptionen
+        conv_type: Konvertierungstyp
+        source: Quellfeld
+        target: SalesKing-Feld
+    models:
+      attachment:
+        one: Hochgeladene Datei
+        other: Hochgeladene Dateien
+      data_row:
+        one: Datenzeile
+        other: Datenzeilen
+      import:
+        one: Import
+        other: Importe
+      mapping:
+        one: Feldzuweisung
+        other: Feldzuweisungen
+  attachments:
+    csv_import_error: Versuchen Sie es mit einem anderen "Feldtrenner und/oder "Texttrenner".
+    delete_confirm: Dies ist nicht rückgängig zu machen. Dies wird alle Importe löschen. Sind Sie sicher?
+    new:
+      can_use_tab_character_html: Sie können <tt>\t</tt> als Tabulator-Bezeichner nutzen.
+      page_title: Neue CSV-Datei hochladen
+    proceed_to_mapping: Weiter zur Feldzuweisung
+    upload: Hochladen
+  data_rows:
+    failed: Fehlgeschlagene Zeilen
+    success: Erfolgreiche Zeilen
+  errors:
+    sk_login_required: Bitte bei SalesKing.eu einloggen und über "Einstellungen" > "Apps" aktivieren.
+  imports:
+    create: Daten importieren
+    new: Import erzeugen
+    title_failed:
+      one: ! '%{count} Zeile fehlgeschlagen'
+      other: ! '%{count} Zeilen fehlgeschlagen'
+    title_success:
+      one: ! '%{count} Zeile importiert'
+      other: ! '%{count} Zeilen importiert'
+    total:
+      one: Insgesamt %{count} Zeile
+      other: Insgesamt %{count} Zeilen
+  layouts:
+    application:
+      attachments: Datensätze
+      imports: Importe
+      mappings: Feldzuweisungen
+  link:
+    actions: Aktionen
+    back_to_list: Zurück zur Liste
+    confirm_destroy: Diesen Eintrag wirklich löschen?
+    destroy: Löschen
+    edit: Bearbeiten
+    revert: Rückgängig
+    show: Zeige
+    step: ! 'Schritt %{count} von %{total}:'
+  mappings:
+    dnd_info: Bitte ziehen Sie die Felder oben auf die Felder unten. Ziehen Sie mehrere Felder auf ein Zielfeld um Werte kommasepariert zusammen zu führen z.B. für Tags(Schalgworte).
+    new: Feldzuweisung erstellen
+    proceed_to_import: Weiter zum Import
+    reuse: Wählen Sie eine exisitierende Feldzuweisung aus der Liste oder erstellen Sie eine neue Feldzuweisung im unteren Bereich.
+    source_fields: Quellfelder
+    target_fields: SalesKing-Felder
+    title:
+      one: ! '%{count} Feld: %{fields}'
+      other: ! '%{count} Felder: %{fields}'
