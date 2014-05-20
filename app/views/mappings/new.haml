@@ -9,23 +9,4 @@
 %hr
 
 = form_for [@attachment, @mapping] do |f|
-  .clearfix
-    %label= t('mappings.source_fields')
-    .input
-      %ul#source-fields
-        - @attachment.rows(1).first.each_with_index do |item, index|
-          %li.field{'data-name' => item, 'data-source' => index}= item
-  .clearfix
-    %p= t('mappings.dnd_info')
-  .clearfix
-    %label= t('mappings.target_fields')
-    .input
-      %ul#target-fields
-        - fields = Sk.read_schema('line_item')['properties'].select{|_, properties| !properties['readonly']}
-        - fields.each do |name, params|
-          - attrs = Hash[params.collect { |k, v| ["data-#{k}", v] }]
-          %li.field
-            .target{attrs.merge('data-target' => name)}= name
-  .actions
-    = f.submit t('mappings.proceed_to_import'), class: 'btn primary large'
-    = link_to t('link.back_to_list'), attachments_path, class: 'btn secondary'
+  = render partial: 'form', locals: {f: f}

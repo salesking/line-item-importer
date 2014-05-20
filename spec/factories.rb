@@ -22,7 +22,7 @@ FactoryGirl.define do
     mapping
     source '1,2'
     target 'first_name'
-    conv_type 'join'
+    conversion_type 'join'
   end
 
   factory :email_mapping_element, :class => MappingElement  do
@@ -35,16 +35,16 @@ FactoryGirl.define do
     mapping
     source 4
     target 'gender'
-    conv_type 'enum'
-    conv_opts  "{\"male\":\"Herr\",\" female\":\"Frau\"}"
+    conversion_type 'enum'
+    conversion_options  "{\"male\":\"Herr\",\" female\":\"Frau\"}"
   end
 
   factory :birthday_mapping_element, :class => MappingElement do
     mapping
     source 5
     target 'birthday'
-    conv_type 'date'
-    conv_opts "{\"date\":\"%Y-%M-%d\"}"
+    conversion_type 'date'
+    conversion_options "{\"date\":\"%Y-%M-%d\"}"
   end
 
 

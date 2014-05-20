@@ -2,17 +2,23 @@ en:
   activerecord:
     attributes:
       attachment:
-        column_separator: Column Separator
-        quote_character: Quote character
+        col_sep: Column Separator
+        quote_char: Quote character
       data_row:
         log: Log
-        external_id: SalesKing ID
+        sk_id: SalesKing ID
         source: Source data
       import:
-        column_separator: Column Separator
+        col_sep: Column Separator
         created_at: Created at
         kind: Data type
-        quote_character: Quote character
+        quote_char: Quote character
+      mapping:
+        enum_values:
+          type:
+            document_mapping: I want to import each line as a separate document
+            line_item_mapping: I want to import all information into one document (existing or new)
+        type: Choose an import type
       mapping_element:
         conv_opts: Convert Options
         conv_type: Convert type

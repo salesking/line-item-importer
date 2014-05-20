@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140517145304) do
+ActiveRecord::Schema.define(version: 20140520191900) do
 
   create_table "attachments", force: true do |t|
     t.string   "filename",         limit: 100
@@ -28,13 +28,15 @@ ActiveRecord::Schema.define(version: 20140517145304) do
 
   create_table "data_rows", force: true do |t|
     t.integer  "import_id"
-    t.string   "external_id", limit: 22
+    t.string   "external_id",          limit: 22
     t.text     "source"
     t.text     "log"
-    t.string   "company_id",  limit: 22
-    t.string   "user_id",     limit: 22
+    t.string   "company_id",           limit: 22
+    t.string   "user_id",              limit: 22
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "type",                 limit: 40
+    t.integer  "document_data_row_id"
   end
 
   create_table "imports", force: true do |t|
@@ -46,20 +48,23 @@ ActiveRecord::Schema.define(version: 20140517145304) do
   end
 
   create_table "mapping_elements", force: true do |t|
-    t.string   "target",     limit: 100
-    t.string   "conv_type",  limit: 100
-    t.string   "conv_opts"
+    t.string   "target",             limit: 100
+    t.string   "conversion_type",    limit: 100
+    t.string   "conversion_options"
     t.string   "source"
     t.integer  "mapping_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "model_to_import",    limit: 15
   end
 
   create_table "mappings", force: true do |t|
-    t.string   "company_id", limit: 22
-    t.string   "user_id",    limit: 22
+    t.string   "company_id",  limit: 22
+    t.string   "user_id",     limit: 22
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "import_type"
+    t.string   "document_id", limit: 22
   end
 
 end

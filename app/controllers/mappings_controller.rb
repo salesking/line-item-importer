@@ -16,6 +16,6 @@ class MappingsController < ApplicationController
 
   private
   def mapping_params
-    params.require(:mapping).permit(mapping_elements_attributes: [:id, :source, :target, :source, :conv_type, :conv_opts, :import_id])
+    params.require(:mapping).permit(mapping_elements_attributes: [:id, :source, :target, :source, :conversion_type, :conversion_options, :import_id])
   end
 end

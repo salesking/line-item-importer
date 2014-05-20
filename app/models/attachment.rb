@@ -11,11 +11,11 @@ class Attachment < ActiveRecord::Base
   include UserReference
 
   belongs_to :mapping
-  has_many :imports, dependent: :destroy
+  has_many :imports, dependent: :destroy, inverse_of: :attachment
 
-  default_scope ->{order('attachments.id desc')}
+  default_scope ->{ order('attachments.id desc') }
 
-  after_create :store_file
+  after_create  :store_file
   after_destroy :delete_file
 
   validates :filename, :disk_filename, :quote_character, :encoding, presence: true

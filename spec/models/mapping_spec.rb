@@ -1,41 +1,34 @@
 require 'spec_helper'
 
 describe Mapping do
-  before :each do
-    @mapping = create(:mapping, :company_id => 'a company')
-    create(:mapping_element, mapping: @mapping)
-    create(:gender_mapping_element, mapping: @mapping)
-    create(:birthday_mapping_element, mapping: @mapping)
-  end
-
   it { should have_many(:mapping_elements).dependent(:destroy) }
   it { should have_many(:attachments).dependent(:nullify) }
 
-  describe ".by_company" do
-    it "includes mappings belongs to company" do
-      Mapping.by_company('a company').should include(@mapping)
-    end
+  let(:mapping)   { create(:mapping, :company_id => 'a company')       }
+  let!(:mapping2) { create(:mapping, :company_id => 'another company') }
 
-    it "excludes mappings belongs to other company" do
-       another_mapping = create(:mapping, :company_id => 'another company')
-       Mapping.by_company('a company').should_not include(another_mapping)
-    end
+  before :each do
+    create(:mapping_element,          mapping: mapping)
+    create(:gender_mapping_element,   mapping: mapping)
+    create(:birthday_mapping_element, mapping: mapping)
   end
 
-  describe ".with_fields" do
-    it "includes mappings with more than one mapping element defined" do
-      Mapping.with_fields.should include(@mapping)
+  context :scopes do
+    describe '.by_company' do
+      subject { Mapping.by_company('a company') }
+      it { should include(mapping) }
+      it { should_not include(mapping2) }
     end
 
-    it "excludes mappings belongs to other company" do
-       another_mapping = create(:mapping, :company_id => 'another company')
-       Mapping.with_fields.should_not include(another_mapping)
+    describe '.with_fields'
+      subject { Mapping.with_fields }
+      it { should include(mapping) }
+      it { should_not include(mapping2) }
     end
   end
 
   describe '#title' do
-    it 'should return mapping details' do
-      @mapping.title.should == '3 fields: organization, gender, and birthday'
-    end
+    subject { mapping.title }
+    it { should eq '3 fields: organization, gender, and birthday' }
   end
 end

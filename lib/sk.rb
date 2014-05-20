@@ -13,8 +13,9 @@ class Sk
   Order      = Class.new(SK::SDK::Base)
   Estimate   = Class.new(SK::SDK::Base)
   CreditNote = Class.new(SK::SDK::Base)
-  Recurring  = Class.new(SK::SDK::Base)
+
   Contact    = Class.new(SK::SDK::Base)
+  Address    = Class.new(SK::SDK::Base)
 
   # init SalesKing classes and set connection oAuth token
   def self.init(site, token)

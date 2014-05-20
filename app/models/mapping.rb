@@ -2,8 +2,12 @@
 class Mapping < ActiveRecord::Base
   include UserReference
 
+  DOCUMENT_TYPES = %w(invoice order estimate credit_note)
+  IMPORT_TYPES   = (DOCUMENT_TYPES + ['line_item']).freeze
   has_many :mapping_elements, dependent: :destroy
   has_many :attachments, dependent: :nullify
+
+  validates :import_type, inclusion: {in: IMPORT_TYPES}
 
   default_scope ->{order('mappings.id desc')}
 
@@ -18,5 +22,9 @@ class Mapping < ActiveRecord::Base
 
   def title
     I18n.t('mappings.title', count: mapping_elements.count, fields: mapping_elements.collect(&:target).to_sentence)
+  end
+
+  def valid_document_type?
+    self.class::DOCUMENT_TYPES.include?(import_type.to_s)
   end
 end
