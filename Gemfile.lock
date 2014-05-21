@@ -195,6 +195,7 @@ GEM
       kgio (~> 2.6)
       rack
       raindrops (~> 0.7)
+    vcr (2.9.0)
 
 PLATFORMS
   ruby
@@ -227,3 +228,4 @@ DEPENDENCIES
   thin
   uglifier
   unicorn
+  vcr

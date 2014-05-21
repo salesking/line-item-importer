@@ -5,20 +5,24 @@ end
 ENV["RAILS_ENV"] ||= 'test'
 require File.expand_path("../../config/environment", __FILE__)
 require 'rspec/rails'
+require 'vcr'
 # Requires supporting ruby files with custom matchers and macros, etc,
 # in spec/support/ and its subdirectories.
 Dir[Rails.root.join("spec/support/**/*.rb")].each {|f| require f}
 
+VCR.configure do |config|
+  config.cassette_library_dir = 'fixtures/vcr_cassettes'
+  config.configure_rspec_metadata!
+end
+
 RSpec.configure do |config|
   config.mock_with :rspec
   config.include FactoryGirl::Syntax::Methods
-  # Remove this line if you're not using ActiveRecord or ActiveRecord fixtures
   config.fixture_path = "#{::Rails.root}/spec/fixtures"
 
-  # If you're not using ActiveRecord, or you'd prefer not to run each of your
-  # examples within a transaction, remove the following line or assign false
-  # instead of true.
   config.use_transactional_fixtures = true
+
+  config.treat_symbols_as_metadata_keys_with_true_values = true
 end
 
 def user_login(params = {})

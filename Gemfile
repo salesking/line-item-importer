@@ -26,6 +26,7 @@ group :test do
   gem 'factory_girl_rails'
   gem 'shoulda-matchers'
   gem 'simplecov'
+  gem 'vcr'
 end
 group :development do
   gem 'better_errors'
