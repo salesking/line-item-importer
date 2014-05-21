@@ -2,8 +2,8 @@ class Import < ActiveRecord::Base
   include UserReference
 
   has_many :data_rows, dependent: :destroy
-  has_one  :document_data_row
-  has_many :line_item_data_rows
+  has_one  :document_data_row,   class_name: DataRows::DocumentDataRow.name
+  has_many :line_item_data_rows, class_name: DataRows::LineItemDataRow.name
   belongs_to :attachment, inverse_of: :imports
 
   default_scope ->{order('imports.id desc')}
@@ -39,7 +39,7 @@ class Import < ActiveRecord::Base
 
   def populate_data_rows
     data_to_populate = attachment.rows.drop(1)
-    case self.import_type
+    case attachment.mapping.import_type
       when :line_item; then populate_many_documents(data_to_populate)
       else populate_one_document(data_to_populate) if attachment.mapping.valid_document_type?
     end

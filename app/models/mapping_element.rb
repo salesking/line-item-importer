@@ -16,6 +16,9 @@ class MappingElement < ActiveRecord::Base
 
   serialize :conversion_options
 
+  scope :for_line_items, -> { where(model_to_import: 'line_item') }
+  scope :for_documents,  -> { where(model_to_import: 'document')  }
+
   # @param [Array] data_row
   def convert(data_row)
     if conversion_type && self.respond_to?("convert_#{conversion_type}")

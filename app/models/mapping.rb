@@ -5,9 +5,12 @@ class Mapping < ActiveRecord::Base
   DOCUMENT_TYPES = %w(invoice order estimate credit_note)
   IMPORT_TYPES   = (DOCUMENT_TYPES + ['line_item']).freeze
   has_many :mapping_elements, dependent: :destroy
-  has_many :attachments, dependent: :nullify
+  has_many :attachments, dependent: :nullify, inverse_of: :mapping
 
   validates :import_type, inclusion: {in: IMPORT_TYPES}
+
+  # Salesking UUID-s are always 22-chars long
+  validates :document_id, format: {with: /\A[a-zA-Z0-9\-_]{22}\z/, allow_blank: true}
 
   default_scope ->{order('mappings.id desc')}
 

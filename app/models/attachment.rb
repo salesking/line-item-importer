@@ -10,7 +10,7 @@ class Attachment < ActiveRecord::Base
 
   include UserReference
 
-  belongs_to :mapping
+  belongs_to :mapping, inverse_of: :attachments
   has_many :imports, dependent: :destroy, inverse_of: :attachment
 
   default_scope ->{ order('attachments.id desc') }
