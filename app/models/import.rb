@@ -39,10 +39,13 @@ class Import < ActiveRecord::Base
 
   def populate_data_rows
     data_to_populate = attachment.rows.drop(1)
-    case attachment.mapping.import_type
-      when :line_item; then populate_many_documents(data_to_populate)
-      else populate_one_document(data_to_populate) if attachment.mapping.valid_document_type?
+
+    if attachment.mapping.import_type == 'line_item'
+      populate_one_document(data_to_populate)
+    elsif attachment.mapping.valid_document_type?
+      populate_many_documents(data_to_populate)
     end
+
     data_rows(true)
   end
 
