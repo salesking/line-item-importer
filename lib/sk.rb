@@ -14,6 +14,16 @@ class Sk
   Estimate   = Class.new(SK::SDK::Base)
   CreditNote = Class.new(SK::SDK::Base)
 
+  Invoice::LineItem    = Class.new(SK::SDK::Base)
+  Order::LineItem      = Class.new(SK::SDK::Base)
+  Estimate::LineItem   = Class.new(SK::SDK::Base)
+  CreditNote::LineItem = Class.new(SK::SDK::Base)
+
+  Invoice::Item    = Class.new(SK::SDK::Base)
+  Order::Item      = Class.new(SK::SDK::Base)
+  Estimate::Item   = Class.new(SK::SDK::Base)
+  CreditNote::Item = Class.new(SK::SDK::Base)
+
   Contact    = Class.new(SK::SDK::Base)
   Address    = Class.new(SK::SDK::Base)
 
