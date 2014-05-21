@@ -47,9 +47,7 @@ class Import < ActiveRecord::Base
   end
 
   def populate_one_document(data_to_populate)
-    self.document_data_row.create!(data: data_to_populate)
-    .map do |row|
-    end
+    self.create_document_data_row(data: data_to_populate)
   end
 
   def populate_many_documents(data_to_populate)

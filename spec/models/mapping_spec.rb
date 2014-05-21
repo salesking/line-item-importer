@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe Mapping do
   it { should have_many(:mapping_elements).dependent(:destroy) }
-  it { should have_many(:attachments).dependent(:nullify) }
+  it { should have_many(:attachments).dependent(:nullify)      }
 
   let(:mapping)   { create(:mapping, :company_id => 'a company')       }
   let!(:mapping2) { create(:mapping, :company_id => 'another company') }
@@ -20,7 +20,7 @@ describe Mapping do
       it { should_not include(mapping2) }
     end
 
-    describe '.with_fields'
+    describe '.with_fields' do
       subject { Mapping.with_fields }
       it { should include(mapping) }
       it { should_not include(mapping2) }
