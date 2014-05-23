@@ -5,8 +5,8 @@ class DocumentsController < ApplicationController
     initialize_salesking_connection
     type = document_type
     return if type.nil?
-    @results = Sk.const_get(type).where(filter: {status_draft: 1}, q: params[:q])
-    render json: process_results
+    @results = Sk.const_get(type).where(permitted_params.merge(filter: {status_draft: 1}))
+    render json: {results: process_results, total_pages: @results.total_pages}
   end
 
   protected
@@ -35,6 +35,10 @@ class DocumentsController < ApplicationController
     texts << contact.organisation.presence
     texts << "#{contact.first_name} #{contact.last_name}".presence
     texts.compact.join(' - ')
+  end
+
+  def permitted_params
+    params.permit(:q, :per_page, :page)
   end
 
 end

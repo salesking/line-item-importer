@@ -26,7 +26,6 @@ describe DataRows::LineItemDataRow do
     end
   end
 
-
   describe '#imported_class' do
     let(:attachment) { create(:attachment, mapping: mapping) }
     let(:import) { build(:import, attachment: attachment) }

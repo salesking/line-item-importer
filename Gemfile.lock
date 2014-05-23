@@ -1,7 +1,6 @@
 GIT
-  remote: https://github.com/salesking/sk_sdk.git
-  revision: 9e6778e4d81f48a460c9c0cf6e10324b96e81906
-  branch: master
+  remote: git://github.com/salesking/sk_sdk.git
+  revision: 6d0268ef6884579155ee0f30c0f0445b57e36f4c
   specs:
     sk_sdk (0.3.0)
       activeresource
@@ -96,7 +95,7 @@ GEM
     method_source (0.8.2)
     mime-types (1.25.1)
     minitest (4.7.5)
-    multi_json (1.10.0)
+    multi_json (1.10.1)
     mysql2 (0.3.15)
     net-scp (1.2.1)
       net-ssh (>= 2.6.5)

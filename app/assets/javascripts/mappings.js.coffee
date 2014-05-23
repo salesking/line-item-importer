@@ -79,17 +79,19 @@ jQuery ->
     placeholder: window.gon.document_id_placeholder
     minimumInputLength: 1
     allowClear: true
+    quietMillis: 100
     ajax: # instead of writing the function to execute the request we use Select2's convenient helper
       url: "/documents.json"
       dataType: "json"
       data: (term, page) ->
         q: term
         type: $('input[name="mapping[import_type]"]:checked').val()
+        per_page: 10
+        page: page
 
-
-      results: (data, page) -> # parse the results into the format expected by Select2.
-        # since we are using custom formatting functions we do not need to alter remote JSON data
-        results: data
+      results: (data, page) ->
+        results: data.results
+        more: (page < data.total_pages)
 
     formatResult: (doc) ->
       doc.name + '<br/>' + doc.address
