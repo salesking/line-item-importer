@@ -14,7 +14,7 @@ if window.gon.locale == 'pl'
         "Brak wyników"
 
       formatInputTooShort: (input, min) ->
-        "Wpisz jeszcze" + character(min - input.length, "znak", "i")
+        "Wpisz co najmniej" + character(min - input.length, "znak", "i")
 
       formatInputTooLong: (input, max) ->
         "Wpisana fraza jest za długa o" + character(input.length - max, "znak", "i")
