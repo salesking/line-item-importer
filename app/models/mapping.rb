@@ -2,7 +2,7 @@
 class Mapping < ActiveRecord::Base
   include UserReference
 
-  DOCUMENT_TYPES = %w(invoice order estimate credit_note)
+  DOCUMENT_TYPES = %w(invoice estimate)
   IMPORT_TYPES   = (DOCUMENT_TYPES + ['line_item']).freeze
   has_many :mapping_elements, dependent: :destroy
   has_many :attachments, dependent: :nullify, inverse_of: :mapping
