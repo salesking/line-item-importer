@@ -30,8 +30,13 @@ class ApplicationController < ActionController::Base
   end
 
   def set_locale
-    I18n.locale = session['language']
+    gon['locale'] = I18n.locale = session['language']
   rescue I18n::InvalidLocale
     I18n.locale = I18n.default_locale
   end
+
+  def gon
+    @gon ||= {}
+  end
+  helper_method :gon
 end

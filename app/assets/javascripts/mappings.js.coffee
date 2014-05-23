@@ -73,3 +73,28 @@ jQuery ->
         $.each $('.options :text', el), -> opts[$(this).attr('name')] = $(this).val()
         mappings.push "<input type='hidden' name='mapping[mapping_elements_attributes][" + i + "][conversion_options]' value='" + JSON.stringify(opts) + "'>"
     $('form').append mappings.join('')
+
+
+  $("#mapping_document_id").select2
+    placeholder: window.gon.document_id_placeholder
+    minimumInputLength: 1
+    allowClear: true
+    ajax: # instead of writing the function to execute the request we use Select2's convenient helper
+      url: "/documents.json"
+      dataType: "json"
+      data: (term, page) ->
+        q: term
+        type: $('input[name="mapping[import_type]"]:checked').val()
+
+
+      results: (data, page) -> # parse the results into the format expected by Select2.
+        # since we are using custom formatting functions we do not need to alter remote JSON data
+        results: data
+
+    formatResult: (doc) ->
+      doc.name + '<br/>' + doc.address
+    formatSelection: (doc) ->
+      doc.name
+    dropdownCssClass: "bigdrop" # apply css that makes the dropdown taller
+    escapeMarkup: (m) -> # we do not want to escape markup since we are displaying html in results
+      m

@@ -3,7 +3,6 @@
   %head
     %title= 'SalesKing CSV Importer'
     = stylesheet_link_tag    'application'
-    = javascript_include_tag 'application'
     = csrf_meta_tags
     = yield :head
   %body
@@ -28,3 +27,7 @@
         or
         %a(href='https://github.com/salesking/line-item-importer/issues') report bugs
         on GitHub
+
+    %script
+      = "window.gon=#{gon.to_json}".html_safe
+    = javascript_include_tag 'application'

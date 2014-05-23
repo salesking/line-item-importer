@@ -10,6 +10,11 @@
   %label.radio
     = f.radio_button :import_type, 'line_item'
     = t('activerecord.attributes.mapping.enum_values.import_type.line_item_mapping')
+
+.clearfix
+  %label= Mapping.human_attribute_name(:document_id)
+  .input= f.hidden_field :document_id
+
 .clearfix
   %label= t('mappings.source_fields')
   .input
