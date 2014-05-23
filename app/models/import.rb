@@ -2,8 +2,6 @@ class Import < ActiveRecord::Base
   include UserReference
 
   has_many :data_rows, dependent: :destroy
-  has_one  :document_data_row,   class_name: DataRows::DocumentDataRow.name
-  has_many :line_item_data_rows, class_name: DataRows::LineItemDataRow.name
   belongs_to :attachment, inverse_of: :imports
 
   default_scope ->{order('imports.id desc')}
