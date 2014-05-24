@@ -2,71 +2,85 @@ pl:
   activerecord:
     attributes:
       attachment:
-        col_sep:
-        quote_char:
+        col_sep: 
+        quote_char: 
       data_row:
-        log:
-        sk_id:
-        source:
+        log: 
+        sk_id: 
+        source: 
       import:
-        col_sep:
-        created_at:
-        kind:
-        quote_char:
+        col_sep: 
+        created_at: 
+        kind: 
+        quote_char: 
       mapping:
+        document_id: W polu poniżej możesz wybrać dokument, do którego chcesz zaimportować nowe pozycje. Pozostaw to pole puste, jeżeli chcesz utworzyć nowy dokument.
+        document_type: Na początek, z jakim rodzajem dokumentów chciał(a)byś pracować?
         enum_values:
-          type:
-            document_mapping:
-            line_item_mapping:
-        type:
+          document_type:
+            credit_note: Nota kredytowa
+            estimate: Oferta
+            invoice: Faktura
+            order: Zamówienie
+          import_type:
+            document: Chcę stworzyć po jednym dokumencie dla każdego wiersza
+            line_item: Chcę umieścić wszystkie wiersze jako pozycję w jednym dokumencie (istniejącym lub nowym)
+        import_type: ! 'Wybierz w jaki sposób chcesz zaimportować informacje:'
       mapping_element:
-        conv_opts:
-        conv_type:
-        source:
-        target:
+        conv_opts: 
+        conv_type: 
+        source: 
+        target: 
     models:
-      attachment:
-      data_row:
-      import:
-      mapping:
+      attachment: 
+      data_row: 
+      import: 
+      mapping: 
   attachments:
-    csv_import_error:
+    csv_import_error: 
     delete_confirm: Tej czynności nie można cofnąć. Dołączone importy zostaną usunięte z aplikacji. Czy na pewno chcesz kontynuować?
     new:
-      can_use_tab_character_html:
-      page_title:
-    proceed_to_mapping:
-    upload:
+      can_use_tab_character_html: 
+      page_title: 
+    proceed_to_mapping: 
+    upload: 
   data_rows:
-    failed:
-    success:
+    failed: 
+    success: 
   errors:
-    sk_login_required:
+    sk_login_required: 
   imports:
-    create:
-    new:
-    title_failed:
-    title_success:
-    total:
+    create: 
+    new: 
+    title_failed: 
+    title_success: 
+    total: 
   layouts:
     application:
-      attachments:
-      imports:
-      mappings:
+      attachments: 
+      imports: 
+      mappings: 
   link:
-    actions:
-    back_to_list:
-    confirm_destroy:
-    destroy:
-    edit:
-    revert:
-    show:
-    step:
+    actions: 
+    back_to_list: 
+    confirm_destroy: 
+    destroy: 
+    edit: 
+    revert: 
+    show: 
+    step: 
   mappings:
-    dnd_info:
-    new:
-    proceed_to_import:
-    reuse:
-    source_fields:
-    target_fields:
+    dnd_info: Przeciągnij i upuść powyższe pola na odpowiadające pola celowe. Docelowo możesz upuścić więcej niż jedno pole. Ich wartości zostaną wtedy połączone odstępem.
+    form:
+      document_id_placeholder: Szukaj dokumentów o statusie roboczym
+      document_mapping: Docelowe pola dokumentu
+      line_item_mapping: Docelowe pola pozycji
+      proceed_to_import: Przejdź do importu
+    new: Połącz pola z załącznika
+    reuse: 
+    source_fields: Pola źródłowe z załącznika
+    target_fields: Pola w SalesKing
     title:
+      few: ! '%{count} pola: %{fields}'
+      one: ! '%{count} pole: %{fields}'
+      other: ! '%{count} pól: %{fields}'

@@ -1,17 +1,20 @@
 .clearfix
-  %label= Mapping.human_attribute_name(:import_type)
-  = t('activerecord.attributes.mapping.enum_values.import_type.document_mapping')
-  %ul
-    - Mapping::DOCUMENT_TYPES.each do |import_type|
-      %li
-        %label.radio
-          = f.radio_button :import_type, import_type
-          = t(import_type, scope: 'activerecord.attributes.mapping.enum_values.import_type')
-  %label.radio
-    = f.radio_button :import_type, 'line_item'
-    = t('activerecord.attributes.mapping.enum_values.import_type.line_item_mapping')
+  %label= Mapping.human_attribute_name(:document_type)
+  - Mapping::DOCUMENT_TYPES.each do |document_type|
+    %label.radio
+      = f.radio_button :document_type, document_type
+      = t(document_type, scope: 'activerecord.attributes.mapping.enum_values.document_type')
 
 .clearfix
+  %label= Mapping.human_attribute_name(:import_type)
+  %label.radio
+    = f.radio_button :import_type, 'document'
+    = t('activerecord.attributes.mapping.enum_values.import_type.document')
+  %label.radio
+    = f.radio_button :import_type, 'line_item'
+    = t('activerecord.attributes.mapping.enum_values.import_type.line_item')
+
+.clearfix.document_id
   %label= Mapping.human_attribute_name(:document_id)
   .input= f.hidden_field :document_id
 
@@ -38,5 +41,5 @@
         %li.field
           .target{field_attributes}= field_attributes['data-target']
 .actions
-  = f.submit t('mappings.proceed_to_import'), class: 'btn primary large'
+  = f.submit t('.proceed_to_import'), class: 'btn primary large'
   = link_to t('link.back_to_list'), attachments_path, class: 'btn secondary'

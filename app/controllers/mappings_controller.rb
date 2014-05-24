@@ -18,7 +18,7 @@ class MappingsController < ApplicationController
 
   private
   def mapping_params
-    params.require(:mapping).permit(mapping_elements_attributes: [:id, :source, :target, :source, :conversion_type, :conversion_options, :import_id])
+    params.require(:mapping).permit(:document_type, :import_type, :document_id, mapping_elements_attributes: [:id, :source, :target, :source, :conversion_type, :conversion_options, :import_id, :model_to_import])
   end
 
   def include_gon_translation

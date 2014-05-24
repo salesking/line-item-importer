@@ -5,7 +5,7 @@
 = form_for @attachment do |f|
   %p= t('mappings.reuse')
   = f.select 'mapping_id', options_for_select(mapping_options)
-  = f.submit t('mappings.proceed_to_import'), class: 'btn primary large'
+  = f.submit t('mappings.form.proceed_to_import'), class: 'btn primary large'
 %hr
 
 = form_for [@attachment, @mapping] do |f|

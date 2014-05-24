@@ -8,7 +8,7 @@
 # - split: split source field into multiple target fields
 #
 class MappingElement < ActiveRecord::Base
-  CONVERT_TYPES = %w(enum date join).freeze
+  CONVERT_TYPES = %w(enum date join price).freeze
 
   belongs_to :mapping
 
@@ -22,29 +22,40 @@ class MappingElement < ActiveRecord::Base
 
   # @param [Array] data_row
   def convert(data_row)
-    if conversion_type && self.respond_to?("convert_#{conversion_type}")
-      self.send("convert_#{conversion_type}", data_row)
+    conversion_method = "convert_#{conversion_type}"
+    if conversion_type && self.respond_to?(conversion_method)
+      self.send(conversion_method, data_row)
     else # simple field mapping
-      data_row[source.to_i]
+      source_value(data_row)
     end
   end
 
   #  convert_opts = {"male":"Herr","female":"Frau"}
   def convert_enum(data_row)
-    val = data_row[source.to_i]
-    res = conversion_options.detect {|trg_val, src_val| val == src_val }
+    value = source_value(data_row)
+    res = conversion_options.detect {|trg_val, src_val| value == src_val }
     res && res[0]
   end
 
   def convert_date(data_row)
-    val = data_row[source.to_i]
-    date = Date.strptime(val, conversion_options['date']) rescue val
-    date.is_a?(Date) ? date.strftime("%Y.%m.%d") : val
+    value = source_value(data_row)
+    date = Date.strptime(value, conversion_options['date']) rescue Chronic.parse(value)
+    date.is_a?(Date) ? date.strftime("%Y.%m.%d") : value
+  end
+
+  def convert_price(data_row)
+    value = source_value(data_row)
+    value.match(/([0-9\.,]+)/).try(:[], 1) || value
   end
 
   # == Params
   # <Array>:. Incoming csv fields
   def convert_join(data_row)
     source.split(',').map{|i| data_row[i.to_i] }.join(' ')
+  end
+
+  private
+  def source_value(data_row)
+    data_row[source.to_i]
   end
 end

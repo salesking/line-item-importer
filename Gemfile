@@ -17,6 +17,8 @@ gem 'coffee-rails'
 gem 'uglifier'
 gem 'therubyracer'
 
+gem 'chronic'
+
 group :test, :development do
   gem 'mysql2'
   gem 'pry-rails'

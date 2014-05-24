@@ -2,12 +2,13 @@
 class Mapping < ActiveRecord::Base
   include UserReference
 
-  DOCUMENT_TYPES = %w(invoice order estimate credit_note)
-  IMPORT_TYPES   = (DOCUMENT_TYPES + ['line_item']).freeze
+  DOCUMENT_TYPES = %w(invoice order estimate credit_note).freeze
+  IMPORT_TYPES   = %w(document line_item).freeze
   has_many :mapping_elements, dependent: :destroy
   has_many :attachments, dependent: :nullify, inverse_of: :mapping
 
-  validates :import_type, inclusion: {in: IMPORT_TYPES}
+  validates :import_type,   inclusion: {in: IMPORT_TYPES}
+  validates :document_type, inclusion: {in: DOCUMENT_TYPES}
 
   # Salesking UUID-s are always 22-chars long
   validates :document_id, format: {with: /\A[a-zA-Z0-9\-_]{22}\z/, allow_blank: true}
@@ -27,7 +28,4 @@ class Mapping < ActiveRecord::Base
     I18n.t('mappings.title', count: mapping_elements.count, fields: mapping_elements.collect(&:target).to_sentence)
   end
 
-  def valid_document_type?
-    self.class::DOCUMENT_TYPES.include?(import_type.to_s)
-  end
 end

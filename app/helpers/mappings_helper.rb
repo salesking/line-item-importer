@@ -21,5 +21,5 @@ module MappingsHelper
     end
   end
 
-  DISALLOWED_MAPPING_FIELDS = %w(_destroy line_items items lock_version client_id).freeze
+  DISALLOWED_MAPPING_FIELDS = %w(_destroy line_items items lock_version client_id type).freeze
 end

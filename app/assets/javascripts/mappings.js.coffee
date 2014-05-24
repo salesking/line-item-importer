@@ -1,10 +1,10 @@
 jQuery ->
-  $('#target-fields').on 'click', '.kill', (e) -> revertField(e, this)
+  $('.target-fields').on 'click', '.kill', (e) -> revertField(e, this)
 
   $('#source-fields').delegate '.field:not(.ui-draggable)', 'mouseenter', ->
     $(this).draggable revert: 'invalid'
 
-  $('#target-fields').delegate '.field:not(.ui-droppable)', 'mouseenter', ->
+  $('.target-fields').delegate '.field:not(.ui-droppable)', 'mouseenter', ->
     $(this).droppable
       accept: "#source-fields li",
       hoverClass: "over",
@@ -14,6 +14,8 @@ jQuery ->
     addFields el, ui
     addEnumFields(el) if $('.target', el).attr('data-enum') != undefined
     addDateFields(el) if $('.target', el).attr('data-format') == 'date'
+    addPriceField(el) if ['price_single', 'cost'].indexOf($('.target', el).attr('data-name')) != -1
+    el.append els.join('')
 
   addFields = (el, ui) ->
     $('.target', el).after "<div class='source' " +
@@ -25,6 +27,10 @@ jQuery ->
     if $('.source', el).length > 1 && $("input[name='conversion_type']", el).length == 0
       el.append "<input name='conversion_type' type='hidden' value='join'>"
     el.addClass 'dropped'
+
+  addPriceField = (el) ->
+    if $('input[name="conversion_type"]', el).length == 0
+      el.append "<input name='conversion_type' type='hidden' value='price'>"
 
   addEnumFields = (el) ->
     els = ["<div class='options'>"]
@@ -56,16 +62,17 @@ jQuery ->
       $("input[name='conversion_type']", el).remove()
     srcElement.show().css left: '', top: ''
 
-  $('#target-fields .field').trigger 'mouseenter'
+  $('.target-fields .field').trigger 'mouseenter'
 
   $(':submit').click ->
     mappings = []
-    $.each $('#target-fields .field.dropped'), (i) ->
+    $.each $('.target-fields .field.dropped'), (i) ->
       el = $(this)
       sourceIDs = [];
       $.each $('.source', el), -> sourceIDs.push $(this).attr('data-source')
       mappings.push "<input type='hidden' name='mapping[mapping_elements_attributes][" + i + "][source]' value='" + sourceIDs.join(',') + "'>"
       mappings.push "<input type='hidden' name='mapping[mapping_elements_attributes][" + i + "][target]' value='" + $('.target', el).attr('data-target') + "'>"
+      mappings.push "<input type='hidden' name='mapping[mapping_elements_attributes][" + i + "][model_to_import]' value='" + $('.target', el).attr('data-model-to-import') + "'>"
       if $("input[name='conversion_type']", el).length > 0
         mappings.push "<input type='hidden' name='mapping[mapping_elements_attributes][" + i + "][conversion_type]' value='" + $("input[name='conversion_type']", el).val() + "'>"
       if $('.options', el).length > 0
@@ -74,18 +81,28 @@ jQuery ->
         mappings.push "<input type='hidden' name='mapping[mapping_elements_attributes][" + i + "][conversion_options]' value='" + JSON.stringify(opts) + "'>"
     $('form').append mappings.join('')
 
+  $('input[name="mapping[import_type]"]').click ->
+    $doc_id = $("#mapping_document_id")
+    if $(this).val() == 'line_item'
+      $doc_id.select2('enable', true)
+    else
+      removeSelectValue($doc_id)
+      $doc_id.select2('enable', false)
+
+  $('input[name="mapping[document_type]"]').change ->
+    removeSelectValue("#mapping_document_id")
 
   $("#mapping_document_id").select2
     placeholder: window.gon.document_id_placeholder
     minimumInputLength: 1
     allowClear: true
     quietMillis: 100
-    ajax: # instead of writing the function to execute the request we use Select2's convenient helper
+    ajax:
       url: "/documents.json"
       dataType: "json"
       data: (term, page) ->
         q: term
-        type: $('input[name="mapping[import_type]"]:checked').val()
+        type: $('input[name="mapping[document_type]"]:checked').val()
         per_page: 10
         page: page
 
@@ -97,6 +114,9 @@ jQuery ->
       doc.name + '<br/>' + doc.address
     formatSelection: (doc) ->
       doc.name
-    dropdownCssClass: "bigdrop" # apply css that makes the dropdown taller
-    escapeMarkup: (m) -> # we do not want to escape markup since we are displaying html in results
+    escapeMarkup: (m) ->
       m
+
+removeSelectValue = (el) ->
+  $(el).val('')
+  $(el).select2('val', '')

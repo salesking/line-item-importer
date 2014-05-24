@@ -14,11 +14,18 @@ de:
         kind: Dateityp
         quote_char: Texttrenner
       mapping:
+        document_id: 
+        document_type: 
         enum_values:
-          type:
-            document_mapping:
-            line_item_mapping:
-        type:
+          document_type:
+            credit_note: Gutschrift
+            estimate: Angebot
+            invoice: Rechnung
+            order: Auftrag
+          import_type:
+            document: Ich möchte je Zeile ein Dokument anlegen
+            line_item: Ich möchte alle Zeilen in ein Dokument importieren (bestehend oder neu)
+        import_type: Wählen Sie eine Importvariante
       mapping_element:
         conv_opts: Konvertierungsoptionen
         conv_type: Konvertierungstyp
@@ -78,8 +85,12 @@ de:
     step: ! 'Schritt %{count} von %{total}:'
   mappings:
     dnd_info: Bitte ziehen Sie die Felder oben auf die Felder unten. Ziehen Sie mehrere Felder auf ein Zielfeld um Werte kommasepariert zusammen zu führen z.B. für Tags(Schalgworte).
+    form:
+      document_id_placeholder: 
+      document_mapping: 
+      line_item_mapping: 
+      proceed_to_import: Weiter zum Import
     new: Feldzuweisung erstellen
-    proceed_to_import: Weiter zum Import
     reuse: Wählen Sie eine exisitierende Feldzuweisung aus der Liste oder erstellen Sie eine neue Feldzuweisung im unteren Bereich.
     source_fields: Quellfelder
     target_fields: SalesKing-Felder

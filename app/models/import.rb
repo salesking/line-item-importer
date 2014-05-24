@@ -36,24 +36,24 @@ class Import < ActiveRecord::Base
   private
 
   def populate_data_rows
+    # drop header row
     data_to_populate = attachment.rows.drop(1)
 
-    if attachment.mapping.import_type == 'line_item'
-      populate_one_document(data_to_populate)
-    elsif attachment.mapping.valid_document_type?
-      populate_many_documents(data_to_populate)
+    case attachment.mapping.import_type
+    when 'line_item' then   populate_one_document(data_to_populate)
+    when 'document'  then populate_many_documents(data_to_populate)
     end
 
     data_rows(true)
   end
 
   def populate_one_document(data_to_populate)
-    self.create_document_data_row(data: data_to_populate)
+    DataRows::LineItemDataRow.create(import: self, data: data_to_populate)
   end
 
   def populate_many_documents(data_to_populate)
     data_to_populate.map do |row|
-      self.line_item_data_rows.create!(data: row)
+      DataRows::DocumentDataRow.create(import: self, data: data_to_populate)
     end
   end
 

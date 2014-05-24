@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140520191900) do
+ActiveRecord::Schema.define(version: 20140524131520) do
 
   create_table "attachments", force: true do |t|
     t.string   "filename",         limit: 100
@@ -59,12 +59,13 @@ ActiveRecord::Schema.define(version: 20140520191900) do
   end
 
   create_table "mappings", force: true do |t|
-    t.string   "company_id",  limit: 22
-    t.string   "user_id",     limit: 22
+    t.string   "company_id",    limit: 22
+    t.string   "user_id",       limit: 22
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "import_type"
-    t.string   "document_id", limit: 22
+    t.string   "document_id",   limit: 22
+    t.string   "document_type", limit: 10
   end
 
 end

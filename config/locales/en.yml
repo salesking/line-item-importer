@@ -2,7 +2,7 @@ en:
   activerecord:
     attributes:
       attachment:
-        col_sep: Column Separator
+        col_sep: Column separator
         quote_char: Quote character
       data_row:
         log: Log
@@ -14,11 +14,18 @@ en:
         kind: Data type
         quote_char: Quote character
       mapping:
+        document_id: You can choose to add line items to an existing document by choosing it from a search below. Keep this field empty, if you want to create a new document.
+        document_type: First of all, what documents would you like to work with?
         enum_values:
-          type:
-            document_mapping: I want to import each line as a separate document
-            line_item_mapping: I want to import all information into one document (existing or new)
-        type: Choose an import type
+          document_type:
+            credit_note: Credit note
+            estimate: Estimate
+            invoice: Invoice
+            order: Order
+          import_type:
+            document: I want to create one document for each row
+            line_item: I want to import all rows into one document (existing or new)
+        import_type: ! 'Now, choose how do you want to import your data:'
       mapping_element:
         conv_opts: Convert Options
         conv_type: Convert type
@@ -26,17 +33,17 @@ en:
         target: SalesKing-field
     models:
       attachment:
-        one: Uploaded File
-        other: Uploaded Files
+        one: Uploaded file
+        other: Uploaded files
       data_row:
-        one: Data Row
-        other: Data Rows
+        one: Data row
+        other: Data rows
       import:
         one: Import
         other: Imports
       mapping:
-        one: Field-mapping
-        other: Field-mappings
+        one: Field mapping
+        other: Field mappings
   attachments:
     csv_import_error: Try with different 'Column Separator' and/or 'Quote character'.
     delete_confirm: This is an irreversible process. This will delete associated imports. Are you sure?
@@ -78,11 +85,15 @@ en:
     step: ! 'Step %{count} from %{total}:'
   mappings:
     dnd_info: Please drag&drop fields above onto their targets below. Drop multiple fields on a target to join values (space-delimited) e.g for the tag list.
-    new: Create field-mapping
-    proceed_to_import: Proceed to import
+    form:
+      document_id_placeholder: Type here to search through available draft documents
+      document_mapping: Target document fields
+      line_item_mapping: Target line item fields
+      proceed_to_import: Proceed to import
+    new: Create field mapping
     reuse: Select an existing mapping from the list to reuse that or create a new mapping in the below section.
     source_fields: Source fields
-    target_fields: SalesKing-fields
+    target_fields: SalesKing fields
     title:
       one: ! '%{count} field: %{fields}'
       other: ! '%{count} fields: %{fields}'

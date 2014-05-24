@@ -16,6 +16,10 @@ class DataRow < ActiveRecord::Base
   end
 
   def imported_class
-    @imported_class ||= Sk.const_get(mapping.import_type.classify)
+    @imported_class ||= Sk.const_get(mapping.document_type.classify)
+  end
+
+  def mapping
+    @mapping ||= self.import.attachment.mapping
   end
 end

@@ -1,9 +1,10 @@
+# -*- encoding : utf-8 -*-
 require 'spec_helper'
 describe MappingElement do
 
   describe 'in general' do
 
-    it "should validate convert type" do
+    it 'validates convert type' do
       obj = MappingElement.new :conversion_type => 'what', :source=>'0'
       obj.should_not be_valid
       obj.errors[:conversion_type].should_not be_empty
@@ -12,36 +13,67 @@ describe MappingElement do
 
   describe 'convert' do
 
-    it "should return field value" do
+    it 'returns field value' do
       obj = MappingElement.new :source=>'0'
       obj.convert(['Pipi']).should == 'Pipi'
     end
 
-    it "should convert enum" do
-      obj = MappingElement.new :conversion_options => '{"male":"Herr","female":"Frau"}', :conversion_type=>'enum', :source=>'0'
+    it 'converts enum' do
+      obj = MappingElement.new :conversion_options => '{"male":"Herr","female":"Frau"}', conversion_type: 'enum', source: '0'
       obj.convert(['Frau']).should == 'female'
     end
 
-    it "should convert date" do
-      obj = MappingElement.new :conversion_options => '{"date":"%d.%m.%Y"}', :conversion_type=>'date', :source=>'0'
+    it 'converts date' do
+      obj = MappingElement.new :conversion_options => '{"date":"%d.%m.%Y"}', conversion_type: 'date', source: '0'
       obj.convert(['1.6.1976']).should == "1976.06.01"
     end
 
-    it "should convert date without time" do
-      obj = MappingElement.new :conversion_options => '{"date":"%d.%m.%Y"}', :conversion_type=>'date', :source=>'0'
+    it 'converts date without time' do
+      obj = MappingElement.new :conversion_options => '{"date":"%d.%m.%Y"}', conversion_type: 'date', source: '0'
       obj.convert(['1.6.1976 00:00:00']).should == "1976.06.01"
     end
 
-    it "should convert date and rescue with incoming string" do
+    it 'converts date and rescue with incoming string' do
       source = ['1/6/1976 00:00:00']
-      obj = MappingElement.new :conversion_options => '{"date":"%d.%m.%Y"}', :conversion_type=>'date', :source=>'0'
+      obj = MappingElement.new :conversion_options => '{"date":"%d.%m.%Y"}', conversion_type: 'date', source: '0'
       obj.convert(source).should == source[0]
     end
 
-    it "should convert joined fields" do
-      source = ['tag1', 'tag2', 'tag3','other']
-      obj = MappingElement.new :conversion_type=>'join', :source=>'0,1,2'
+    it 'converts joined fields' do
+      source = %w(tag1 tag2 tag3 other)
+      obj = MappingElement.new conversion_type: 'join', source: '0,1,2'
       obj.convert(source).should == source[0..2].join(' ')
+    end
+  end
+
+  describe :convert_price do
+    let(:mapping_element) { MappingElement.new conversion_type: 'price', source: 0 }
+
+    subject { mapping_element.convert([source]) }
+
+    context 'converts prices with no whitespace' do
+      let(:source) { '$32.79' }
+      it { should eq '32.79' }
+    end
+
+    context 'converts prices with whitespace' do
+      let(:source) { '€ 23.49' }
+      it { should eq '23.49' }
+    end
+
+    context 'converts prices with trailing symbol' do
+      let(:source) { '6900 元' }
+      it { should eq '6900' }
+    end
+
+    context 'converts prices with trailing characters' do
+      let(:source) { '70,39 zł' }
+      it { should eq '70,39' }
+    end
+
+    context 'converts prices from float-like strings' do
+      let(:source) { '20.30' }
+      it { should eq '20.30' }
     end
   end
 end
