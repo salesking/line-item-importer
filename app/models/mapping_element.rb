@@ -45,7 +45,7 @@ class MappingElement < ActiveRecord::Base
 
   def convert_price(data_row)
     value = source_value(data_row)
-    value.match(/([0-9\.,]+)/).try(:[], 1) || value
+    value.try(:match, /([0-9\.,]+)/).try(:[], 1) || value
   end
 
   # == Params
