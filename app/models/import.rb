@@ -53,7 +53,7 @@ class Import < ActiveRecord::Base
 
   def populate_many_documents(data_to_populate)
     data_to_populate.map do |row|
-      DataRows::DocumentDataRow.create(import: self, data: data_to_populate)
+      DataRows::DocumentDataRow.create(import: self, data: row)
     end
   end
 
