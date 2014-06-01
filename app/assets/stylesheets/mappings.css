@@ -1,4 +1,4 @@
-input.minimi{ width: 15px; }
+input.minimi{ width: 30px; }
 #source-fields, #target-fields { width: 100%;}
 .field{float:left; padding:5px; border: 1px solid #ddd; background: #F5F5F5; margin:3px; list-style: none;}
 #source-fields .field{cursor: move; }
