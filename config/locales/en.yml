@@ -14,7 +14,7 @@ en:
         kind: Data type
         quote_char: Quote character
       mapping:
-        document_id: You can choose to add line items to an existing document by choosing it from a search below. Keep this field empty, if you want to create a new document.
+        document_id: You can choose to add line items to an existing draft document by choosing it from a search below. Keep this field empty, if you want to create a new document.
         document_type: First of all, what documents would you like to work with?
         enum_values:
           document_type:
