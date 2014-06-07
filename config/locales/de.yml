@@ -3,6 +3,7 @@ de:
     attributes:
       attachment:
         col_sep: Feldtrenner
+        encoding: Encoding
         quote_char: Texttrenner
       data_row:
         log: Log
@@ -49,7 +50,10 @@ de:
     delete_confirm: Dies ist nicht rückgängig zu machen. Dies wird alle Importe löschen. Sind Sie sicher?
     new:
       can_use_tab_character_html: Sie können <tt>\t</tt> als Tabulator-Bezeichner nutzen.
+      only_for_advanced_users: 
       page_title: Neue CSV-Datei hochladen
+      preview: 
+      preview_info: 
     proceed_to_mapping: Weiter zur Feldzuweisung
     upload: Hochladen
   data_rows:

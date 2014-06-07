@@ -2,15 +2,16 @@ pl:
   activerecord:
     attributes:
       attachment:
-        col_sep: 
-        quote_char: 
+        col_sep: Separator kolumn
+        encoding: Kodowanie znaków
+        quote_char: Znak cudzysłowia
       data_row:
-        log: 
-        sk_id: 
+        log: Rejestr
+        sk_id: Identyfikator w SalesKing
         source: 
       import:
-        col_sep: 
-        created_at: 
+        col_sep: Separator kolumn
+        created_at: Stworzono
         kind: 
         quote_char: 
       mapping:
@@ -41,7 +42,10 @@ pl:
     delete_confirm: Tej czynności nie można cofnąć. Dołączone importy zostaną usunięte z aplikacji. Czy na pewno chcesz kontynuować?
     new:
       can_use_tab_character_html: 
+      only_for_advanced_users: To ustawienie jest tylko dla zaawansowanych użytkowników. Zostaw pole, jak jest, jeżeli nie wiesz, o czym mówimy.
       page_title: 
+      preview: Podgląd pliku CSV
+      preview_info: Poniższa tabela zawiera jedynie przegląd przesłanego pliku. Jeżeli zdecydujesz się kontynuować, ta aplikacja zaimportuje wszystkie wiersze do aplikacji SalesKing.
     proceed_to_mapping: 
     upload: 
   data_rows:
