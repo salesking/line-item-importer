@@ -16,7 +16,7 @@ de:
         quote_char: Texttrenner
       mapping:
         document_id: Wenn Sie Einzelpositionen zu einem exisitierenden Dokument (Entwurf) hinzufügen möchten, suchen Sie das Dokument jetzt aus. Lassen Sie das Feld leer, wenn Sie ein neues Dokument erstellen möchten.
-        document_type: ! 'Zu allererst, mit was für Dokumenten möchten Sie arbeiten? '
+        document_type: ! 'Mit was für Dokumenten möchten Sie arbeiten? '
         enum_values:
           document_type:
             credit_note: Gutschrift
@@ -50,6 +50,7 @@ de:
     delete_confirm: Dies ist nicht rückgängig zu machen. Dies wird alle Importe löschen. Sind Sie sicher?
     new:
       can_use_tab_character_html: Sie können <tt>\t</tt> als Tabulator-Bezeichner nutzen.
+      enable_javascript: 
       only_for_advanced_users: 
       page_title: Neue CSV-Datei hochladen
       preview: 
@@ -92,8 +93,13 @@ de:
     form:
       document_id_placeholder: Tippen um verfügbare Entwürfe zu durchsuchen
       document_mapping: Zielfelder des Dokumentes
+      field_mappings: 
       line_item_mapping: Zielfelder der Einzelpositionen
+      line_item_mapping_info: 
       proceed_to_import: Weiter zum Import
+      reuse_this_mapping_button: 
+      setup: 
+      source_fields_info: 
     new: Feldzuweisung erstellen
     reuse: Wählen Sie eine exisitierende Feldzuweisung aus der Liste oder erstellen Sie eine neue Feldzuweisung im unteren Bereich.
     source_fields: Quellfelder

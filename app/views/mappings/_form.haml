@@ -1,10 +1,4 @@
-.clearfix
-  %label= Mapping.human_attribute_name(:document_type)
-  - Mapping::DOCUMENT_TYPES.each do |document_type|
-    %label.radio
-      = f.radio_button :document_type, document_type
-      = t(document_type, scope: 'activerecord.attributes.mapping.enum_values.document_type')
-
+%h3=t('.setup')
 .clearfix
   %label= Mapping.human_attribute_name(:import_type)
   %label.radio
@@ -14,12 +8,26 @@
     = f.radio_button :import_type, 'line_item'
     = t('activerecord.attributes.mapping.enum_values.import_type.line_item')
 
+.clearfix
+  %label= Mapping.human_attribute_name(:document_type)
+  - Mapping::DOCUMENT_TYPES.each do |document_type|
+    %label.radio
+      = f.radio_button :document_type, document_type, checked: document_type == 'invoice'
+      = t(document_type, scope: 'activerecord.attributes.mapping.enum_values.document_type')
+
 .clearfix.document_id
   %label= Mapping.human_attribute_name(:document_id)
   .input= f.hidden_field :document_id
 
+
+%h3=t('.field_mappings')
 .clearfix
-  %label= t('mappings.source_fields')
+  %p= t('mappings.reuse')
+  = select_tag 'mapping_id', options_for_select(mapping_options)
+  = button_tag t('.reuse_this_mapping_button'), class: 'btn'
+.clearfix
+  %h4= t('mappings.source_fields')
+  %span.info= t('.source_fields_info')
   .input
     %ul#source-fields
       - @attachment.rows(1).first.each_with_index do |item, index|
@@ -27,19 +35,20 @@
 .clearfix
   %p= t('mappings.dnd_info')
 .clearfix
-  %label= t('.line_item_mapping')
+  %h4= t('.line_item_mapping')
+  %span.info= t('.line_item_mapping_info')
   .input
     %ul.target-fields
       - line_item_mapping_fields.each do |field_attributes|
         %li.field
           .target{field_attributes}= field_attributes['data-target']
 .clearfix
-  %label= t('.document_mapping')
+  %h4= t('.document_mapping')
   .input
     %ul.target-fields
       - document_mapping_fields.each do |field_attributes|
         %li.field
           .target{field_attributes}= field_attributes['data-target']
 .actions
-  = f.submit t('.proceed_to_import'), class: 'btn primary large'
-  = link_to t('link.back_to_list'), attachments_path, class: 'btn secondary'
+  = f.submit t('.proceed_to_import'), class: 'btn btn-primary btn-large'
+  = link_to t('link.back_to_list'), attachments_path, class: 'btn btn-secondary'

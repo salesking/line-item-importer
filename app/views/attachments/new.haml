@@ -21,19 +21,19 @@
   .clearfix
     = label_tag :encoding, "#{Attachment.human_attribute_name(:encoding)} <span class='required'> *</span>".html_safe
     .input
-      = f.select :encoding, Encoding.list.map(&:name).sort_by{|word| word.downcase}, selected: 'UTF-8', class: 'input-mini'
+      = f.select :encoding, Encoding.name_list.sort_by{|word| word.downcase}, selected: 'UTF-8', class: 'input-mini'
       %span.info=t('.only_for_advanced_users')
   - if @attachment.new_record?
     .clearfix
       .input
         #file-upload
           %noscript
-            %p Please enable JavaScript to use file uploader
+            %p=t('.enable_javascript')
   #csv-table.clearfix{style: ('display: none' if @attachment.new_record?)}
     %h2=t('.preview')
     %p=t('.preview_info')
     = link_to(image_tag('refresh.png', size: '16x16') + 'Reload', '#', id: 'csv-refresh')
 
   .actions
-    = f.submit t('attachments.proceed_to_mapping'), class: 'btn btn-primary large'
+    = f.submit t('attachments.proceed_to_mapping'), class: 'btn btn-primary btn-large'
     = link_to t('link.back_to_list'), attachments_path, class: 'btn btn-secondary'

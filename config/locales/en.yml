@@ -16,7 +16,7 @@ en:
         quote_char: Quote character
       mapping:
         document_id: You can choose to add line items to an existing draft document by choosing it from a search below. Keep this field empty, if you want to create a new document.
-        document_type: First of all, what documents would you like to work with?
+        document_type: So, what documents would you like to work with?
         enum_values:
           document_type:
             credit_note: Credit note
@@ -26,12 +26,12 @@ en:
           import_type:
             document: I want to create one document for each row
             line_item: I want to import all rows into one document (existing or new)
-        import_type: ! 'Now, choose how do you want to import your data:'
+        import_type: ! 'First of all, choose how do you want to import your data:'
       mapping_element:
-        conv_opts: Convert Options
+        conv_opts: Convert options
         conv_type: Convert type
         source: Source field
-        target: SalesKing-field
+        target: SalesKing field
     models:
       attachment:
         one: Uploaded file
@@ -50,6 +50,7 @@ en:
     delete_confirm: This is an irreversible process. This will delete associated imports. Are you sure?
     new:
       can_use_tab_character_html: You can use <tt>\t</tt> to designate tabulators.
+      enable_javascript: Please enable JavaScript to use file uploader.
       only_for_advanced_users: This setting is only for advanced users. Leave it, if you don't know what we're talking about.
       page_title: Upload new CSV file
       preview: CSV preview
@@ -92,8 +93,13 @@ en:
     form:
       document_id_placeholder: Type here to search through available draft documents
       document_mapping: Target document fields
+      field_mappings: Field mapping settings
       line_item_mapping: Target line item fields
+      line_item_mapping_info: At least price_single and quantity must be mapped to a source field.
       proceed_to_import: Proceed to import
+      reuse_this_mapping_button: Reuse selected field mapping
+      setup: Initial setup
+      source_fields_info: If your source lacks fields to match some document-/line-item fields, you might want to edit your csv to add fields and their content and then upload it again.
     new: Create field mapping
     reuse: Select an existing mapping from the list to reuse that or create a new mapping in the below section.
     source_fields: Source fields
