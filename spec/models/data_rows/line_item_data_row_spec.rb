@@ -26,30 +26,11 @@ describe DataRows::LineItemDataRow do
     end
   end
 
-  describe '#imported_class' do
-    let(:attachment) { create(:attachment, mapping: mapping) }
-    let(:import) { build(:import, attachment: attachment) }
-    %w(invoice order estimate credit_note).each do |valid_class|
-      context "when importing to #{valid_class}" do
-        let(:mapping) { create(:mapping, import_type: valid_class) }
-
-        subject { data_row.send(:imported_class) }
-        it { should be Sk.const_get(valid_class.classify) }
-      end
-    end
-  end
-
   describe '#line_item_mapping_elements and #document_mapping_elements' do
     let(:mapping) { create(:mapping) }
-    let!(:document_mapping_element) { create(:mapping_element, mapping: mapping) }
     let!(:line_item_mapping_element) { create(:line_item_mapping_element, mapping: mapping) }
     let(:attachment) { create(:attachment, mapping: mapping) }
     let(:import) { build(:import, attachment: attachment) }
-
-    context 'for document' do
-      subject { data_row.send(:document_mapping_elements) }
-      it { should eq [document_mapping_element] }
-    end
 
     context 'for line item' do
       subject { data_row.send(:line_item_mapping_elements) }

@@ -6,44 +6,29 @@ describe Import do
 
   it { should validate_presence_of(:attachment) }
 
-  describe "data import" do
-    before :each do
-      @mapping = create(:mapping)
-      create(:mapping_element, mapping: @mapping, source: 8, target: 'address.address1')
-      create(:mapping_element, mapping: @mapping, source: 9, target: 'address.zip')
-      create(:mapping_element, mapping: @mapping, source: 10, target: 'address.city')
-      @attachment = create(:attachment, mapping: @mapping)
-      @import = build(:import, attachment: @attachment)
-      @contact = stub_sk_contact
+  describe 'data import', :vcr do
+    let(:mapping)          { create(:mapping) }
+    let!(:mapping_element1) { create(:line_item_mapping_element, mapping: mapping, source: 3, target: 'name') }
+    let!(:mapping_element2) { create(:price_line_item_mapping_element, mapping: mapping, source: 9) }
+    let!(:mapping_element3) { create(:line_item_mapping_element, mapping: mapping, source: 10, target: 'quantity') }
+    let(:attachment)       { create(:attachment, mapping: mapping) }
+    let(:import)           { build(:import, attachment: attachment) }
+
+    it 'creates data_rows and succeeds' do
+      lambda { import.save }.should change(DataRow, :count).by(1)
+      import.should be_success
     end
 
-    it "should create data_rows" do
-      @contact.should_receive(:save).and_return(true)
-      lambda { @import.save }.should change(DataRow, :count).by(1)
-    end
+    context 'when mapping element does not match price_single' do
+      let!(:mapping_element2) { create(:line_item_mapping_element, mapping: mapping, source: 9, target: 'external_ref') }
 
-    it "should create an address" do
-      @contact.should_receive(:save).and_return(true)
-      @import.save
-      @contact.addresses[0].zip.should == '83620'
-      @contact.addresses[0].address1.should == 'Hubertstr. 205'
-      @contact.addresses[0].city.should == 'Feldkirchen'
-    end
-
-    it "should create failed data_rows" do
-      @contact.should_receive(:save).and_return(false)
-      @contact.errors.should_receive(:full_messages).and_return(['some error message'])
-      lambda { @import.save }.should change(DataRow, :count).by(1)
-      data_row = @import.data_rows.first
-      data_row.external_id.should be_nil
-      data_row.log.should == 'some error message'
-    end
-
-    it "should be success if no rows failed" do
-      @contact.should_receive(:save).and_return(true)
-      @contact.should_receive(:id).and_return("some_uuid")
-      @import.save
-      @import.should be_success
+      it 'creates failed data_rows' do
+        lambda { import.save }.should change(DataRow, :count).by(1)
+        import.should_not be_success
+        data_row = import.data_rows.first
+        data_row.external_id.should be_nil
+        data_row.log.should eq ['items.price_single', 'is not a number'].inspect
+      end
     end
   end
 end

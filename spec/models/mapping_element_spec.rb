@@ -19,23 +19,23 @@ describe MappingElement do
     end
 
     it 'converts enum' do
-      obj = MappingElement.new :conversion_options => '{"male":"Herr","female":"Frau"}', conversion_type: 'enum', source: '0'
+      obj = MappingElement.new conversion_options: JSON.parse('{"male":"Herr","female":"Frau"}'), conversion_type: 'enum', source: '0'
       obj.convert(['Frau']).should == 'female'
     end
 
     it 'converts date' do
-      obj = MappingElement.new :conversion_options => '{"date":"%d.%m.%Y"}', conversion_type: 'date', source: '0'
+      obj = MappingElement.new conversion_options: JSON.parse('{"date":"%d.%m.%Y"}'), conversion_type: 'date', source: '0'
       obj.convert(['1.6.1976']).should == "1976.06.01"
     end
 
     it 'converts date without time' do
-      obj = MappingElement.new :conversion_options => '{"date":"%d.%m.%Y"}', conversion_type: 'date', source: '0'
+      obj = MappingElement.new conversion_options: JSON.parse('{"date":"%d.%m.%Y"}'), conversion_type: 'date', source: '0'
       obj.convert(['1.6.1976 00:00:00']).should == "1976.06.01"
     end
 
     it 'converts date and rescue with incoming string' do
       source = ['1/6/1976 00:00:00']
-      obj = MappingElement.new :conversion_options => '{"date":"%d.%m.%Y"}', conversion_type: 'date', source: '0'
+      obj = MappingElement.new conversion_options: JSON.parse('{"date":"%d.%m.%Y"}'), conversion_type: 'date', source: '0'
       obj.convert(source).should == source[0]
     end
 

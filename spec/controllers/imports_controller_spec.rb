@@ -3,10 +3,6 @@ require 'spec_helper'
 describe ImportsController do
   render_views
 
-  before(:each) do
-    stub_sk_contact
-  end
-
   context "for unauthenticated user" do
     describe "GET #index" do
       it "triggers access_denied" do

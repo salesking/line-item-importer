@@ -21,14 +21,14 @@ FactoryGirl.define do
       source 4
       target 'gender'
       conversion_type 'enum'
-      conversion_options  "{\"male\":\"Herr\",\" female\":\"Frau\"}"
+      conversion_options JSON.parse("{\"male\":\"Herr\",\" female\":\"Frau\"}")
     end
 
     factory :birthday_mapping_element do
       source 5
       target 'birthday'
       conversion_type 'date'
-      conversion_options "{\"date\":\"%Y-%M-%d\"}"
+      conversion_options JSON.parse("{\"date\":\"%Y-%M-%d\"}")
     end
 
     factory :line_item_mapping_element do
@@ -40,6 +40,11 @@ FactoryGirl.define do
         source '2,3'
         target 'description'
         conversion_type 'join'
+      end
+
+      factory :price_line_item_mapping_element do
+        conversion_type 'price'
+        target 'price_single'
       end
     end
   end

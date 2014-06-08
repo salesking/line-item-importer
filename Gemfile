@@ -29,6 +29,7 @@ group :test do
   gem 'shoulda-matchers'
   gem 'simplecov'
   gem 'vcr'
+  gem 'webmock'
 end
 group :development do
   gem 'better_errors'

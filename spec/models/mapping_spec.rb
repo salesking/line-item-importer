@@ -29,6 +29,6 @@ describe Mapping do
 
   describe '#title' do
     subject { mapping.title }
-    it { should eq '3 fields: organization, gender, and birthday' }
+    it { should eq '3 fields: number, gender, and birthday' }
   end
 end
