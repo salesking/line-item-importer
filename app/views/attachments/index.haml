@@ -16,18 +16,18 @@
       %tr
         %td
           = link_to(attachment.filename, attachment)
-          .created= attachment.created_at
+          .created= l attachment.created_at
         %td
           - if attachment.mapping
             = link_to(attachment.mapping.title, attachment.mapping)
-            .created= attachment.mapping.created_at
+            .created= l attachment.mapping.created_at
           - else
             = link_to(t('mappings.new'), new_attachment_mapping_path(attachment))
         %td
           - if attachment.imports.any?
             - attachment.imports.each do |import|
               = link_to(import.title, import)
-              .created= import.created_at
+              .created= l import.created_at
           - elsif attachment.mapping
             = link_to(t('imports.new'), new_attachment_import_path(attachment))
         %td
