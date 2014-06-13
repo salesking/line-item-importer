@@ -107,3 +107,14 @@ en:
     title:
       one: ! '%{count} field: %{fields}'
       other: ! '%{count} fields: %{fields}'
+  time:
+    am: am
+    formats:
+      date_only: ! '%A, %m.%d.%Y'
+      default: ! '%m.%d.%Y, %H:%M'
+      long: ! '%B %d, %Y %H:%M'
+      month_year: ! '%B, %Y'
+      short: ! '%d %b %H:%M'
+      shorter: ! '%m.%d.%y %H:%M'
+      time: ! '%H:%M'
+    pm: pm

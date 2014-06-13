@@ -25,6 +25,8 @@ module DataRows
     def create_line_item(row)
       line_item = imported_class::LineItem.new
       line_item_mapping_elements.each(&mapping_element_assignment(line_item, row))
+      # default price single to 1 so import does not fail
+      line_item.price_single = 1 unless line_item.respond_to?(:price_single)
       line_item
     end
 

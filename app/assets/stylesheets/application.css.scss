@@ -30,3 +30,13 @@ ul.top_menu li:last-child{border-right:none}
 hr.seperator{border-top:1px solid #ccc;background:#ccc;margin:5px 0}
 .clear{clear:both}
 form label span.required{color: red; font-size: 110%; margin-left: 4px;}
+
+// bootstrap overrides since we are suing an old bootstrap version
+
+.navbar .nav > li > a {
+  text-shadow: none;
+  color: #fff;
+  &:focus, &:hover{
+    color: #dadada;
+  }
+}

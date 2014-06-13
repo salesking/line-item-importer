@@ -106,3 +106,14 @@ pl:
       few: ! '%{count} pola: %{fields}'
       one: ! '%{count} pole: %{fields}'
       other: ! '%{count} pól: %{fields}'
+  time:
+    am: 
+    formats:
+      date_only: 
+      default: 
+      long: 
+      month_year: 
+      short: 
+      shorter: 
+      time: 
+    pm: 

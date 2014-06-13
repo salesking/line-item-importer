@@ -49,6 +49,13 @@ DON'T FORGET: never push production to your public branch, if you do you need to
 - **That's it!**
 - The maintainer will then pull translations from the Locale project and push to Github.
 
+If you need to pull/push locales:
+
+  localeapp install --standalone <API Key>
+  
+And than edit the config file in .localeapp/config.rb
+
+
 Happy translating!
 
 ## Test

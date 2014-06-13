@@ -8,6 +8,7 @@
     = f.radio_button :import_type, 'line_item'
     = t('activerecord.attributes.mapping.enum_values.import_type.line_item')
 
+%h3=t('.document')
 .clearfix
   %label= Mapping.human_attribute_name(:document_type)
   - Mapping::DOCUMENT_TYPES.each do |document_type|
