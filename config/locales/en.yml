@@ -65,6 +65,20 @@ en:
   imports:
     create: Import data
     delete_confirm: Deleting an import does not remove created documents in your SalesKing account. Are you sure you want to continue?
+    document:
+      title_failed:
+        one: ! '%{count} document failed'
+        other: ! '%{count} documents failed'
+      title_success:
+        one: ! '%{count} document imported'
+        other: ! '%{count} documents imported'
+    line_item:
+      title_failed:
+        one: ! '%{count} line item failed'
+        other: ! '%{count} line items failed'
+      title_success:
+        one: ! '%{count} line item imported'
+        other: ! '%{count} line items imported'
     new: Create import
     title_failed:
       one: ! '%{count} row failed'
@@ -94,6 +108,7 @@ en:
     destroy_failed: Mapping could not be removed.
     destroyed_successfully: Mapping has been removed successfully.
     dnd_info: Please drag&drop fields above onto their targets below. Drop multiple fields on a target to join values (space-delimited) e.g for the tag list.
+    edit: Edit field mapping
     form:
       document: Document
       document_id_placeholder: Type here to search through available draft documents

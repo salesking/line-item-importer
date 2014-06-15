@@ -69,6 +69,12 @@ pl:
   imports:
     create: 
     delete_confirm: 
+    document:
+      title_failed: 
+      title_success: 
+    line_item:
+      title_failed: 
+      title_success: 
     new: 
     title_failed: 
     title_success: 
@@ -92,6 +98,7 @@ pl:
     destroy_failed: 
     destroyed_successfully: 
     dnd_info: Przeciągnij i upuść powyższe pola na odpowiadające pola celowe. Docelowo możesz upuścić więcej niż jedno pole. Ich wartości zostaną wtedy połączone odstępem.
+    edit: 
     form:
       document: 
       document_id_placeholder: Szukaj dokumentów o statusie roboczym
