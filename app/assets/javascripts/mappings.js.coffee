@@ -15,7 +15,6 @@ jQuery ->
     addEnumFields(el) if $('.target', el).attr('data-enum') != undefined
     addDateFields(el) if $('.target', el).attr('data-format') == 'date'
     addPriceField(el) if ['price_single', 'cost'].indexOf($('.target', el).attr('data-name')) != -1
-    el.append els.join('')
 
   addFields = (el, ui) ->
     $('.target', el).after "<div class='source' " +
