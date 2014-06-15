@@ -1,5 +1,5 @@
 class MappingsController < ApplicationController
-  load_and_authorize_resource :attachment, only: [:new, :create]
+  load_and_authorize_resource :attachment, only: [:new, :create, :destroy]
   load_and_authorize_resource
   skip_load_resource only: [:create]
 
@@ -14,6 +14,15 @@ class MappingsController < ApplicationController
     else
       render :new
     end
+  end
+
+  def destroy
+    if @import.destroy
+      flash[:success] = I18n.t('imports.destroyed_successfully')
+    else
+      flash[:error]  = I18n.t('imports.destroy_failed')
+    end
+    redirect_to attachments_path
   end
 
   private

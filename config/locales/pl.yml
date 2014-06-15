@@ -68,6 +68,7 @@ pl:
     sk_login_required: 
   imports:
     create: 
+    delete_confirm: 
     new: 
     title_failed: 
     title_success: 
@@ -87,8 +88,12 @@ pl:
     show: 
     step: 
   mappings:
+    delete_confirm: 
+    destroy_failed: 
+    destroyed_successfully: 
     dnd_info: Przeciągnij i upuść powyższe pola na odpowiadające pola celowe. Docelowo możesz upuścić więcej niż jedno pole. Ich wartości zostaną wtedy połączone odstępem.
     form:
+      document: 
       document_id_placeholder: Szukaj dokumentów o statusie roboczym
       document_mapping: Docelowe pola dokumentu
       field_mappings: Ustawienia połączeń kolumn

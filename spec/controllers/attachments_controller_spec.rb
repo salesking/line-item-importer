@@ -189,12 +189,12 @@ describe AttachmentsController do
     describe "DELETE destroy" do
       it "destroys the requested attachment" do
         expect {
-          delete :destroy, :id => @authorized_attachment.id
+          delete :destroy, id: @authorized_attachment.id
         }.to change(Attachment, :count).by(-1)
       end
 
       it "redirects to the attachments list after destroying the requested attachment" do
-        delete :destroy, :id => @authorized_attachment.id
+        delete :destroy, id: @authorized_attachment.id
         response.should redirect_to(attachments_path)
       end
     end

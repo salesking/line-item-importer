@@ -64,6 +64,7 @@ de:
     sk_login_required: Bitte bei SalesKing.eu einloggen und über "Einstellungen" > "Apps" aktivieren.
   imports:
     create: Daten importieren
+    delete_confirm: 
     new: Import erzeugen
     title_failed:
       one: ! '%{count} Zeile fehlgeschlagen'
@@ -89,8 +90,12 @@ de:
     show: Zeige
     step: ! 'Schritt %{count} von %{total}:'
   mappings:
+    delete_confirm: 
+    destroy_failed: 
+    destroyed_successfully: 
     dnd_info: Bitte ziehen Sie die Felder oben auf die Felder unten. Ziehen Sie mehrere Felder auf ein Zielfeld um Werte kommasepariert zusammen zu führen z.B. für Tags(Schalgworte).
     form:
+      document: 
       document_id_placeholder: Tippen um verfügbare Entwürfe zu durchsuchen
       document_mapping: Zielfelder des Dokumentes
       field_mappings: Feldzuweisungseinstellungen

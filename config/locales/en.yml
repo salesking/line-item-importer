@@ -64,6 +64,7 @@ en:
     sk_login_required: Please login to SalesKing.eu and navigate to "Settings" > "Apps" to activate.
   imports:
     create: Import data
+    delete_confirm: Deleting an import does not remove created documents in your SalesKing account. Are you sure you want to continue?
     new: Create import
     title_failed:
       one: ! '%{count} row failed'
@@ -89,8 +90,12 @@ en:
     show: Show
     step: ! 'Step %{count} from %{total}:'
   mappings:
+    delete_confirm: Removing a mapping does not remove an import. Do oyu wish to continue?
+    destroy_failed: Mapping could not be removed.
+    destroyed_successfully: Mapping has been removed successfully.
     dnd_info: Please drag&drop fields above onto their targets below. Drop multiple fields on a target to join values (space-delimited) e.g for the tag list.
     form:
+      document: Document
       document_id_placeholder: Type here to search through available draft documents
       document_mapping: Target document fields
       field_mappings: Field mapping settings
