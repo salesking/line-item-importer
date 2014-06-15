@@ -6,6 +6,7 @@ de:
         encoding: Encoding
         quote_char: Texttrenner
       data_row:
+        external_id: 
         log: Log
         sk_id: SalesKing ID
         source: Quelldaten

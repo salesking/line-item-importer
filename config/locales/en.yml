@@ -6,6 +6,7 @@ en:
         encoding: Encoding
         quote_char: Quote character
       data_row:
+        external_id: Link in SalesKing
         log: Log
         sk_id: SalesKing ID
         source: Source data

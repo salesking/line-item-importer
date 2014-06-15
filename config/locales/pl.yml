@@ -6,6 +6,7 @@ pl:
         encoding: Kodowanie znaków
         quote_char: Znak cudzysłowia
       data_row:
+        external_id: 
         log: Rejestr
         sk_id: Identyfikator w SalesKing
         source: Dane źródłowe

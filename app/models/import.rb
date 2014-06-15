@@ -11,9 +11,10 @@ class Import < ActiveRecord::Base
   after_save :populate_data_rows
 
   def title
-    title = I18n.t(:title_success, scope: "imports.#{attachment.mapping.import_type}", count: data_rows.success.count)
+    scope = attachment.present? && attachment.mapping.present? ? "imports.#{attachment.mapping.import_type}" : :imports
+    title = I18n.t(:title_success, scope: scope, count: data_rows.success.count)
     if (failed = data_rows.failed.count) > 0
-      [title, I18n.t(:title_failed, scope: "imports.#{attachment.mapping.import_type}", count: failed)].to_sentence
+      [title, I18n.t(:title_failed, scope: scope, count: failed)].to_sentence
     else
       title
     end

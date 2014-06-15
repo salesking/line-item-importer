@@ -19,4 +19,17 @@ module ApplicationHelper
         when :alert then "alert alert-error"
     end
   end
+
+  def salesking_document_link(document_type, salesking_id)
+    document_class = Sk.const_get(document_type.classify)
+    sub_domain     = session[:sub_domain]
+
+    uri_creator      = document_class.site.dup
+    uri_creator.path = document_class.element_path(salesking_id, {}, {})
+
+    url = uri_creator.to_s
+    url.gsub!(document_class.format_extension, '') if document_class.format_extension.present?
+    url.gsub!('api/', '')
+    url
+  end
 end
