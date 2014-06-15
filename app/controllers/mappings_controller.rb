@@ -17,7 +17,7 @@ class MappingsController < ApplicationController
   end
 
   def destroy
-    if @import.destroy
+    if @mapping.destroy
       flash[:success] = I18n.t('imports.destroyed_successfully')
     else
       flash[:error]  = I18n.t('imports.destroy_failed')
