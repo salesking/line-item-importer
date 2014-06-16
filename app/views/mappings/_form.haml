@@ -1,24 +1,28 @@
-%h3=t('.setup')
-.clearfix
-  %label= Mapping.human_attribute_name(:import_type)
-  %label.radio
-    = f.radio_button :import_type, 'document'
-    = t('activerecord.attributes.mapping.enum_values.import_type.document')
-  %label.radio
-    = f.radio_button :import_type, 'line_item'
-    = t('activerecord.attributes.mapping.enum_values.import_type.line_item')
+.row
+  .col-md-6
+    %h4=Mapping.human_attribute_name(:import_type)
+    .radio
+      %label
+        = f.radio_button :import_type, 'document'
+        = t('activerecord.attributes.mapping.enum_values.import_type.document')
+    .radio
+      %label
+        = f.radio_button :import_type, 'line_item'
+        = t('activerecord.attributes.mapping.enum_values.import_type.line_item')
 
-%h3=t('.document')
-.clearfix
-  %label= Mapping.human_attribute_name(:document_type)
-  - Mapping::DOCUMENT_TYPES.each do |document_type|
-    %label.radio
-      = f.radio_button :document_type, document_type, checked: document_type == 'invoice'
-      = t(document_type, scope: 'activerecord.attributes.mapping.enum_values.document_type')
+.row
+  .col-md-6
+    %h4=Mapping.human_attribute_name(:document_type)
+    - Mapping::DOCUMENT_TYPES.each do |document_type|
+      .radio
+        %label
+          = f.radio_button :document_type, document_type, checked: document_type == 'invoice'
+          = t(document_type, scope: 'activerecord.attributes.mapping.enum_values.document_type')
 
-.clearfix.document_id
-  %label= Mapping.human_attribute_name(:document_id)
-  .input= f.hidden_field :document_id
+    .clearfix.document_id
+      %label Existierendes Dokument
+      .input= f.hidden_field :document_id
+      %span.help-block= Mapping.human_attribute_name(:document_id)
 
 
 %h3=t('.field_mappings')

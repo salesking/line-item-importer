@@ -1,6 +1,12 @@
+.btn-toolbar-main
+  %a.btn{href: mappings_path, title: t(:'link.back')}
+    %i.fa.fa-level-up.fa-rotate-270
+  .btn-group
+    %button.btn{title: t(:'link.destroy')}
+      %i.fa.fa-trash-o
 %h2= Mapping.model_name.human(count: 1)
 
-%table
+%table.table
   %thead
     %tr
       %th= MappingElement.human_attribute_name(:source)
@@ -10,5 +16,3 @@
       %tr
         %td= mapping_element.source
         %td= mapping_element.target
-.actions
-  = link_to t('link.back_to_list'), attachments_path, class: "btn secondary"
