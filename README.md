@@ -10,6 +10,18 @@ MySQL or PostgreSQL.
 It uses oAuth2 and has a canvas integration, so a user can use
 it inside SalesKing.
 
+### Development Dependencies
+
+Assets are managed via bower and the bower-rails gem. So you should have the 
+following running:
+
+* nodejs
+* bower
+
+Clone assets into /vendor/assets/bower_components
+
+    rake bower:install
+
 ## Getting Started
 
 1. Register a new app to get an app-id & secret in your SalesKing account.
