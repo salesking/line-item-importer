@@ -6,7 +6,7 @@ de:
         encoding: Encoding
         quote_char: Texttrenner
       data_row:
-        external_id: 
+        external_id: Link in SalesKing
         log: Log
         sk_id: SalesKing ID
         source: Quelldaten
@@ -54,8 +54,8 @@ de:
       enable_javascript: Bitte aktivieren Sie JavaScript um Dateien hochladen zu können.
       only_for_advanced_users: Diese Einstellung ist für Profis. Ändern Sie nichts, wenn Sie nicht wissen damit umzugehen.
       page_title: Neue CSV-Datei hochladen
-      preview: CSV Vorschau
-      preview_info: Dies ist eine Vorschau. Es werden die ersten drei Zeilen angezeigt. Wenn Sie fortfahren werden alle Zeilen importiert.
+      preview: Vorschau
+      preview_info: Dies ist eine Vorschau - es werden die ersten drei Zeilen aus dem csv angezeigt.
     proceed_to_mapping: Weiter zur Feldzuweisung
     upload: Hochladen
   data_rows:
@@ -65,13 +65,21 @@ de:
     sk_login_required: Bitte bei SalesKing.eu einloggen und über "Einstellungen" > "Apps" aktivieren.
   imports:
     create: Daten importieren
-    delete_confirm: 
+    delete_confirm: Das Löschen eines Imports löst KEINE Löschung der Dokumente in Ihrem Account aus. Mit Löschung fortfahren?
     document:
-      title_failed: 
-      title_success: 
+      title_failed:
+        one: ! '%{count} Dokument fehlgeschlagen'
+        other: ! '%{count} Dokumente fehlgeschlagen'
+      title_success:
+        one: ! '%{count} Dokument importiert'
+        other: ! '%{count} Dokumente importiert'
     line_item:
-      title_failed: 
-      title_success: 
+      title_failed:
+        one: ! '%{count} Einzelposition fehlgeschlagen'
+        other: ! '%{count} Einzelpositionen fehlgeschlagen'
+      title_success:
+        one: ! '%{count} Einzelposition importiert'
+        other: ! '%{count} Einzelpositionen importiert'
     new: Import erzeugen
     title_failed:
       one: ! '%{count} Zeile fehlgeschlagen'
@@ -95,15 +103,15 @@ de:
     edit: Bearbeiten
     revert: Rückgängig
     show: Zeige
-    step: ! 'Schritt %{count} von %{total}:'
+    step: ! 'Schritt %{step} von %{total}:'
   mappings:
-    delete_confirm: 
-    destroy_failed: 
-    destroyed_successfully: 
-    dnd_info: Bitte ziehen Sie die Felder oben auf die Felder unten. Ziehen Sie mehrere Felder auf ein Zielfeld um Werte kommasepariert zusammen zu führen z.B. für Tags(Schalgworte).
-    edit: 
+    delete_confirm: Das Löschen einer Feldzuweisung löscht nicht den Import. Mit Löschung fortfahren?
+    destroy_failed: Feldzuweisung konnte nicht gelöscht werden.
+    destroyed_successfully: Feldzuweisung erfolgreich gelöscht.
+    dnd_info: Bitte ziehen Sie die Felder oben auf die Felder unten. Ziehen Sie mehrere Felder auf ein Zielfeld um Werte kommasepariert zusammen zu führen z.B. für Tags(Schlagworte).
+    edit: Feldzuweisung bearbeiten
     form:
-      document: 
+      document: Dokument
       document_id_placeholder: Tippen um verfügbare Entwürfe zu durchsuchen
       document_mapping: Zielfelder des Dokumentes
       field_mappings: Feldzuweisungseinstellungen

@@ -59,7 +59,7 @@ pl:
       only_for_advanced_users: To ustawienie jest tylko dla zaawansowanych użytkowników. Zostaw pole, jak jest, jeżeli nie wiesz, o czym mówimy.
       page_title: 
       preview: Podgląd pliku CSV
-      preview_info: Poniższa tabela zawiera jedynie przegląd przesłanego pliku. Jeżeli zdecydujesz się kontynuować, ta aplikacja zaimportuje wszystkie wiersze do aplikacji SalesKing.
+      preview_info: Poniższa tabela zawiera jedynie przegląd przesłanego pliku.
     proceed_to_mapping: 
     upload: 
   data_rows:
@@ -87,13 +87,13 @@ pl:
       mappings: 
   link:
     actions: 
-    back_to_list: 
-    confirm_destroy: 
-    destroy: 
-    edit: 
-    revert: 
-    show: 
-    step: 
+    back_to_list: Wróć do listy
+    confirm_destroy: Czy na pewno usunąć ten obiekt?
+    destroy: Usuń
+    edit: Edytuj
+    revert: Cofnij zmiany
+    show: Pokaż
+    step: ! 'Krok %{step} z %{total}:'
   mappings:
     delete_confirm: 
     destroy_failed: 
