@@ -1,6 +1,7 @@
 %h2
   = t('link.step', step: 1, total: 3)
   = t('.page_title')
+%span.info=t('.help_html', link: t('.help_link'))
 
 - if @attachment.errors.any?
   .alert-message.block-message.error

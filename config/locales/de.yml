@@ -52,6 +52,8 @@ de:
     new:
       can_use_tab_character_html: Sie können <tt>\t</tt> als Tabulator-Bezeichner nutzen.
       enable_javascript: Bitte aktivieren Sie JavaScript um Dateien hochladen zu können.
+      help_html: 
+      help_link: https://hilfe.salesking.eu/kb/apps/line-item-importer-dokumente-und-einzelpositionen-aus-csv-dateien-importieren
       only_for_advanced_users: Diese Einstellung ist für Profis. Ändern Sie nichts, wenn Sie nicht wissen damit umzugehen.
       page_title: Neue CSV-Datei hochladen
       preview: Vorschau

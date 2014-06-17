@@ -56,6 +56,8 @@ pl:
     new:
       can_use_tab_character_html: 
       enable_javascript: Włącz obsługę JavaScript w przeglądarce, by móc wysyłać pliki.
+      help_html: Jeżeli masz problem z używaniem tej aplikacji, przeczytaj <a href="%{link}" target="_blank">naszą dokumentację</a>.
+      help_link: https://hilfe.salesking.eu/kb/apps/line-item-importer-dokumente-und-einzelpositionen-aus-csv-dateien-importieren
       only_for_advanced_users: To ustawienie jest tylko dla zaawansowanych użytkowników. Zostaw pole, jak jest, jeżeli nie wiesz, o czym mówimy.
       page_title: 
       preview: Podgląd pliku CSV
