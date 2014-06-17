@@ -7,10 +7,10 @@
     %tr
       %th= Import.model_name.human(count: 1)
       %th= Import.human_attribute_name(:created_at)
-      %th= t('link.actions')
   %tbody
     - @imports.each do |import|
       %tr
-        %td= import.title
+        %td
+          = link_to import.title, import
+          = link_to(icon('trash-o'), import, data: {confirm: t('imports.delete_confirm'), method: :delete})
         %td= import.created_at
-        %td= link_to(t('link.show'), import)

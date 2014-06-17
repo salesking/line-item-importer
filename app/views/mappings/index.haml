@@ -7,10 +7,10 @@
     %tr
       %th= Mapping.model_name.human(count: 1)
       %th= Mapping.human_attribute_name(:created_at)
-      %th= t('link.actions')
   %tbody
     - @mappings.each do |mapping|
       %tr
-        %td= mapping.title
+        %td
+          = link_to mapping.title, mapping
+          = link_to(icon('trash-o'), mapping, data: {confirm: t('mappings.delete_confirm'), method: :delete})
         %td= mapping.created_at
-        %td= link_to(t('link.show'), mapping)
