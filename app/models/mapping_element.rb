@@ -15,6 +15,8 @@ class MappingElement < ActiveRecord::Base
   validates :conversion_type, inclusion: {in: CONVERT_TYPES, message: "Unknown conversion type %{value}"}, allow_blank: true
   validates :model_to_import, inclusion: {in: %w(line_item document)}
 
+  validates :mapping, presence: true
+
   serialize :conversion_options
 
   scope :for_line_items, -> { where(model_to_import: 'line_item') }

@@ -4,13 +4,18 @@ describe Mapping do
   it { should have_many(:mapping_elements).dependent(:destroy) }
   it { should have_many(:attachments).dependent(:nullify)      }
 
-  let(:mapping)   { create(:mapping, :company_id => 'a company')       }
-  let!(:mapping2) { create(:mapping, :company_id => 'another company') }
+  it { should validate_presence_of :mapping_elements }
 
-  before :each do
-    create(:mapping_element,          mapping: mapping)
-    create(:gender_mapping_element,   mapping: mapping)
-    create(:birthday_mapping_element, mapping: mapping)
+  let(:mapping)   { build(:mapping, company_id: 'a company') }
+  let!(:mapping2) { create(:mapping, company_id: 'another company') }
+
+  let!(:mapping_element)          { build(:mapping_element,          mapping: mapping) }
+  let!(:gender_mapping_element)   { build(:gender_mapping_element,   mapping: mapping) }
+  let!(:birthday_mapping_element) { build(:birthday_mapping_element, mapping: mapping) }
+
+  before do
+    mapping.mapping_elements = [mapping_element, gender_mapping_element, birthday_mapping_element]
+    mapping.save!
   end
 
   context :scopes do
@@ -19,16 +24,10 @@ describe Mapping do
       it { should include(mapping) }
       it { should_not include(mapping2) }
     end
-
-    describe '.with_fields' do
-      subject { Mapping.with_fields }
-      it { should include(mapping) }
-      it { should_not include(mapping2) }
-    end
   end
 
   describe '#title' do
-    subject { mapping.title }
-    it { should eq '3 fields: number, gender, and birthday' }
+    subject { mapping.reload }
+    its(:title) { should eq '3 fields: number, gender, and birthday' }
   end
 end
