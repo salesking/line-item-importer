@@ -9,6 +9,7 @@ class MappingsController < ApplicationController
     @mapping = Mapping.new(mapping_params)
     @mapping.user = current_user
     @mapping.attachments << @attachment
+    debugger
     if @mapping.save
       redirect_to new_attachment_import_url(@attachment)
     else

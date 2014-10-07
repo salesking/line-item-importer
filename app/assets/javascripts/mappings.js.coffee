@@ -63,7 +63,7 @@ jQuery ->
 
   $('.target-fields .field').trigger 'mouseenter'
 
-  $(':submit').click ->
+  $(':submit').click (e) ->
     mappings = []
     $.each $('.target-fields .field.dropped'), (i) ->
       el = $(this)
@@ -96,6 +96,7 @@ jQuery ->
     minimumInputLength: 1
     allowClear: true
     quietMillis: 100
+    width: 350
     ajax:
       url: "/documents.json"
       dataType: "json"
