@@ -24,10 +24,10 @@ Clone assets into /vendor/assets/bower_components
 
 ## Getting Started
 
-1. Register a new app to get an app-id & secret in your SalesKing account.
+1. Register a new app to get an app-id & secret in your SalesKing account. (salesking.eu/developer/apps)
 
     * Set a unique CANVAS SLUG so it can be reached inside salesking.eu/app/my-import
-    * Set the Canvas URL to `http://MY-URL.local/login` <- /login receives the auth POST when a user opens the app in sk/app/my-import
+    * Set the Canvas URL to `http://MY-URL:Port/login` <- /login receives the auth POST when a user opens the app in sk/app/my-import
 
 2. Checkout this repo, copy and edit `salesking_app.yml` & `database.yml`.
 
@@ -36,6 +36,11 @@ Clone assets into /vendor/assets/bower_components
     bundle exec rails s
 
 3. Go into SalesKing at `/app/your-canvas-slug`
+    
+4. SSL Restrictions in browsers will prevent iFrames to load (your local) http-site 
+into the https-enabled SalesKing install. In Google Chrome look at the very 
+right site of the url-input where an icon appears to allow such content.
+
 
 ## Run on Heroku
 

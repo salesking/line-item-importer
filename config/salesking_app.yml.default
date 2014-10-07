@@ -7,7 +7,7 @@ defaults: &defaults
     - 'api/recurrings:create,read,update'
     - 'api/credit_notes:create,read,update'
     - 'api/contacts:read'
-  # The apps canvas-slug as set by you in salesking app creation.
+  # UNIQUE canvas-slug as set by you in salesking app creation. MUST be
   # Users find the app at SUB.salesking.eu/app/csv-importer
   #
   # acl - scope defines what the app is allowed to do.
@@ -15,15 +15,15 @@ defaults: &defaults
 
 development:
   #oAuth app credentials
-  id:
-  secret:
+  id: your-client-id
+  secret: your-client-secret
 
   # url of the salesking instance(here on our dev cloud)
   # *(star) is replaced with the subdomain of the user accessing your app
-  sk_url: http://*.salesking.local:3000
+  sk_url: https://*.salesking.eu
 
   # comming back from oauth dialog to this app
-  redirect_url: http://localhost:3002/login_success
+  redirect_url: http://localhost:3000/login_success
 
   <<: *defaults
 
@@ -38,4 +38,4 @@ production:
   <<: *defaults
   id:
   secret:
-  redirect_url: http://localhost:3002/login_success
+  redirect_url: http://localhost:3000/login_success
