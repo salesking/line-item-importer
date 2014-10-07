@@ -1,5 +1,4 @@
-LineItemImporter::Application.routes.draw do
-
+Rails.application.routes.draw do
   resources :attachments, except: [:edit] do
     resources :mappings, only: [:new, :create, :destroy]
     resources :imports, only: [:new, :create, :destroy]
