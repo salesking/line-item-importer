@@ -1,6 +1,6 @@
 source 'http://rubygems.org'
 
-gem 'rails', '> 4'
+gem 'rails'
 gem 'json'
 gem 'sk_sdk', github: 'salesking/sk_sdk'
 gem 'sk_api_schema', '~> 0.9.4'

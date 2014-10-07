@@ -5,7 +5,7 @@ contacts given as csv f.ex exported from Outlook.
 
 ## Developer Info
 
-The app is build with Rails 3.1 and Ruby 1.9.2 and is working with
+The app is build with Rails 4 and Ruby 2+ and is working with
 MySQL or PostgreSQL.
 It uses oAuth2 and has a canvas integration, so a user can use
 it inside SalesKing.
