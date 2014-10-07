@@ -46,6 +46,12 @@ en:
       mapping:
         one: Field mapping
         other: Field mappings
+    errors:
+      mapping_element:
+        blank: Mapping elements can't be blank
+        inclusion: Wählen Sie eine Importvariante
+      import_type: 
+        inclusion: Wählen Sie eine Importvariante
   attachments:
     csv_import_error: Try with different 'Column Separator' and/or 'Quote character'.
     delete_confirm: This is an irreversible process. This will delete associated imports. Are you sure?

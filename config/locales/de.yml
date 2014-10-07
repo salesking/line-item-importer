@@ -28,9 +28,6 @@ de:
             document: Ich möchte je Zeile ein Dokument anlegen
             line_item: Ich möchte alle Zeilen in ein Dokument importieren (bestehend oder neu)
         import_type: Wählen Sie eine Importvariante
-        errors:
-          messages:
-            inclusion: Wählen Sie eine Importvariante
       mapping_element:
         conv_opts: Konvertierungsoptionen
         conv_type: Konvertierungstyp
@@ -52,6 +49,12 @@ de:
       mapping:
         one: Feldzuweisung
         other: Feldzuweisungen
+    errors:
+      mapping_element:
+        blank: Mapping elements can't be blank
+        inclusion: Wählen Sie eine Importvariante
+      import_type: 
+        inclusion: Wählen Sie eine Importvariante
   attachments:
     csv_import_error: Versuchen Sie es mit einem anderen "Feldtrenner und/oder "Texttrenner".
     delete_confirm: Dies ist nicht rückgängig zu machen. Dies wird alle Importe löschen. Sind Sie sicher?
@@ -71,10 +74,6 @@ de:
     success: Erfolgreiche Zeilen
   errors:
     sk_login_required: Bitte bei SalesKing.eu einloggen und über "Einstellungen" > "Apps" aktivieren.
-    models:
-      mapping:
-          inclusion: Wählen Sie eine Importvariante
-          blank: Wählen Sie eine Importvariante
     messages:
       inclusion: "is not included in the list"
       exclusion: "is reserved"
