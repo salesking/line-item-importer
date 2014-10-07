@@ -225,7 +225,7 @@ DEPENDENCIES
   pry-rails
   quiet_assets
   rack-raw-upload
-  rails
+  rails (= 4.1.6)
   rspec-rails (~> 2.6)
   sass-rails
   shoulda-matchers
