@@ -10,6 +10,7 @@ vendor/gems
 nbproject
 config/database.yml
 config/settings.yml
+config/secrets.yml
 config/salesking_app.yml
 coverage
 .idea
