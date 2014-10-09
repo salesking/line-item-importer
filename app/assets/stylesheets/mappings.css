@@ -17,3 +17,14 @@ input.minimi{ width: 30px; }
 .options label{width:auto; float: left; padding: 0 0 0 5px}
 .help-block {display: block;}
 .field_with_errors input{background:#FDDFDE}
+
+/* cut of long labels in result sets */
+.select2-result-label{overflow: hidden; text-overflow: ellipsis;}
+
+/* for displaying errors */
+
+.field_with_errors {
+  padding: 2px;
+  background-color: red;
+  display: table;
+}

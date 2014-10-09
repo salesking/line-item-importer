@@ -37,4 +37,5 @@ group :development do
   gem 'capistrano-ext'
   gem 'quiet_assets'
   gem 'binding_of_caller'
+  gem 'debugger'
 end

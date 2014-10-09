@@ -33,6 +33,9 @@ de:
         conv_type: Konvertierungstyp
         source: Quellfeld
         target: SalesKing-Feld
+        errors: 
+          messages:
+            blank: Mapping Elemente müsse zugewiesen werden.
     models:
       attachment:
         one: Hochgeladene Datei
@@ -46,6 +49,12 @@ de:
       mapping:
         one: Feldzuweisung
         other: Feldzuweisungen
+    errors:
+      mapping_element:
+        blank: Mapping elements can't be blank
+        inclusion: Wählen Sie eine Importvariante
+      import_type: 
+        inclusion: Wählen Sie eine Importvariante
   attachments:
     csv_import_error: Versuchen Sie es mit einem anderen "Feldtrenner und/oder "Texttrenner".
     delete_confirm: Dies ist nicht rückgängig zu machen. Dies wird alle Importe löschen. Sind Sie sicher?
@@ -65,6 +74,28 @@ de:
     success: Erfolgreiche Zeilen
   errors:
     sk_login_required: Bitte bei SalesKing.eu einloggen und über "Einstellungen" > "Apps" aktivieren.
+    messages:
+      inclusion: "is not included in the list"
+      exclusion: "is reserved"
+      invalid: "is invalid"
+      confirmation: "doesn't match %{attribute}"
+      accepted: "must be accepted"
+      empty: "can't be empty"
+      blank: "can't be blank"
+      present: "must be blank"
+      too_long: "is too long (maximum is %{count} characters)"
+      too_short: "is too short (minimum is %{count} characters)"
+      wrong_length: "is the wrong length (should be %{count} characters)"
+      not_a_number: "is not a number"
+      not_an_integer: "must be an integer"
+      greater_than: "must be greater than %{count}"
+      greater_than_or_equal_to: "must be greater than or equal to %{count}"
+      equal_to: "must be equal to %{count}"
+      less_than: "must be less than %{count}"
+      less_than_or_equal_to: "must be less than or equal to %{count}"
+      other_than: "must be other than %{count}"
+      odd: "must be odd"
+      even: "must be even"
   imports:
     create: Daten importieren
     delete_confirm: Das Löschen eines Imports löst KEINE Löschung der Dokumente in Ihrem Account aus. Mit Löschung fortfahren?

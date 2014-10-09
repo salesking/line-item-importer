@@ -2,5 +2,12 @@
   = t('link.step', step: 2, total: 3)
   = t('mappings.new')
 
+- if @mapping.errors.any?
+  .alert.alert-danger
+    .ul
+      - @mapping.errors.full_messages.each do |msg|
+        .li 
+          = msg
+
 = form_for [@attachment, @mapping] do |f|
   = render partial: 'form', locals: {f: f}
