@@ -63,7 +63,7 @@ jQuery ->
 
   $('.target-fields .field').trigger 'mouseenter'
 
-  $(':submit').click (e) ->
+  $(':submit').click ->
     mappings = []
     $.each $('.target-fields .field.dropped'), (i) ->
       el = $(this)
