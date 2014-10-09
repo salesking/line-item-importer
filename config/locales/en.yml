@@ -158,7 +158,6 @@ en:
     title:
       one: "%{count} field: %{fields}"
       other: "%{count} fields: %{fields}"
-    selected_document_type: Document type
   time:
     am: am
     formats:
