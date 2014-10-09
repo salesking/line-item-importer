@@ -1,4 +1,10 @@
 .row
+  .col-md-8
+    .clearfix
+      %p= t('mappings.reuse')
+      = select_tag 'mapping_id', options_for_select(mapping_options), :include_blank => true, id: 'reuse-select-options'
+      = button_tag t('.reuse_this_mapping_button'), class: 'btn', id: 'reuse', style: 'display:none'
+.row
   .col-md-6
     %h4=Mapping.human_attribute_name(:import_type)
     .radio
@@ -26,10 +32,6 @@
 
 
 %h3=t('.field_mappings')
-.clearfix
-  %p= t('mappings.reuse')
-  = select_tag 'mapping_id', options_for_select(mapping_options), :include_blank => true, id: 'reuse-select-options'
-  = button_tag t('.reuse_this_mapping_button'), class: 'btn', id: 'reuse', style: 'display:none'
 .clearfix
   %h4= t('mappings.source_fields')
   %span.info= t('.source_fields_info')

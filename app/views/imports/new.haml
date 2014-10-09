@@ -1,11 +1,13 @@
 %h2
   = t('link.step', step: 3, total: 3)
   = t('imports.new')
-%table
-  - @import.preview.each do |row|
-    %tr
-      - row.each do |item|
-        %td= item
+#csv-table
+  %table.table.table-bordered
+    %tbody
+    - @import.preview.each do |row|
+      %tr
+        - row.each do |item|
+          %td= item
 %p= t('imports.total', count: @import.attachment.rows.size - 1)
 
 = form_for [@attachment, @import] do |f|
