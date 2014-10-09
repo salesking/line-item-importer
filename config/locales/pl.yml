@@ -27,7 +27,7 @@ pl:
           import_type:
             document: Chcę stworzyć po jednym dokumencie dla każdego wiersza
             line_item: Chcę umieścić wszystkie wiersze jako pozycję w jednym dokumencie (istniejącym lub nowym)
-        import_type: ! 'Na początek wybierz w jaki sposób chcesz zaimportować informacje:'
+        import_type: 'Na początek wybierz w jaki sposób chcesz zaimportować informacje:'
       mapping_element:
         conv_opts: Opcje konwersji
         conv_type: Typ konwersji
@@ -95,7 +95,7 @@ pl:
     edit: Edytuj
     revert: Cofnij zmiany
     show: Pokaż
-    step: ! 'Krok %{step} z %{total}:'
+    step: 'Krok %{step} z %{total}:'
   mappings:
     delete_confirm: 
     destroy_failed: 
@@ -118,9 +118,9 @@ pl:
     source_fields: Pola źródłowe z załącznika
     target_fields: Pola w SalesKing
     title:
-      few: ! '%{count} pola: %{fields}'
-      one: ! '%{count} pole: %{fields}'
-      other: ! '%{count} pól: %{fields}'
+      few: "%{count} pola: %{fields}"
+      one: "%{count} pole: %{fields}"
+      other: "%{count} pól: %{fields}"
   time:
     am: 
     formats:

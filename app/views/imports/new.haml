@@ -7,12 +7,12 @@
     
     %p
       - import_type = @import.attachment.mapping.import_type
-      = t('activerecord.attributes.mapping.scenario')
+      = t('mapping.scenario')
       = t(import_type, scope: 'activerecord.attributes.mapping.enum_values.import_type')
     
     %p
       - document_type = @import.attachment.mapping.document_type
-      = t('activerecord.attributes.mapping.selected_document_type')
+      = t('mapping.selected_document_type')
       = t(document_type, scope: 'activerecord.attributes.mapping.enum_values.document_type')
 
 

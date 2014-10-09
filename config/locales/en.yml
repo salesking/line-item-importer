@@ -50,7 +50,7 @@ en:
       mapping_element:
         blank: Mapping elements can't be blank
         inclusion: Wählen Sie eine Importvariante
-      import_type: 
+      import_type:
         inclusion: Wählen Sie eine Importvariante
   attachments:
     csv_import_error: Try with different 'Column Separator' and/or 'Quote character'.
@@ -72,51 +72,51 @@ en:
   errors:
     sk_login_required: Please login to SalesKing.eu and navigate to "Settings" > "Apps" to activate.
     messages:
-      inclusion: "is not included in the list"
-      exclusion: "is reserved"
-      invalid: "is invalid"
-      confirmation: "doesn't match %{attribute}"
-      accepted: "must be accepted"
-      empty: "can't be empty"
-      blank: "can't be blank"
-      present: "must be blank"
-      too_long: "is too long (maximum is %{count} characters)"
-      too_short: "is too short (minimum is %{count} characters)"
-      wrong_length: "is the wrong length (should be %{count} characters)"
-      not_a_number: "is not a number"
-      not_an_integer: "must be an integer"
-      greater_than: "must be greater than %{count}"
-      greater_than_or_equal_to: "must be greater than or equal to %{count}"
-      equal_to: "must be equal to %{count}"
-      less_than: "must be less than %{count}"
-      less_than_or_equal_to: "must be less than or equal to %{count}"
-      other_than: "must be other than %{count}"
-      odd: "must be odd"
-      even: "must be even"
+      inclusion: is not included in the list
+      exclusion: is reserved
+      invalid: is invalid
+      confirmation: doesn't match %{attribute}
+      accepted: must be accepted
+      empty: can't be empty
+      blank: can't be blank
+      present: must be blank
+      too_long: is too long (maximum is %{count} characters)
+      too_short: is too short (minimum is %{count} characters)
+      wrong_length: is the wrong length (should be %{count} characters)
+      not_a_number: is not a number
+      not_an_integer: must be an integer
+      greater_than: must be greater than %{count}
+      greater_than_or_equal_to: must be greater than or equal to %{count}
+      equal_to: must be equal to %{count}
+      less_than: must be less than %{count}
+      less_than_or_equal_to: must be less than or equal to %{count}
+      other_than: must be other than %{count}
+      odd: must be odd
+      even: must be even
   imports:
     create: Import data
     delete_confirm: Deleting an import does not remove created documents in your SalesKing account. Are you sure you want to continue?
     document:
       title_failed:
-        one: ! '%{count} document failed'
-        other: ! '%{count} documents failed'
+        one: "%{count} document failed"
+        other: "%{count} documents failed"
       title_success:
-        one: ! '%{count} document imported'
-        other: ! '%{count} documents imported'
+        one: "%{count} document imported"
+        other: "%{count} documents imported"
     line_item:
       title_failed:
-        one: ! '%{count} line item failed'
-        other: ! '%{count} line items failed'
+        one: "%{count} line item failed"
+        other: "%{count} line items failed"
       title_success:
-        one: ! '%{count} line item imported'
-        other: ! '%{count} line items imported'
+        one: "%{count} line item imported"
+        other: "%{count} line items imported"
     new: Create import
     title_failed:
-      one: ! '%{count} row failed'
-      other: ! '%{count} rows failed'
+      one: "%{count} row failed"
+      other: "%{count} rows failed"
     title_success:
-      one: ! '%{count} row imported'
-      other: ! '%{count} rows imported'
+      one: "%{count} row imported"
+      other: "%{count} rows imported"
     total:
       one: Total %{count} row
       other: Total %{count} rows
@@ -133,7 +133,7 @@ en:
     edit: Edit
     revert: Revert
     show: Show
-    step: ! 'Step %{step} of %{total}:'
+    step: 'Step %{step} of %{total}:'
   mappings:
     delete_confirm: Removing a mapping does not remove an import. Do you wish to continue?
     destroy_failed: Mapping could not be removed.
@@ -156,16 +156,17 @@ en:
     source_fields: Source fields
     target_fields: SalesKing fields
     title:
-      one: ! '%{count} field: %{fields}'
-      other: ! '%{count} fields: %{fields}'
+      one: "%{count} field: %{fields}"
+      other: "%{count} fields: %{fields}"
+    selected_document_type: Document type
   time:
     am: am
     formats:
-      date_only: ! '%A, %m.%d.%Y'
-      default: ! '%m.%d.%Y, %H:%M'
-      long: ! '%B %d, %Y %H:%M'
-      month_year: ! '%B, %Y'
-      short: ! '%d %b %H:%M'
-      shorter: ! '%m.%d.%y %H:%M'
-      time: ! '%H:%M'
+      date_only: "%A, %m.%d.%Y"
+      default: "%m.%d.%Y, %H:%M"
+      long: "%B %d, %Y %H:%M"
+      month_year: "%B, %Y"
+      short: "%d %b %H:%M"
+      shorter: "%m.%d.%y %H:%M"
+      time: "%H:%M"
     pm: pm

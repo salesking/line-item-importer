@@ -17,7 +17,7 @@ de:
         quote_char: Texttrenner
       mapping:
         document_id: Wenn Sie Einzelpositionen zu einem existierenden Dokument (Entwurf) hinzufügen möchten, suchen Sie das Dokument jetzt aus. Lassen Sie das Feld leer, wenn Sie ein neues Dokument erstellen möchten.
-        document_type: ! 'Mit was für Dokumenten möchten Sie arbeiten? '
+        document_type: 'Mit was für Dokumenten möchten Sie arbeiten? '
         enum_values:
           document_type:
             credit_note: Gutschrift
@@ -33,7 +33,7 @@ de:
         conv_type: Konvertierungstyp
         source: Quellfeld
         target: SalesKing-Feld
-        errors: 
+        errors:
           messages:
             blank: Mapping Elemente müsse zugewiesen werden.
     models:
@@ -53,7 +53,7 @@ de:
       mapping_element:
         blank: Mapping elements can't be blank
         inclusion: Wählen Sie eine Importvariante
-      import_type: 
+      import_type:
         inclusion: Wählen Sie eine Importvariante
   attachments:
     csv_import_error: Versuchen Sie es mit einem anderen "Feldtrenner und/oder "Texttrenner".
@@ -75,51 +75,51 @@ de:
   errors:
     sk_login_required: Bitte bei SalesKing.eu einloggen und über "Einstellungen" > "Apps" aktivieren.
     messages:
-      inclusion: "is not included in the list"
-      exclusion: "is reserved"
-      invalid: "is invalid"
-      confirmation: "doesn't match %{attribute}"
-      accepted: "must be accepted"
-      empty: "can't be empty"
-      blank: "can't be blank"
-      present: "must be blank"
-      too_long: "is too long (maximum is %{count} characters)"
-      too_short: "is too short (minimum is %{count} characters)"
-      wrong_length: "is the wrong length (should be %{count} characters)"
-      not_a_number: "is not a number"
-      not_an_integer: "must be an integer"
-      greater_than: "must be greater than %{count}"
-      greater_than_or_equal_to: "must be greater than or equal to %{count}"
-      equal_to: "must be equal to %{count}"
-      less_than: "must be less than %{count}"
-      less_than_or_equal_to: "must be less than or equal to %{count}"
-      other_than: "must be other than %{count}"
-      odd: "must be odd"
-      even: "must be even"
+      inclusion: is not included in the list
+      exclusion: is reserved
+      invalid: is invalid
+      confirmation: doesn't match %{attribute}
+      accepted: must be accepted
+      empty: can't be empty
+      blank: can't be blank
+      present: must be blank
+      too_long: is too long (maximum is %{count} characters)
+      too_short: is too short (minimum is %{count} characters)
+      wrong_length: is the wrong length (should be %{count} characters)
+      not_a_number: is not a number
+      not_an_integer: must be an integer
+      greater_than: must be greater than %{count}
+      greater_than_or_equal_to: must be greater than or equal to %{count}
+      equal_to: must be equal to %{count}
+      less_than: must be less than %{count}
+      less_than_or_equal_to: must be less than or equal to %{count}
+      other_than: must be other than %{count}
+      odd: must be odd
+      even: must be even
   imports:
     create: Daten importieren
     delete_confirm: Das Löschen eines Imports löst KEINE Löschung der Dokumente in Ihrem Account aus. Mit Löschung fortfahren?
     document:
       title_failed:
-        one: ! '%{count} Dokument fehlgeschlagen'
-        other: ! '%{count} Dokumente fehlgeschlagen'
+        one: "%{count} Dokument fehlgeschlagen"
+        other: "%{count} Dokumente fehlgeschlagen"
       title_success:
-        one: ! '%{count} Dokument importiert'
-        other: ! '%{count} Dokumente importiert'
+        one: "%{count} Dokument importiert"
+        other: "%{count} Dokumente importiert"
     line_item:
       title_failed:
-        one: ! '%{count} Einzelposition fehlgeschlagen'
-        other: ! '%{count} Einzelpositionen fehlgeschlagen'
+        one: "%{count} Einzelposition fehlgeschlagen"
+        other: "%{count} Einzelpositionen fehlgeschlagen"
       title_success:
-        one: ! '%{count} Einzelposition importiert'
-        other: ! '%{count} Einzelpositionen importiert'
+        one: "%{count} Einzelposition importiert"
+        other: "%{count} Einzelpositionen importiert"
     new: Import erzeugen
     title_failed:
-      one: ! '%{count} Zeile fehlgeschlagen'
-      other: ! '%{count} Zeilen fehlgeschlagen'
+      one: "%{count} Zeile fehlgeschlagen"
+      other: "%{count} Zeilen fehlgeschlagen"
     title_success:
-      one: ! '%{count} Zeile importiert'
-      other: ! '%{count} Zeilen importiert'
+      one: "%{count} Zeile importiert"
+      other: "%{count} Zeilen importiert"
     total:
       one: Insgesamt %{count} Zeile
       other: Insgesamt %{count} Zeilen
@@ -136,7 +136,7 @@ de:
     edit: Bearbeiten
     revert: Rückgängig
     show: Zeige
-    step: ! 'Schritt %{step} von %{total}:'
+    step: 'Schritt %{step} von %{total}:'
   mappings:
     delete_confirm: Das Löschen einer Feldzuweisung löscht nicht den Import. Mit Löschung fortfahren?
     destroy_failed: Feldzuweisung konnte nicht gelöscht werden.
@@ -153,22 +153,22 @@ de:
       proceed_to_import: Weiter zum Import
       reuse_this_mapping_button: Diese Feldzuweisung erneut anwenden
       setup: Einstellungen
-      source_fields_info: ! 'Wenn in Ihrer Quelldatei Felder für Einzelpositionen/Dokumentenfelder fehlen, können Sie Ihre csv-Datei bearbeiten um Felder und Inhalte hinzuzufügen. Laden Sie die Datei danach erneut hoch. '
+      source_fields_info: 'Wenn in Ihrer Quelldatei Felder für Einzelpositionen/Dokumentenfelder fehlen, können Sie Ihre csv-Datei bearbeiten um Felder und Inhalte hinzuzufügen. Laden Sie die Datei danach erneut hoch. '
     new: Feldzuweisung erstellen
     reuse: Wählen Sie eine exisitierende Feldzuweisung aus der Liste oder erstellen Sie eine neue Feldzuweisung im unteren Bereich.
     source_fields: Quellfelder
     target_fields: SalesKing-Felder
     title:
-      one: ! '%{count} Feld: %{fields}'
-      other: ! '%{count} Felder: %{fields}'
+      one: "%{count} Feld: %{fields}"
+      other: "%{count} Felder: %{fields}"
   time:
     am: vormittags
     formats:
-      date_only: ! '%A, %d.%m.%Y'
-      default: ! '%d.%m.%Y, %H:%M Uhr'
-      long: ! '%A, %e. %B %Y, %H:%M Uhr'
-      month_year: ! '%B, %Y'
-      short: ! '%e. %B, %H:%M Uhr'
-      shorter: ! '%d.%m.%y %H:%M'
-      time: ! '%H:%M'
+      date_only: "%A, %d.%m.%Y"
+      default: "%d.%m.%Y, %H:%M Uhr"
+      long: "%A, %e. %B %Y, %H:%M Uhr"
+      month_year: "%B, %Y"
+      short: "%e. %B, %H:%M Uhr"
+      shorter: "%d.%m.%y %H:%M"
+      time: "%H:%M"
     pm: nachmittags

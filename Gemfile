@@ -38,4 +38,5 @@ group :development do
   gem 'quiet_assets'
   gem 'binding_of_caller'
   gem 'byebug'
+  gem 'localeapp'
 end
