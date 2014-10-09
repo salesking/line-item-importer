@@ -7,7 +7,7 @@ class MappingsController < ApplicationController
 
   def create
     if params[:reuse] && !params[:mapping_id].empty?
-      @mapping = Mapping.find mapping_id
+      @mapping = Mapping.find params[:mapping_id]
     else
       @mapping = Mapping.new(mapping_params)
       @mapping.user = current_user
