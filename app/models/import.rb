@@ -12,7 +12,13 @@ class Import < ActiveRecord::Base
 
   def title
     scope = attachment.present? && attachment.mapping.present? ? "imports.#{attachment.mapping.import_type}" : :imports
-    title = I18n.t(:title_success, scope: scope, count: data_rows.success.count)
+    case scope
+      when "imports.line_item"
+        title = I18n.t(:title_success, scope: scope, count: attachment.rows.size - 1)
+      when "imports.document"
+        title = I18n.t(:title_success, scope: scope, count: data_rows.success.count)
+      end
+
     if (failed = data_rows.failed.count) > 0
       [title, I18n.t(:title_failed, scope: scope, count: failed)].to_sentence
     else
