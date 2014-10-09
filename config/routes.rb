@@ -11,5 +11,7 @@ Rails.application.routes.draw do
 
   match '/documents' => 'documents#autocomplete', via: :get, as: :autocomplete
 
+  #match 'reuse' => 'mappings#reuse', via: :post, as: :reuse
+
   root to: 'frontend#index'
 end

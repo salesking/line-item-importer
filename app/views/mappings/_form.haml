@@ -7,7 +7,7 @@
         = t('activerecord.attributes.mapping.enum_values.import_type.document')
     .radio
       %label
-        = f.radio_button :import_type, 'line_item'
+        = f.radio_button :import_type, 'line_item', checked: true
         = t('activerecord.attributes.mapping.enum_values.import_type.line_item')
 
 .row
@@ -28,8 +28,8 @@
 %h3=t('.field_mappings')
 .clearfix
   %p= t('mappings.reuse')
-  = select_tag 'mapping_id', options_for_select(mapping_options)
-  = button_tag t('.reuse_this_mapping_button'), class: 'btn'
+  = select_tag 'mapping_id', options_for_select(mapping_options), :include_blank => true, id: 'reuse-select-options'
+  = button_tag t('.reuse_this_mapping_button'), class: 'btn', id: 'reuse', style: 'display:none'
 .clearfix
   %h4= t('mappings.source_fields')
   %span.info= t('.source_fields_info')

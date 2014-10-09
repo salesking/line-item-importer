@@ -6,10 +6,15 @@ class MappingsController < ApplicationController
   before_filter :include_gon_translation
 
   def create
-    @mapping = Mapping.new(mapping_params)
-    @mapping.user = current_user
-    @mapping.attachments << @attachment
+    if params[:reuse] && !params[:mapping_id].empty?
+      @mapping = Mapping.find mapping_id
+    else
+      @mapping = Mapping.new(mapping_params)
+      @mapping.user = current_user
+    end
     
+    @mapping.attachments << @attachment
+
     if @mapping.save
       redirect_to new_attachment_import_url(@attachment)
     else

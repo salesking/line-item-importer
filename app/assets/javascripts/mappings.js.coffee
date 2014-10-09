@@ -1,4 +1,10 @@
 jQuery ->
+  $('#reuse-select-options').on 'change', (e) -> 
+    if $(this).val() <= 1
+      $('#reuse').hide();
+    else
+      $('#reuse').show();
+
   $('.target-fields').on 'click', '.kill', (e) -> revertField(e, this)
 
   $('#source-fields').delegate '.field:not(.ui-draggable)', 'mouseenter', ->
@@ -64,6 +70,8 @@ jQuery ->
   $('.target-fields .field').trigger 'mouseenter'
 
   $(':submit').click ->
+    if this.id == 'reuse'
+      $('form').append "<input type='hidden' name='reuse' value=true>"
     mappings = []
     $.each $('.target-fields .field.dropped'), (i) ->
       el = $(this)
