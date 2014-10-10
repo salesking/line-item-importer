@@ -1,4 +1,8 @@
 jQuery ->
+  $('tbody .check-column :checkbox').img_checkbox();
+  
+  $('.check-column').multi_select();
+
   $('#csv-refresh').click ->
     $.ajax
       url: $('#new_attachment').attr('action'),

@@ -10,6 +10,8 @@
   %table.table
     %thead
       %tr
+        %th.check-column
+          %input{id: "id", name: "id", type: "checkbox", value: 1}
         %th= Attachment.model_name.human(count: 1)
         %th= Mapping.model_name.human(count: 1)
         %th= Import.model_name.human(count: 1)
@@ -17,6 +19,8 @@
     %tbody
       - @attachments.each do |attachment|
         %tr
+          %td.check-column
+            %input{:type=>"checkbox", :name=>"ids[]", :value=>"#{attachment.id}"}
           %td
             = link_to(attachment.filename, attachment)
             = link_to(icon('trash-o'), attachment, data: {confirm: t('attachments.delete_confirm'), method: :delete})

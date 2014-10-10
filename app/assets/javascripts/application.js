@@ -4,4 +4,5 @@
 //= require jquery-ui.js
 //= require fileuploader
 //= require select2
+//= require schmuugle/dist/js/schmuugle.js
 //= require_tree .
