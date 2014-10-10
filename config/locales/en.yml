@@ -64,7 +64,7 @@ en:
       help_html: If you have problems using this app, consult <a href="%{link}" target="_blank">our documentation</a>.
       help_link: https://hilfe.salesking.eu/kb/apps/line-item-importer-dokumente-und-einzelpositionen-aus-csv-dateien-importieren
       only_for_advanced_users: This setting is only for advanced users. Leave it, if you don't know what we're talking about.
-      page_title: Upload new CSV file
+      page_title: Upload file
       preview: Preview
       preview_info: This is just a preview - it shows only first three rows of the csv.
     proceed_to_mapping: Proceed to mapping
