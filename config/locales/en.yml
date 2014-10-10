@@ -3,8 +3,10 @@ en:
     attributes:
       attachment:
         col_sep: Column separator
+        column_separator: Column separator
         encoding: Encoding
         quote_char: Quote character
+        quote_character: Quote character
       data_row:
         external_id: Link in SalesKing
         log: Log
@@ -27,12 +29,19 @@ en:
           import_type:
             document: I want to create one document for each row
             line_item: I want to import all rows into one document (existing or new)
-        import_type: First of all, choose how do you want to import your data
+        import_type: 'First of all, choose how do you want to import your data:'
+        mapping_elements: Mapping
       mapping_element:
         conv_opts: Convert options
         conv_type: Convert type
         source: Source field
         target: SalesKing field
+    errors:
+      models:
+        mapping:
+          attributes:
+            mapping_elements:
+              blank: missing
     models:
       attachment:
         one: Uploaded file
@@ -44,14 +53,8 @@ en:
         one: Import
         other: Imports
       mapping:
-        one: Field mapping
-        other: Field mappings
-    errors:
-      mapping_element:
-        blank: Mapping elements can't be blank
-        inclusion: Wählen Sie eine Importvariante
-      import_type:
-        inclusion: Wählen Sie eine Importvariante
+        one: Mapping
+        other: Mappings
   attachments:
     csv_import_error: Try with different 'Column Separator' and/or 'Quote character'.
     delete_confirm: This is an irreversible process. This will delete associated imports. Are you sure?
@@ -71,28 +74,6 @@ en:
     success: Successfull rows
   errors:
     sk_login_required: Please login to SalesKing.eu and navigate to "Settings" > "Apps" to activate.
-    messages:
-      inclusion: is not included in the list
-      exclusion: is reserved
-      invalid: is invalid
-      confirmation: doesn't match %{attribute}
-      accepted: must be accepted
-      empty: can't be empty
-      blank: can't be blank
-      present: must be blank
-      too_long: is too long (maximum is %{count} characters)
-      too_short: is too short (minimum is %{count} characters)
-      wrong_length: is the wrong length (should be %{count} characters)
-      not_a_number: is not a number
-      not_an_integer: must be an integer
-      greater_than: must be greater than %{count}
-      greater_than_or_equal_to: must be greater than or equal to %{count}
-      equal_to: must be equal to %{count}
-      less_than: must be less than %{count}
-      less_than_or_equal_to: must be less than or equal to %{count}
-      other_than: must be other than %{count}
-      odd: must be odd
-      even: must be even
   imports:
     create: Import data
     delete_confirm: Deleting an import does not remove created documents in your SalesKing account. Are you sure you want to continue?
@@ -139,19 +120,19 @@ en:
     destroy_failed: Mapping could not be removed.
     destroyed_successfully: Mapping has been removed successfully.
     dnd_info: Please drag&drop fields above onto their targets below. Drop multiple fields on a target to join values (space-delimited) e.g for the tag list.
-    edit: Edit field mapping
+    edit: Edit mapping
     form:
       document: Document
       document_id_placeholder: Type here to search through available draft documents
       document_mapping: Target document fields
-      field_mappings: Field mapping settings
+      field_mappings: Create Mapping
       line_item_mapping: Target line item fields
       line_item_mapping_info: At least price_single and quantity must be mapped to a source field.
       proceed_to_import: Proceed to import
-      reuse_this_mapping_button: Reuse selected field mapping
+      reuse_this_mapping_button: Reuse selected mapping
       setup: Initial setup
       source_fields_info: If your source lacks fields to match some document-/line-item fields, you might want to edit your csv to add fields and their content and then upload it again.
-    new: Create field mapping
+    new: Import settings
     reuse: Select an existing mapping from the list to reuse that or create a new mapping in the below section.
     source_fields: Source fields
     target_fields: SalesKing fields

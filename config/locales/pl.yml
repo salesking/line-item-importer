@@ -3,8 +3,10 @@ pl:
     attributes:
       attachment:
         col_sep: Separator kolumn
+        column_separator: Separator kolumn
         encoding: Kodowanie znaków
         quote_char: Znak cudzysłowia
+        quote_character: Znak cudzysłowia
       data_row:
         external_id: 
         log: Rejestr
@@ -14,7 +16,7 @@ pl:
         col_sep: Separator kolumn
         created_at: Stworzono
         kind: 
-        quote_char: 
+        quote_char: Znak cudzysłowia
       mapping:
         document_id: W polu poniżej możesz wybrać dokument, do którego chcesz zaimportować nowe pozycje. Pozostaw to pole puste, jeżeli chcesz utworzyć nowy dokument.
         document_type: Z jakim rodzajem dokumentów chciał(a)byś pracować?
@@ -28,11 +30,18 @@ pl:
             document: Chcę stworzyć po jednym dokumencie dla każdego wiersza
             line_item: Chcę umieścić wszystkie wiersze jako pozycję w jednym dokumencie (istniejącym lub nowym)
         import_type: 'Na początek wybierz w jaki sposób chcesz zaimportować informacje:'
+        mapping_elements: 
       mapping_element:
         conv_opts: Opcje konwersji
         conv_type: Typ konwersji
         source: 
         target: Pole w SalesKing
+    errors:
+      models:
+        mapping:
+          attributes:
+            mapping_elements:
+              blank: 
     models:
       attachment:
         few: Wysłane pliki

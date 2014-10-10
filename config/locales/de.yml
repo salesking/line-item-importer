@@ -3,8 +3,10 @@ de:
     attributes:
       attachment:
         col_sep: Feldtrenner
+        column_separator: Column separator
         encoding: Encoding
         quote_char: Texttrenner
+        quote_character: Quote character
       data_row:
         external_id: Link in SalesKing
         log: Log
@@ -28,14 +30,18 @@ de:
             document: Ich möchte je Zeile ein Dokument anlegen
             line_item: Ich möchte alle Zeilen in ein Dokument importieren (bestehend oder neu)
         import_type: Wählen Sie eine Importvariante
+        mapping_elements: Feldzuweisung
       mapping_element:
         conv_opts: Konvertierungsoptionen
         conv_type: Konvertierungstyp
         source: Quellfeld
         target: SalesKing-Feld
-        errors:
-          messages:
-            blank: Mapping Elemente müsse zugewiesen werden.
+    errors:
+      models:
+        mapping:
+          attributes:
+            mapping_elements:
+              blank: fehlt
     models:
       attachment:
         one: Hochgeladene Datei
@@ -49,19 +55,13 @@ de:
       mapping:
         one: Feldzuweisung
         other: Feldzuweisungen
-    errors:
-      mapping_element:
-        blank: Mapping elements can't be blank
-        inclusion: Wählen Sie eine Importvariante
-      import_type:
-        inclusion: Wählen Sie eine Importvariante
   attachments:
     csv_import_error: Versuchen Sie es mit einem anderen "Feldtrenner und/oder "Texttrenner".
     delete_confirm: Dies ist nicht rückgängig zu machen. Dies wird alle Importe löschen. Sind Sie sicher?
     new:
       can_use_tab_character_html: Sie können <tt>\t</tt> als Tabulator-Bezeichner nutzen.
       enable_javascript: Bitte aktivieren Sie JavaScript um Dateien hochladen zu können.
-      help_html: 
+      help_html: Sollten Sie Probleme mit dieser App haben, lesen Sie <a href="%{link}" target="_blank">die Dokumentation</a>.
       help_link: https://hilfe.salesking.eu/kb/apps/line-item-importer-dokumente-und-einzelpositionen-aus-csv-dateien-importieren
       only_for_advanced_users: Diese Einstellung ist für Profis. Ändern Sie nichts, wenn Sie nicht wissen damit umzugehen.
       page_title: Neue CSV-Datei hochladen
@@ -74,28 +74,6 @@ de:
     success: Erfolgreiche Zeilen
   errors:
     sk_login_required: Bitte bei SalesKing.eu einloggen und über "Einstellungen" > "Apps" aktivieren.
-    messages:
-      inclusion: is not included in the list
-      exclusion: is reserved
-      invalid: is invalid
-      confirmation: doesn't match %{attribute}
-      accepted: must be accepted
-      empty: can't be empty
-      blank: can't be blank
-      present: must be blank
-      too_long: is too long (maximum is %{count} characters)
-      too_short: is too short (minimum is %{count} characters)
-      wrong_length: is the wrong length (should be %{count} characters)
-      not_a_number: is not a number
-      not_an_integer: must be an integer
-      greater_than: must be greater than %{count}
-      greater_than_or_equal_to: must be greater than or equal to %{count}
-      equal_to: must be equal to %{count}
-      less_than: must be less than %{count}
-      less_than_or_equal_to: must be less than or equal to %{count}
-      other_than: must be other than %{count}
-      odd: must be odd
-      even: must be even
   imports:
     create: Daten importieren
     delete_confirm: Das Löschen eines Imports löst KEINE Löschung der Dokumente in Ihrem Account aus. Mit Löschung fortfahren?
@@ -147,14 +125,14 @@ de:
       document: Dokument
       document_id_placeholder: Tippen um verfügbare Entwürfe zu durchsuchen
       document_mapping: Zielfelder des Dokumentes
-      field_mappings: Feldzuweisungseinstellungen
+      field_mappings: Feldzuweisung erstellen
       line_item_mapping: Zielfelder der Einzelpositionen
       line_item_mapping_info: Mindestens price_single und quantity müssen eine Zuweisung aus Ihrer Quelldatei haben.
       proceed_to_import: Weiter zum Import
       reuse_this_mapping_button: Diese Feldzuweisung erneut anwenden
       setup: Einstellungen
       source_fields_info: 'Wenn in Ihrer Quelldatei Felder für Einzelpositionen/Dokumentenfelder fehlen, können Sie Ihre csv-Datei bearbeiten um Felder und Inhalte hinzuzufügen. Laden Sie die Datei danach erneut hoch. '
-    new: Feldzuweisung erstellen
+    new: Importeinstellungen
     reuse: Wählen Sie eine exisitierende Feldzuweisung aus der Liste oder erstellen Sie eine neue Feldzuweisung im unteren Bereich.
     source_fields: Quellfelder
     target_fields: SalesKing-Felder
