@@ -29,3 +29,12 @@
 
 .qq-upload-failed-text {display:none;}
 .qq-upload-fail .qq-upload-failed-text {display:inline;}
+
+#attachment_encoding{
+	max-width: 180px;
+}
+
+#attachment_encoding option{
+	overflow: auto;
+	text-overflow: ellipsis;
+}

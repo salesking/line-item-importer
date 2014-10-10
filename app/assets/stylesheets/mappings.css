@@ -28,3 +28,23 @@ input.minimi{ width: 30px; }
   background-color: red;
   display: table;
 }
+
+/* encoding select box */
+#attachment_encoding{
+	max-width: 170px;
+}
+
+#attachment_encoding option{
+	overflow: auto;
+	text-overflow: ellipsis;
+}
+
+/* side */
+#side {
+	width: 225px;
+}
+
+/* content */
+#content {
+	left: 235px;
+}

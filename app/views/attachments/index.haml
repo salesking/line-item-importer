@@ -1,5 +1,5 @@
 .header
-  .head3
+  .head2
     .title
       = Attachment.model_name.human(count: 5)
       %small= @attachments.size
@@ -15,7 +15,6 @@
         %th= Attachment.model_name.human(count: 1)
         %th= Mapping.model_name.human(count: 1)
         %th= Import.model_name.human(count: 1)
-        %th
     %tbody
       - @attachments.each do |attachment|
         %tr
