@@ -134,6 +134,7 @@ de:
       source_fields_info: 'Wenn in Ihrer Quelldatei Felder für Einzelpositionen/Dokumentenfelder fehlen, können Sie Ihre csv-Datei bearbeiten um Felder und Inhalte hinzuzufügen. Laden Sie die Datei danach erneut hoch. '
     info: Wählen Sie eine existierende Feldzuweisung aus der Liste oder erstellen Sie eine neue Feldzuweisung im unteren Bereich.
     new: Importeinstellungen
+    new_mapping: Neue Feldzuweisung
     reuse: Exisitierende Feldzuweisung
     select_reuse: Wählen Sie eine existierende Feldzuweisung
     source_fields: Quellfelder

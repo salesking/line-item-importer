@@ -124,6 +124,7 @@ pl:
       source_fields_info: 
     info: 
     new: Połącz pola z załącznika
+    new_mapping: 
     reuse: 
     select_reuse: 
     source_fields: Pola źródłowe z załącznika

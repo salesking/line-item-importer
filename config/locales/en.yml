@@ -134,6 +134,7 @@ en:
       source_fields_info: If your source lacks fields to match some document-/line-item fields, you might want to edit your csv to add fields and their content and then upload it again.
     info: Select an existing mapping from the list to reuse that or create a new mapping in the below section.
     new: Import settings
+    new_mapping: New Mapping
     reuse: Existing mapping
     select_reuse: Select an existing mapping
     source_fields: Source fields

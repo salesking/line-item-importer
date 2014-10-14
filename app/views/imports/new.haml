@@ -9,6 +9,8 @@
     = "/"
     - document_type = @import.attachment.mapping.document_type
     %b= t(document_type, scope: 'activerecord.attributes.mapping.enum_values.document_type')
+    = "/"
+    = t('imports.total', count: @import.attachment.rows.size - 1)
     
   
 #side
@@ -16,7 +18,7 @@
     .side-list-item
       = form_for [@attachment, @import] do |f|
         .actions
-          = f.submit t('imports.create'), class: "btn btn-primary btn-large"
+          = f.submit t('imports.create'), class: "btn btn-danger"
           = link_to t('link.back_to_list'), attachments_path, class: "btn secondary"
 
 #content
@@ -30,6 +32,5 @@
         %tr
         - row.each do |item|
           %td= item
-  %p= t('imports.total', count: @import.attachment.rows.size - 1)
 
 
