@@ -1,29 +1,35 @@
-%h2
-  = t('link.step', step: 3, total: 3)
-  = t('imports.new')
-
-.row
-  .col-md-6
+.header
+  .head2
+    .title
+      = t('link.step', step: 3, total: 3)
+      = t('imports.new')
+  .head3
+    - import_type = @import.attachment.mapping.import_type
+    = t(import_type, scope: 'activerecord.attributes.mapping.enum_values.import_type')
+    = "/"
+    - document_type = @import.attachment.mapping.document_type
+    %b= t(document_type, scope: 'activerecord.attributes.mapping.enum_values.document_type')
     
-    %p
-      - import_type = @import.attachment.mapping.import_type
-      = t(import_type, scope: 'activerecord.attributes.mapping.enum_values.import_type')
-    
-    %p
-      - document_type = @import.attachment.mapping.document_type
-      %b= t(document_type, scope: 'activerecord.attributes.mapping.enum_values.document_type')
+  
+#side
+  .side-list
+    .side-list-item
+      = form_for [@attachment, @import] do |f|
+        .actions
+          = f.submit t('imports.create'), class: "btn btn-primary btn-large"
+          = link_to t('link.back_to_list'), attachments_path, class: "btn secondary"
 
-
-#csv-table
-  %table.table.table-bordered
-    %tbody
-    - @import.preview.each do |row|
-      %tr
+#content
+  %table.table
+    - @import.preview(20).each_with_index do |row, index|
+      - if index == 0
+        %thead
+          - row.each do |item|
+            %th= item
+      - else
+        %tr
         - row.each do |item|
           %td= item
-%p= t('imports.total', count: @import.attachment.rows.size - 1)
+  %p= t('imports.total', count: @import.attachment.rows.size - 1)
 
-= form_for [@attachment, @import] do |f|
-  .actions
-    = f.submit t('imports.create'), class: "btn primary large"
-    = link_to t('link.back_to_list'), attachments_path, class: "btn secondary"
+

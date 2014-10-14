@@ -122,8 +122,10 @@ pl:
       reuse_this_mapping_button: Wykorzystaj wybrane połączenia pól
       setup: Ustawienia początkowe
       source_fields_info: 
+    info: 
     new: Połącz pola z załącznika
     reuse: 
+    select_reuse: 
     source_fields: Pola źródłowe z załącznika
     target_fields: Pola w SalesKing
     title:

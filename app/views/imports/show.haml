@@ -1,24 +1,31 @@
 - document_import = @import.attachment.mapping.import_type == 'document'
 - document_type   = @import.attachment.mapping.document_type
-%h2= Import.model_name.human(count: 1)
-%h3= @import.title
+.header
+  .head2
+    .title
+      = Import.model_name.human(count: 1)
+  .head3
+    %span.info= @import.title
 
-= link_to(t('.open_document'), salesking_document_link(document_type, @import.data_rows.first.external_id), target: '_parent') if @import.success? && !document_import
+#side
+  = link_to(t('.open_document'), salesking_document_link(document_type, @import.data_rows.first.external_id), target: '_parent') if @import.success? && !document_import
+  .actions
+    = link_to t('link.back_to_list'), imports_path, class: "btn secondary"
 
-- if @import.data_rows.failed.present?
-  %table
-    %thead
-      %tr
-        %th= DataRow.human_attribute_name(:source)
-        %th= DataRow.human_attribute_name(:log)
-        - if document_import
-          %th= DataRow.human_attribute_name(:external_id)
-    %tbody
-      - @import.data_rows.failed.each do |row|
+#content
+  - if @import.data_rows.failed.present?
+    %table
+      %thead
         %tr
-          %td= row.source
-          %td= row.log
-          - if document_import && row.external_id.present?
-            %td= link_to t('.open_in_salesking'), salesking_document_link(document_type, row.external_id), target: '_parent'
-.actions
-  = link_to t('link.back_to_list'), imports_path, class: "btn secondary"
+          %th= DataRow.human_attribute_name(:source)
+          %th= DataRow.human_attribute_name(:log)
+          - if document_import
+            %th= DataRow.human_attribute_name(:external_id)
+      %tbody
+        - @import.data_rows.failed.each do |row|
+          %tr
+            %td= row.source
+            %td= row.log
+            - if document_import && row.external_id.present?
+              %td= link_to t('.open_in_salesking'), salesking_document_link(document_type, row.external_id), target: '_parent'
+

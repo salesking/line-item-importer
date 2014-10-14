@@ -31,6 +31,7 @@ jQuery ->
       ,
       onComplete: (id, fileName, data) ->
         insertFields(data)
+        showFileName()
         $('#new_attachment').attr('action', '/attachments/' + data.id)
 
   insertFields = (data) ->
@@ -51,3 +52,9 @@ jQuery ->
     csv.push '</table>'
     $('#csv-table table').remove()
     $('#csv-table').show().append csv.join('')
+
+  showFileName = () ->
+    file_name = $('.qq-upload-file').val();
+    file_size = $('qq-upload-size').val();
+
+    $('#csv-table h2').append(file_name);

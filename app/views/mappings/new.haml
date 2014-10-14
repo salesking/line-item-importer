@@ -1,6 +1,10 @@
-%h2
-  = t('link.step', step: 2, total: 3)
-  = t('mappings.new')
+.header
+  .head2
+    .title
+      = t('link.step', step: 2, total: 3)
+      = t('mappings.new')
+  .head3
+    = t('mappings.info')
 
 - if @mapping.errors.any?
   .alert.alert-danger

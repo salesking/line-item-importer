@@ -23,15 +23,6 @@
         = value
 
     = yield
-    %footer
-      .container
-        &copy;
-        = "2011-%d" % [Date.today.year]
-        Georg Leciejewski - Michał Połtyn - SalesKing GmbH  |  We love open source:
-        %a(href='https://github.com/salesking/line-item-importer') Fork & Fix
-        or
-        %a(href='https://github.com/salesking/line-item-importer/issues') report bugs
-        on GitHub
 
     %script
       = "window.gon=#{gon.to_json}".html_safe

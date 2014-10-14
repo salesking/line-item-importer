@@ -132,8 +132,10 @@ de:
       reuse_this_mapping_button: Diese Feldzuweisung erneut anwenden
       setup: Einstellungen
       source_fields_info: 'Wenn in Ihrer Quelldatei Felder für Einzelpositionen/Dokumentenfelder fehlen, können Sie Ihre csv-Datei bearbeiten um Felder und Inhalte hinzuzufügen. Laden Sie die Datei danach erneut hoch. '
+    info: Wählen Sie eine existierende Feldzuweisung aus der Liste oder erstellen Sie eine neue Feldzuweisung im unteren Bereich.
     new: Importeinstellungen
-    reuse: Wählen Sie eine exisitierende Feldzuweisung aus der Liste oder erstellen Sie eine neue Feldzuweisung im unteren Bereich.
+    reuse: Exisitierende Feldzuweisung
+    select_reuse: Wählen Sie eine existierende Feldzuweisung
     source_fields: Quellfelder
     target_fields: SalesKing-Felder
     title:
