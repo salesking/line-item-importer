@@ -56,6 +56,15 @@ class MappingElement < ActiveRecord::Base
     source.split(',').map{|i| data_row[i.to_i] }.join(' ')
   end
 
+  def source_as_string
+    source_string = ""
+    source.split(",").each_with_index do |source_id, i|
+      source_string << mapping.attachments.first.rows.first[source_id.to_i]
+      source_string << "/" if i > 0
+    end
+    source_string
+  end
+
   private
   def source_value(data_row)
     data_row[source.to_i]

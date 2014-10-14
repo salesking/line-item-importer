@@ -19,11 +19,13 @@
       = form_for [@attachment, @import] do |f|
         .actions
           = f.submit t('imports.create'), class: "btn btn-danger"
-          = link_to t('link.back_to_list'), attachments_path, class: "btn secondary"
+          = link_to t('link.back_to_mapping'), new_attachment_mapping_path, class: "btn secondary"
 
 #content
+  %h2=t('attachments.new.preview')
+  %p=t('attachments.new.preview_info')
   %table.table
-    - @import.preview(20).each_with_index do |row, index|
+    - @import.preview.each_with_index do |row, index|
       - if index == 0
         %thead
           - row.each do |item|

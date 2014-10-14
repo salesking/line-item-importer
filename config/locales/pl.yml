@@ -99,6 +99,7 @@ pl:
   link:
     actions: 
     back_to_list: Wróć do listy
+    back_to_mapping: 
     confirm_destroy: Czy na pewno usunąć ten obiekt?
     destroy: Usuń
     edit: Edytuj

@@ -10,23 +10,24 @@
 #side
   .side-list
     .side-list-item
+      %a.btn.btn-danger{href: new_attachment_path, title: t(:'attachments.new.page_title')} 
+        = t(:'attachments.new.page_title')
+    .side-list-item
       = link_to(t('.open_document'), salesking_document_link(document_type, @import.data_rows.first.external_id), target: '_parent', class: "btn btn-primary btn-large") if @import.success? && !document_import
     .side-list-item
       = link_to t('link.back_to_list'), imports_path, class: "btn btn-secondary"
 
 #content
   - if @import.data_rows.failed.present?
-    %table
+    %table.table
       %thead
         %tr
-          %th= DataRow.human_attribute_name(:source)
           %th= DataRow.human_attribute_name(:log)
           - if document_import
             %th= DataRow.human_attribute_name(:external_id)
       %tbody
         - @import.data_rows.failed.each do |row|
           %tr
-            %td= row.source
             %td= row.log
             - if document_import && row.external_id.present?
               %td= link_to t('.open_in_salesking'), salesking_document_link(document_type, row.external_id), target: '_parent'

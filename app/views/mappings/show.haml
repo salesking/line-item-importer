@@ -1,18 +1,29 @@
-.btn-toolbar-main
-  %a.btn{href: mappings_path, title: t(:'link.back')}
-    %i.fa.fa-level-up.fa-rotate-270
-  .btn-group
-    %button.btn{title: t(:'link.destroy')}
-      %i.fa.fa-trash-o
-%h2= Mapping.model_name.human(count: 1)
 
-%table.table
-  %thead
-    %tr
-      %th= MappingElement.human_attribute_name(:source)
-      %th= MappingElement.human_attribute_name(:target)
-  %tbody
-    - @mapping.mapping_elements.each do |mapping_element|
+.header
+  .head2
+    .title
+      = Mapping.model_name.human(count: 1)
+  .head3
+    .btn-toolbar-main.left-space
+      %a.btn{href: mappings_path, title: t(:'link.back')}
+        %i.fa.fa-level-up.fa-rotate-270
+      .btn-group
+        %button.btn{title: t(:'link.destroy')}
+          = link_to(icon('trash-o'), @mapping, data: {confirm: t('mappings.delete_confirm'), method: :delete})
+#side
+  .side-list
+    .side-list-item
+      %a.btn.btn-danger{href: new_attachment_path, title: t(:'attachments.new.page_title')} 
+        = t(:'attachments.new.page_title')
+
+#content
+  %table.table
+    %thead
       %tr
-        %td= mapping_element.source
-        %td= mapping_element.target
+        %th= MappingElement.human_attribute_name(:source)
+        %th= MappingElement.human_attribute_name(:target)
+    %tbody
+      - @mapping.mapping_elements.each do |mapping_element|
+        %tr
+          %td= mapping_element.source_as_string
+          %td= mapping_element.target

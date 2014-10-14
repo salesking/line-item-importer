@@ -55,8 +55,9 @@ input.minimi{ width: 30px; }
 	font-size: 30px;
 }
 
-.head3 {
+.head3 .info {
 	padding-top: 12px;
+	position: absolute;
 }
 
 .side-list-item {
@@ -93,4 +94,10 @@ input.minimi{ width: 30px; }
 .fit-to-top {
 	margin-top: -5px;
 	margin-bottom: 30px;
+}
+
+.left-space {
+	left: 235px;
+	position: absolute;
+	margin-top: 5px !important;
 }

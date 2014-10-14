@@ -109,6 +109,7 @@ de:
   link:
     actions: Aktionen
     back_to_list: Zurück zur Liste
+    back_to_mapping: Zurück zum Mapping
     confirm_destroy: Diesen Eintrag wirklich löschen?
     destroy: Löschen
     edit: Bearbeiten
