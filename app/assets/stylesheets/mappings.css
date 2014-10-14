@@ -55,9 +55,14 @@ input.minimi{ width: 30px; }
 	font-size: 30px;
 }
 
+.head2 .title {
+	padding-left: 15px;
+}
+
 .head3 .info {
 	padding-top: 12px;
 	position: absolute;
+	padding-left: 15px;
 }
 
 .side-list-item {

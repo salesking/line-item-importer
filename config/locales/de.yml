@@ -113,6 +113,7 @@ de:
     confirm_destroy: Diesen Eintrag wirklich löschen?
     destroy: Löschen
     edit: Bearbeiten
+    new_import: Neuer Import
     revert: Rückgängig
     show: Zeige
     step: 'Schritt %{step} von %{total}:'

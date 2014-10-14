@@ -113,6 +113,7 @@ en:
     confirm_destroy: Really delete this record?
     destroy: Delete
     edit: Edit
+    new_import: New Import
     revert: Revert
     show: Show
     step: 'Step %{step} of %{total}:'

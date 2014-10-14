@@ -103,6 +103,7 @@ pl:
     confirm_destroy: Czy na pewno usunąć ten obiekt?
     destroy: Usuń
     edit: Edytuj
+    new_import: 
     revert: Cofnij zmiany
     show: Pokaż
     step: 'Krok %{step} z %{total}:'

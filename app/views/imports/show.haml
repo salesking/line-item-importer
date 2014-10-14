@@ -10,8 +10,8 @@
 #side
   .side-list
     .side-list-item
-      %a.btn.btn-danger{href: new_attachment_path, title: t(:'attachments.new.page_title')} 
-        = t(:'attachments.new.page_title')
+      %a.btn.btn-danger{href: new_attachment_path, title: t(:'link.new_import')} 
+        = t(:'link.new_import')
     .side-list-item
       = link_to(t('.open_document'), salesking_document_link(document_type, @import.data_rows.first.external_id), target: '_parent', class: "btn btn-primary btn-large") if @import.success? && !document_import
     .side-list-item

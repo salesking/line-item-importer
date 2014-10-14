@@ -4,7 +4,8 @@
       = t('link.step', step: 2, total: 3)
       = t('mappings.new')
   .head3
-    = t('mappings.info')
+    .info
+      = t('mappings.info')
 
 - if @mapping.errors.any?
   .alert.alert-danger
