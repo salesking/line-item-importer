@@ -8,61 +8,62 @@
         %h4= t('mappings.select_reuse')
         = select_tag 'mapping_id', options_for_select(mapping_options), :include_blank => true, id: 'reuse-select-options'
         = button_tag t('.reuse_this_mapping_button'), class: 'btn btn-primary btn-large', id: 'reuse', style: 'display:none'
-  .row 
-    .col-md-6.fit-to-top
-      %span.big-letters= t('mappings.new_mapping')
-  .row
-    .col-md-6
-      %h4=Mapping.human_attribute_name(:import_type)
-      .radio
-        %label
-          = f.radio_button :import_type, 'document'
-          = t('activerecord.attributes.mapping.enum_values.import_type.document')
-      .radio
-        %label
-          = f.radio_button :import_type, 'line_item', checked: true
-          = t('activerecord.attributes.mapping.enum_values.import_type.line_item')
-
-  .row
-    .col-md-6
-      %h4=Mapping.human_attribute_name(:document_type)
-      - Mapping::DOCUMENT_TYPES.each do |document_type|
+  #new_mapping_body
+    .row 
+      .col-md-6.fit-to-top
+        %span.big-letters= t('mappings.new_mapping')
+    .row
+      .col-md-6
+        %h4=Mapping.human_attribute_name(:import_type)
         .radio
           %label
-            = f.radio_button :document_type, document_type, checked: document_type == 'invoice'
-            = t(document_type, scope: 'activerecord.attributes.mapping.enum_values.document_type')
+            = f.radio_button :import_type, 'document'
+            = t('activerecord.attributes.mapping.enum_values.import_type.document')
+        .radio
+          %label
+            = f.radio_button :import_type, 'line_item', checked: true
+            = t('activerecord.attributes.mapping.enum_values.import_type.line_item')
 
-      .clearfix.document_id
-        %label Existierendes Dokument
-        .input= f.hidden_field :document_id
-        %span.help-block= Mapping.human_attribute_name(:document_id)
+    .row
+      .col-md-6
+        %h4=Mapping.human_attribute_name(:document_type)
+        - Mapping::DOCUMENT_TYPES.each do |document_type|
+          .radio
+            %label
+              = f.radio_button :document_type, document_type, checked: document_type == 'invoice'
+              = t(document_type, scope: 'activerecord.attributes.mapping.enum_values.document_type')
+
+        .clearfix.document_id
+          %label Existierendes Dokument
+          .input= f.hidden_field :document_id
+          %span.help-block= Mapping.human_attribute_name(:document_id)
 
 
-  %h3=t('.field_mappings')
-  .clearfix
-    %h4= t('mappings.source_fields')
-    %span.info= t('.source_fields_info')
-    .input
-      %ul#source-fields
-        - @attachment.rows(1).first.each_with_index do |item, index|
-          %li.field{'data-name' => item, 'data-source' => index}= item
-  .clearfix
-    %p= t('mappings.dnd_info')
-  .clearfix
-    %h4= t('.line_item_mapping')
-    %span.info= t('.line_item_mapping_info')
-    .input
-      %ul.target-fields
-        - line_item_mapping_fields.each do |field_attributes|
-          %li.field
-            .target{field_attributes}= field_attributes['data-target']
-  .clearfix
-    %h4= t('.document_mapping')
-    .input
-      %ul.target-fields
-        - document_mapping_fields.each do |field_attributes|
-          %li.field
-            .target{field_attributes}= field_attributes['data-target']
+    %h3=t('.field_mappings')
+    .clearfix
+      %h4= t('mappings.source_fields')
+      %span.info= t('.source_fields_info')
+      .input
+        %ul#source-fields
+          - @attachment.rows(1).first.each_with_index do |item, index|
+            %li.field{'data-name' => item, 'data-source' => index}= item
+    .clearfix
+      %p= t('mappings.dnd_info')
+    .clearfix
+      %h4= t('.line_item_mapping')
+      %span.info= t('.line_item_mapping_info')
+      .input
+        %ul.target-fields
+          - line_item_mapping_fields.each do |field_attributes|
+            %li.field
+              .target{field_attributes}= field_attributes['data-target']
+    .clearfix
+      %h4= t('.document_mapping')
+      .input
+        %ul.target-fields
+          - document_mapping_fields.each do |field_attributes|
+            %li.field
+              .target{field_attributes}= field_attributes['data-target']
 
 #side
   .actions

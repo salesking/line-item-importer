@@ -2,8 +2,10 @@ jQuery ->
   $('#reuse-select-options').on 'change', (e) -> 
     if $(this).val() <= 1
       $('#reuse').hide();
+      $('#new_mapping_body').show();
     else
       $('#reuse').show();
+      $('#new_mapping_body').hide();
 
   $('.target-fields').on 'click', '.kill', (e) -> revertField(e, this)
 
