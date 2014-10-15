@@ -3,7 +3,7 @@
 .ruby-gemset
 .rvmrc
 db/*.sqlite3
-log/*.log
+log/*.*
 tmp/
 .sass-cache/
 vendor/gems
