@@ -10,9 +10,10 @@ describe ImportsController do
         get :index
       end
     end
-
+ 
     describe "GET #show" do
       it "triggers access_denied" do
+        DataRows::DocumentDataRow.any_instance.stub(:data_row)
         controller.should_receive(:access_denied)
         get :show, id: create(:import).id
       end

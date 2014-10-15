@@ -7,6 +7,10 @@ describe 'Factories' do
       it 'is valid' do
         factory = FactoryGirl.build(factory_name)
 
+        if factory_name == :mapping
+          factory.mapping_elements << build(:mapping_element, mapping: factory)
+        end
+        
         if factory.respond_to?(:valid?)
           expect(factory).to be_valid, lambda { factory.errors.full_messages.join(',') }
         end

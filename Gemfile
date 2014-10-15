@@ -23,6 +23,7 @@ group :test, :development do
   gem 'pry-rails'
   gem 'rspec-rails', '~> 2.6'
   gem 'localeapp'
+  gem 'byebug'
 end
 group :test do
   gem 'factory_girl_rails'
@@ -38,5 +39,4 @@ group :development do
   gem 'capistrano-ext'
   gem 'quiet_assets'
   gem 'binding_of_caller'
-  gem 'byebug'
 end

@@ -44,6 +44,7 @@ describe MappingsController do
       before(:each) do
         @authorized_mapping = create(:mapping, company_id: @company_id)
         @unauthorized_mapping = create(:mapping, company_id: 'another-company')
+        MappingElement.any_instance.stub(:source_as_string).and_return(:some_string)
       end
 
       describe "GET #index" do
@@ -116,7 +117,13 @@ describe MappingsController do
         end
 
         context "authorized" do
-          let(:mapping_params) {{ "mapping_elements_attributes"=>{"0"=>{"source"=>"2", "target"=>"email"}, "1"=>{"source"=>"1", "target"=>"organisation"} } }}
+          let(:mapping_params) {
+            {
+              "import_type" => "line_item",
+              "document_type" => "invoice",
+              "mapping_elements_attributes"=>{"0"=>{"source"=>"2", "target"=>"email", "model_to_import" => "line_item"}, "1"=>{"source"=>"1", "target"=>"organisation", "model_to_import" => "line_item"}}
+            }
+          }
 
           it "creates new mapping" do
             lambda {

@@ -28,6 +28,6 @@ describe Mapping do
 
   describe '#title' do
     subject { mapping.reload }
-    its(:title) { should eq '3 fields: number, gender, and birthday' }
+    its(:title) { should eq '3 Felder: number, gender, and birthday' }
   end
 end

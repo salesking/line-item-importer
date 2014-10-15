@@ -19,8 +19,23 @@ describe DataRows::DocumentDataRow do
     let(:import) { build(:import, attachment: attachment) }
 
     context 'for document' do
-      subject { data_row.send(:document_mapping_elements) }
-      it { should eq [document_mapping_element] }
+      it "should create the correct data rows" do
+        document_mapping_element2 = [FactoryGirl.create(:mapping_element)]
+        mapping2 = FactoryGirl.create(:mapping, mapping_elements: document_mapping_element2)
+        attachment2 = FactoryGirl.create(:attachment, mapping: mapping2)
+        import2 = FactoryGirl.build(:import, attachment: attachment2)
+
+        import2.attachment.mapping.should eq mapping2
+        
+        data_row2 = described_class.new(import: import2)
+        
+        dr_mapping_elements = data_row2.send(:document_mapping_elements).to_a
+        dr_mapping_elements.should eq document_mapping_element2
+      end
+      
+
+      # subject { data_row2.send(:document_mapping_elements).to_a }
+      # it { should eq [document_mapping_element2] }
     end
 
     context 'for line item' do
