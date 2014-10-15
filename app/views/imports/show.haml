@@ -5,7 +5,6 @@
     .title
       = Import.model_name.human(count: 1)
   .head3
-    %span.info= @import.title
 
 #side
   .side-list
@@ -31,4 +30,5 @@
             %td= row.log
             - if document_import && row.external_id.present?
               %td= link_to t('.open_in_salesking'), salesking_document_link(document_type, row.external_id), target: '_parent'
-
+  - else
+    %h2= @import.title

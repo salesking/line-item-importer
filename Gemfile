@@ -22,6 +22,7 @@ group :test, :development do
   gem 'mysql2'
   gem 'pry-rails'
   gem 'rspec-rails', '~> 2.6'
+  gem 'localeapp'
 end
 group :test do
   gem 'factory_girl_rails'
@@ -38,5 +39,4 @@ group :development do
   gem 'quiet_assets'
   gem 'binding_of_caller'
   gem 'byebug'
-  gem 'localeapp'
 end
