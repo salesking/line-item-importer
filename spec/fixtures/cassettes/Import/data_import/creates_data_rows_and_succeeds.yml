@@ -5,7 +5,12 @@ http_interactions:
     uri: http://demo.salesking.local:3000/api/invoices.json
     body:
       encoding: US-ASCII
-      string: ! '{"invoice":{"items":[{"line_item":{"name":"Personal Computers","price_single":"32.79","quantity":"1"}}],"line_items":null}}'
+      string: ! '{"invoice":
+        {"items":
+          [{"line_item":{"name":"Personal Computers","price_single":"32.79","quantity":"1"}}],
+          "line_items":null
+        }
+      }'
     headers:
       Content-Type:
       - application/json

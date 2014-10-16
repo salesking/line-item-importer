@@ -3,6 +3,10 @@ require 'spec_helper'
 describe ImportsController do
   render_views
 
+  before :each do
+    DataRows::DocumentDataRow.any_instance.stub(:create_document).and_return true
+  end
+
   context "for unauthenticated user" do
     describe "GET #index" do
       it "triggers access_denied" do
@@ -13,7 +17,6 @@ describe ImportsController do
  
     describe "GET #show" do
       it "triggers access_denied" do
-        DataRows::DocumentDataRow.any_instance.stub(:data_row)
         controller.should_receive(:access_denied)
         get :show, id: create(:import).id
       end
