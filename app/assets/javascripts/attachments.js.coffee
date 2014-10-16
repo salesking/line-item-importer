@@ -32,6 +32,7 @@ jQuery ->
       onComplete: (id, fileName, data) ->
         insertFields(data)
         showFileName()
+        $('#continue-button').show();
         $('#new_attachment').attr('action', '/attachments/' + data.id)
 
   insertFields = (data) ->
