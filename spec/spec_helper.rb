@@ -10,11 +10,11 @@ require 'rspec/rails'
 # in spec/support/ and its subdirectories.
 Dir[Rails.root.join("spec/support/**/*.rb")].each {|f| require f}
 
-# VCR.configure do |config|
-#   config.cassette_library_dir = 'spec/fixtures/cassettes'
-#   config.configure_rspec_metadata!
-#   config.hook_into :webmock
-# end
+VCR.configure do |config|
+  config.cassette_library_dir = 'spec/fixtures/cassettes'
+  config.configure_rspec_metadata!
+  config.hook_into :webmock
+end
 
 # WebMock.allow_net_connect!
 
@@ -63,6 +63,12 @@ def file_upload(filename)
   type = 'text/plain'
   file_path = Rails.root.join('spec/fixtures/', filename)
   Rack::Test::UploadedFile.new(file_path, type)
+end
+
+def data_rows_succeed_response
+  content_type :json
+  status response_code
+  File.open(File.dirname(__FILE__) + '/fixtures/cassettes/Import/data_import' + 'creates_data_rows_and_succeeds', 'yml').read  
 end
 
 def response_to_json

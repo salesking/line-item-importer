@@ -1,12 +1,13 @@
 require 'spec_helper'
 
 describe Import do
+
   it { should have_many(:data_rows).dependent(:destroy) }
   it { should belong_to(:attachment) }
 
   it { should validate_presence_of(:attachment) }
 
-  describe 'data import', :vcr do
+  describe 'data import', vcr: true do
     let(:mapping)          { create(:mapping) }
     let!(:mapping_element1) { create(:line_item_mapping_element, mapping: mapping, source: 3, target: 'name') }
     let!(:mapping_element2) { create(:price_line_item_mapping_element, mapping: mapping, source: 9) }
