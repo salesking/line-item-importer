@@ -20,7 +20,7 @@
       = form_for [@attachment, @import] do |f|
         .actions
           = f.submit t('imports.create'), class: "btn btn-danger"
-          = link_to t('link.back_to_mapping'), new_attachment_mapping_path, class: "btn secondary"
+          = link_to t('link.back'), new_attachment_mapping_path, class: "btn secondary"
 
 #content
   %h2=t('attachments.new.preview')

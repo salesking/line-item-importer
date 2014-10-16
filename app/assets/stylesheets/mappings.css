@@ -39,6 +39,10 @@ input.minimi{ width: 30px; }
 	text-overflow: ellipsis;
 }
 
+#form_bottom {
+	margin-top: 10px;
+}
+
 /* SCHMUUGLE ADDITIONS */
 
 /* side */

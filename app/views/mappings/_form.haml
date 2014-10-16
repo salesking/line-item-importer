@@ -64,8 +64,10 @@
           - document_mapping_fields.each do |field_attributes|
             %li.field
               .target{field_attributes}= field_attributes['data-target']
+    .clearfix
+      %hr.form_bottom
+        = f.submit t('.proceed_to_import'), class: 'btn btn-primary btn-large'
 
 #side
   .actions
-    = f.submit t('.proceed_to_import'), class: 'btn btn-primary btn-large'
-    = link_to t('link.back_to_list'), attachments_path, class: 'btn btn-secondary'
+    = link_to t(:'link.back'), new_attachment_path, class: 'btn btn-secondary'

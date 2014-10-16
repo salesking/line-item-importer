@@ -13,8 +13,6 @@
         = t(:'link.new_import')
     .side-list-item
       = link_to(t('.open_document'), salesking_document_link(document_type, @import.data_rows.first.external_id), target: '_parent', class: "btn btn-primary btn-large") if @import.success? && !document_import
-    .side-list-item
-      = link_to t('link.back_to_list'), imports_path, class: "btn btn-secondary"
 
 #content
   - if @import.data_rows.failed.present?
