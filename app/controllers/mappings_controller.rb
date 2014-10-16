@@ -1,5 +1,5 @@
 class MappingsController < ApplicationController
-  load_and_authorize_resource :attachment, only: [:new, :create]
+  load_and_authorize_resource :attachment, only: [:new, :create, :destroy]
   load_and_authorize_resource
   skip_load_resource only: [:create]
 

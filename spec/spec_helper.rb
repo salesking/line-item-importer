@@ -18,13 +18,17 @@ Dir[Rails.root.join("spec/support/**/*.rb")].each {|f| require f}
 
 # WebMock.allow_net_connect!
 
+# Checks for pending migrations before tests are run.
+# ActiveRecord::Migration.check_pending!
+ActiveRecord::Migration.maintain_test_schema!
+
 RSpec.configure do |config|
   config.mock_with :rspec
   config.include FactoryGirl::Syntax::Methods
   config.fixture_path = "#{::Rails.root}/spec/fixtures"
 
   config.use_transactional_fixtures = true
-
+  config.infer_spec_type_from_file_location!
   config.treat_symbols_as_metadata_keys_with_true_values = true
 
   config.before(:all) { Sk.init('http://demo.salesking.local:3000', 'fb239fd0f4a9f2c54ecb38d1f8ea443d') }
