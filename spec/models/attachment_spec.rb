@@ -9,7 +9,7 @@ describe Attachment do
   end
 
   describe 'validations' do
-    context :column_separator do
+    context 'column_separator' do
       let(:attachment) { build(:attachment, column_separator: separator) }
       before           { attachment.valid? }
       subject          { attachment }
@@ -41,7 +41,7 @@ describe Attachment do
   it 'should remove file on destroy' do
     file_path = attachment.full_filename
     attachment.destroy
-    File.exist?(file_path).should be_false
+    File.exist?(file_path).should eq false
   end
 
   it 'should silently ignore missing files on destroy' do
