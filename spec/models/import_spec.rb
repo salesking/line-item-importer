@@ -1,6 +1,11 @@
 require 'spec_helper'
 
 describe Import do
+  before :each do
+    DataRows::DocumentDataRow.any_instance.stub(:create_document).and_return true
+    # stub_request(:post, "http://demo.salesking.local:3000/api/invoices.json").and_return(data_rows_succeed_response)
+  end
+
   it { should have_many(:data_rows).dependent(:destroy) }
   it { should belong_to(:attachment) }
 

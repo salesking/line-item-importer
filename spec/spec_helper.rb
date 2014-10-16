@@ -61,6 +61,12 @@ def file_upload(filename)
   Rack::Test::UploadedFile.new(file_path, type)
 end
 
+def data_rows_succeed_response
+  content_type :json
+  status response_code
+  File.open(File.dirname(__FILE__) + '/fixtures/cassettes/Import/data_import' + 'creates_data_rows_and_succeeds', 'yml').read  
+end
+
 def response_to_json
   ActiveSupport::JSON.decode(response.body)
 end
