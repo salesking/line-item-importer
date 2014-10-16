@@ -29,7 +29,7 @@ group :test do
   gem 'factory_girl_rails'
   gem 'shoulda-matchers'
   gem 'simplecov'
-  # gem 'vcr'
+  gem 'vcr'
   gem 'webmock'
 end
 group :development do

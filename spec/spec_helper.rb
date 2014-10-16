@@ -10,11 +10,11 @@ require 'rspec/rails'
 # in spec/support/ and its subdirectories.
 Dir[Rails.root.join("spec/support/**/*.rb")].each {|f| require f}
 
-# VCR.configure do |config|
-#   config.cassette_library_dir = 'spec/fixtures/cassettes'
-#   config.configure_rspec_metadata!
-#   config.hook_into :webmock
-# end
+VCR.configure do |config|
+  config.cassette_library_dir = 'spec/fixtures/cassettes'
+  config.configure_rspec_metadata!
+  config.hook_into :webmock
+end
 
 # WebMock.allow_net_connect!
 
