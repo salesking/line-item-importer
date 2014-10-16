@@ -58,3 +58,9 @@ jQuery ->
     file_size = $('qq-upload-size').val();
 
     $('#csv-table h2').append(file_name);
+
+  $(document).ready ->
+    button_text = $('#button-locale').text();
+    input = $('.qq-upload-button').find("input");
+    $('.qq-upload-button').text(button_text);
+    $('.qq-upload-button').append(input);
