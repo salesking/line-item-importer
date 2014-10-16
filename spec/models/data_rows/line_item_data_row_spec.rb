@@ -10,7 +10,7 @@ describe DataRows::LineItemDataRow do
   let(:pfudor) { %w(pink fluffy unicorns dancing on rainbows) }
 
   describe '#create_or_update_document' do
-    pending
+    skip
   end
 
   describe '#create_line_item' do
@@ -21,8 +21,8 @@ describe DataRows::LineItemDataRow do
 
     it 'creates a line item' do
       line_item = data_row.send(:create_line_item, pfudor)
-      line_item.name.should eq 'fluffy'
-      line_item.description.should eq 'unicorns dancing'
+      expect(line_item.name).to eq 'fluffy'
+      expect(line_item.description).to eq 'unicorns dancing'
     end
   end
 

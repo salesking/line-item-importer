@@ -6,28 +6,28 @@ describe MappingsController do
   context "for unauthenticated user" do
     describe "GET #index" do
       it "triggers access_denied" do
-        controller.should_receive(:access_denied)
+        expect(controller).to receive(:access_denied)
         get :index
       end
     end
 
     describe "GET #show" do
       it "triggers access_denied" do
-        controller.should_receive(:access_denied)
+        expect(controller).to receive(:access_denied)
         get :show, id: create(:mapping).id
       end
     end
 
     describe "GET #new" do
       it "triggers access_denied" do
-        controller.should_receive(:access_denied)
+        expect(controller).to receive(:access_denied)
         get :new, attachment_id: create(:attachment).id
       end
     end
 
     describe "POST #create" do
       it "triggers access_denied" do
-        controller.should_receive(:access_denied)
+        expect(controller).to receive(:access_denied)
         post :create, attachment_id: create(:attachment).id, mapping: {}
       end
     end
@@ -50,19 +50,19 @@ describe MappingsController do
       describe "GET #index" do
         it "renders index template" do
           get :index
-          response.should render_template(:index)
+          expect(response).to render_template(:index)
         end
 
         it "reveals authorized mappings" do
           get :index
-          assigns[:mappings].should == [@authorized_mapping]
+          expect(assigns[:mappings]).to eq [@authorized_mapping]
         end
       end
 
       describe "GET #show" do
         context "unauthorized" do
           it "triggers access_denied" do
-            controller.should_receive(:access_denied)
+            expect(controller).to receive(:access_denied)
             get :show, id: @unauthorized_mapping.id
           end
         end
@@ -70,12 +70,12 @@ describe MappingsController do
         context "authorized" do
           it "renders show template" do
             get :show, id: @authorized_mapping.id
-            response.should render_template(:show)
+            expect(response).to render_template(:show)
           end
 
           it "reveals requested mapping" do
             get :show, id: @authorized_mapping.id
-            assigns[:mapping].should == @authorized_mapping
+            expect(assigns[:mapping]).to eq @authorized_mapping
           end
         end
       end
@@ -90,7 +90,7 @@ describe MappingsController do
       describe "GET #new" do
         context "unauthorized" do
           it "triggers access_denied" do
-            controller.should_receive(:access_denied)
+            expect(controller).to receive(:access_denied)
             get :new, attachment_id: @unauthorized_attachment.id
           end
         end
@@ -98,12 +98,12 @@ describe MappingsController do
         context "authorized" do
           it "renders new template" do
             get :new, attachment_id: @authorized_attachment.id
-            response.should render_template(:new)
+            expect(response).to render_template(:new)
           end
 
           it "reveals new mapping" do
             get :new, attachment_id: @authorized_attachment.id
-            assigns[:mapping].should_not be_nil
+            expect(assigns[:mapping]).not_to be_nil
           end
         end
       end
@@ -111,7 +111,7 @@ describe MappingsController do
       describe "POST #create" do
         context "unauthorized" do
           it "triggers access_denied" do
-            controller.should_receive(:access_denied)
+            expect(controller).to receive(:access_denied)
             post :create, attachment_id: @unauthorized_attachment.id, mapping: {}
           end
         end
@@ -126,35 +126,35 @@ describe MappingsController do
           }
 
           it "creates new mapping" do
-            lambda {
+            expect(lambda {
               post :create, attachment_id: @authorized_attachment.id, mapping: mapping_params
-            }.should change(Mapping, :count).by(1)
+            }).to change(Mapping, :count).by(1)
           end
 
           it "reveals new mapping" do
             post :create, attachment_id: @authorized_attachment.id, mapping: mapping_params
-            assigns[:mapping].should_not be_nil
+            expect(assigns[:mapping]).not_to be_nil
           end
 
           it "sets mapping user_id" do
             post :create, attachment_id: @authorized_attachment.id, mapping: mapping_params
-            assigns[:mapping].user_id.should == @user_id
+            expect(assigns[:mapping].user_id).to eq @user_id
           end
 
           it "sets mapping company_id" do
             post :create, attachment_id: @authorized_attachment.id, mapping: mapping_params
-            assigns[:mapping].company_id.should == @company_id
+            expect(assigns[:mapping].company_id).to eq @company_id
           end
 
           it "assigns mapping to the attachment" do
             post :create, attachment_id: @authorized_attachment.id, mapping: mapping_params
             @authorized_attachment.reload
-            @authorized_attachment.mapping.should == assigns[:mapping]
+            expect(@authorized_attachment.mapping).to eq assigns[:mapping]
           end
 
           it "redirects to new attachment import" do
             post :create, attachment_id: @authorized_attachment.id, mapping: mapping_params
-            response.should redirect_to(new_attachment_import_url(@authorized_attachment))
+            expect(response).to redirect_to(new_attachment_import_url(@authorized_attachment))
           end
         end
       end

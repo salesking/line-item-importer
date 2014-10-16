@@ -16,19 +16,19 @@ describe Import do
     let(:import)           { build(:import, attachment: attachment) }
 
     it 'creates data_rows and succeeds' do
-      lambda { import.save }.should change(DataRow, :count).by(1)
-      import.should be_success
+      expect(lambda { import.save }).to change(DataRow, :count).by(1)
+      expect(import).to be_success
     end
 
     context 'when mapping element does not match price_single' do
       let!(:mapping_element2) { create(:line_item_mapping_element, mapping: mapping, source: 9, target: 'external_ref') }
 
       it 'creates failed data_rows' do
-        lambda { import.save }.should change(DataRow, :count).by(1)
-        import.should_not be_success
+        expect(lambda { import.save }).to change(DataRow, :count).by(1)
+        expect(import).not_to be_success
         data_row = import.data_rows.first
-        data_row.external_id.should be_nil
-        data_row.log.should eq ['items.price_single', 'is not a number'].inspect
+        expect(data_row.external_id).to be_nil
+        expect(data_row.log).to eq ['items.price_single', 'is not a number'].inspect
       end
     end
   end

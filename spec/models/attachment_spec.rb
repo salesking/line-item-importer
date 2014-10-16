@@ -10,23 +10,25 @@ describe Attachment do
 
   describe 'validations' do
     context 'column_separator' do
-      let(:attachment) { build(:attachment, column_separator: separator) }
-      before           { attachment.valid? }
-      subject          { attachment }
-      context 'when present' do
-        let(:separator) { ',' }
-        its(:errors) { should_not include :column_separator }
+      let(:attachment) { build(:attachment) }
+
+      it 'is valid present' do
+        attachment.column_separator = ','
+        attachment.valid?
+        expect(attachment.errors).to_not include(:column_separator)
       end
 
-      context 'when blank' do
-        let(:separator) { '' }
-        its(:errors) { should include :column_separator }
+      it 'is invalid when blank' do
+        attachment.column_separator = nil
+        attachment.valid?
+        expect(attachment.errors).to include(:column_separator)
       end
 
-      # "\t" is blank, yet tabulator is often used in CSV files
-      context 'when blank, but \t' do
-        let(:separator) { "\\t" }
-        its(:errors) { should_not include :column_separator }
+      # "\t" is blank
+      it 'is valid when blank, but \t' do
+        attachment.column_separator = "\\t"
+        attachment.valid?
+        expect(attachment.errors).to_not include(:column_separator)
       end
     end
   end
@@ -34,29 +36,29 @@ describe Attachment do
   let(:attachment) { create(:attachment) }
 
   it 'should set filename and disk_filename' do
-    attachment.filename.should == 'test1.csv'
-    attachment.disk_filename.should_not be_empty
+    expect(attachment.filename).to eq 'test1.csv'
+    expect(attachment.disk_filename).not_to be_empty
   end
 
   it 'should remove file on destroy' do
     file_path = attachment.full_filename
     attachment.destroy
-    File.exist?(file_path).should eq false
+    expect(File.exist?(file_path)).to eq false
   end
 
   it 'should silently ignore missing files on destroy' do
     file_path = attachment.full_filename
     File.delete(file_path)
-    lambda {attachment.destroy}.should_not raise_error #(Errno::ENOENT)
+    expect(lambda {attachment.destroy}).not_to raise_error #(Errno::ENOENT)
   end
 
   it 'parses csv data' do
-    attachment.rows.size.should == 2
-    attachment.rows.first.size.should be > 1
+    expect(attachment.rows.size).to eq 2
+    expect(attachment.rows.first.size).to be > 1
   end
 
   it 'reveals specified number of rows' do
-    attachment.rows(1).size.should == 1
+    expect(attachment.rows(1).size).to eq 1
   end
 
 end

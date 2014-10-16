@@ -25,12 +25,12 @@ describe DataRows::DocumentDataRow do
         attachment2 = FactoryGirl.create(:attachment, mapping: mapping2)
         import2 = FactoryGirl.build(:import, attachment: attachment2)
 
-        import2.attachment.mapping.should eq mapping2
+        expect(import2.attachment.mapping).to eq mapping2
         
         data_row2 = described_class.new(import: import2)
         
         dr_mapping_elements = data_row2.send(:document_mapping_elements).to_a
-        dr_mapping_elements.should eq document_mapping_element2
+        expect(dr_mapping_elements).to eq document_mapping_element2
       end
       
 

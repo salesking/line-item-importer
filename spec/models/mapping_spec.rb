@@ -18,7 +18,7 @@ describe Mapping do
     mapping.save!
   end
 
-  context :scopes do
+  context 'scopes' do
     describe '.by_company' do
       subject { Mapping.by_company('a company') }
       it { should include(mapping) }
@@ -27,7 +27,11 @@ describe Mapping do
   end
 
   describe '#title' do
-    subject { mapping.reload }
-    its(:title) { should eq '3 Felder: number, gender, and birthday' }
+    # subject { mapping.reload }
+    # its(:title) { should eq '3 Felder: number, gender, and birthday' }
+    it "should have the correct title" do
+      mapping.reload
+      expect(mapping.title).to eq '3 Felder: number, gender, and birthday'
+    end
   end
 end

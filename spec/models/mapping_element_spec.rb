@@ -6,8 +6,8 @@ describe MappingElement do
 
     it 'validates convert type' do
       obj = MappingElement.new :conversion_type => 'what', :source=>'0'
-      obj.should_not be_valid
-      obj.errors[:conversion_type].should_not be_empty
+      expect(obj).not_to be_valid
+      expect(obj.errors[:conversion_type]).not_to be_empty
     end
   end
 
@@ -15,34 +15,34 @@ describe MappingElement do
 
     it 'returns field value' do
       obj = MappingElement.new :source=>'0'
-      obj.convert(['Pipi']).should == 'Pipi'
+      expect(obj.convert(['Pipi'])).to eq 'Pipi'
     end
 
     it 'converts enum' do
       obj = MappingElement.new conversion_options: JSON.parse('{"male":"Herr","female":"Frau"}'), conversion_type: 'enum', source: '0'
-      obj.convert(['Frau']).should == 'female'
+      expect(obj.convert(['Frau'])).to eq 'female'
     end
 
     it 'converts date' do
       obj = MappingElement.new conversion_options: JSON.parse('{"date":"%d.%m.%Y"}'), conversion_type: 'date', source: '0'
-      obj.convert(['1.6.1976']).should == "1976.06.01"
+      expect(obj.convert(['1.6.1976'])).to eq "1976.06.01"
     end
 
     it 'converts date without time' do
       obj = MappingElement.new conversion_options: JSON.parse('{"date":"%d.%m.%Y"}'), conversion_type: 'date', source: '0'
-      obj.convert(['1.6.1976 00:00:00']).should == "1976.06.01"
+      expect(obj.convert(['1.6.1976 00:00:00'])).to eq "1976.06.01"
     end
 
     it 'converts date and rescue with incoming string' do
       source = ['1/6/1976 00:00:00']
       obj = MappingElement.new conversion_options: JSON.parse('{"date":"%d.%m.%Y"}'), conversion_type: 'date', source: '0'
-      obj.convert(source).should == source[0]
+      expect(obj.convert(source)).to eq source[0]
     end
 
     it 'converts joined fields' do
       source = %w(tag1 tag2 tag3 other)
       obj = MappingElement.new conversion_type: 'join', source: '0,1,2'
-      obj.convert(source).should == source[0..2].join(' ')
+      expect(obj.convert(source)).to eq source[0..2].join(' ')
     end
   end
 

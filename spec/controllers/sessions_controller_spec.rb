@@ -10,7 +10,7 @@ describe SessionsController do
       param_hash = {'sub_domain' =>'abc', 'algorithm' => 'HMAC-SHA256'}
       param = SK::SDK::SignedRequest.signed_param( ActiveSupport::JSON.encode(param_hash), Sk::App.secret)
       post :create, :signed_request => param
-      response.body.should include"<script> top.location.href='#{sk_url('abc')}/oauth/authorize?"
+      expect(response.body).to include"<script> top.location.href='#{sk_url('abc')}/oauth/authorize?"
     end
 
     it "should set session var with user_id" do
@@ -27,8 +27,8 @@ describe SessionsController do
       param = SK::SDK::SignedRequest.signed_param( ActiveSupport::JSON.encode(param_hash), Sk::App.secret)
 
       post :create, :signed_request => param
-      response.should redirect_to attachments_url
-      @request.session['user_id'].should == param_hash['user_id']
+      expect(response).to redirect_to attachments_url
+      expect(@request.session['user_id']).to eq param_hash['user_id']
     end
   end
 
@@ -37,9 +37,9 @@ describe SessionsController do
 
     it "should redirect to app canvas url" do
       @request.session['sub_domain'] = 'abc'
-      Sk::App.should_receive(:get_token).with('some-token-code').and_return('an access token')
+      expect(Sk::App).to receive(:get_token).with('some-token-code').and_return('an access token')
       get :new, :code=>'some-token-code'
-      response.body.should =="<script> top.location.href='#{sk_url('abc')}/app/#{canvas_slug}'</script>"
+      expect(response.body).to eq "<script> top.location.href='#{sk_url('abc')}/app/#{canvas_slug}'</script>"
     end
 
   end
