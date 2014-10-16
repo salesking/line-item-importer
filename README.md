@@ -1,14 +1,17 @@
 # SalesKing Line Item Importer
 
-A SalesKing app to import csv files. As a starting point you can import
-contacts given as csv f.ex exported from Outlook.
+A SalesKing app to import csv files to accomplish several goals. for example you might want to import tracked time from a third-party tracking tool or import orders from you eCommerce and so on.
+
+You can choose from different import-scenarios:
+* Create one draft document per row - you can choose the document type e.g. invoice, estimate, order within the App-UI
+* Create one document and import all rows as line-items
+* Add all rows as line-items to a existing draft-document - you can search and choose existing draft-documents within the App-UI
 
 ## Developer Info
 
-The app is build with Rails 4 and Ruby 2+ and is working with
-MySQL or PostgreSQL.
-It uses oAuth2 and has a canvas integration, so a user can use
-it inside SalesKing.
+The app is build with Rails 4 and Ruby 2+ and is working with MySQL or PostgreSQL.
+It uses oAuth2 and has a canvas integration, so a user can use it without leaving 
+his SalesKing-UI.
 
 ### Development Dependencies
 
@@ -85,4 +88,4 @@ Test coverage report is created by simpleCov and available after running the
 specs
 
 
-Copyright (c) 2011 Georg Leciejewski, released under the MIT license
+Copyright (c) 2014 Georg Leciejewski, released under the MIT license

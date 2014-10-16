@@ -1,5 +1,5 @@
 #content.form
-  .row 
+  .row
     .col-md-6.fit-to-top
       %span.big-letters= t('mappings.reuse')
   .row.mapping-border
@@ -9,7 +9,7 @@
         = select_tag 'mapping_id', options_for_select(mapping_options), :include_blank => true, id: 'reuse-select-options'
         = button_tag t('.reuse_this_mapping_button'), class: 'btn btn-primary btn-large', id: 'reuse', style: 'display:none'
   #new_mapping_body
-    .row 
+    .row
       .col-md-6.fit-to-top
         %span.big-letters= t('mappings.new_mapping')
     .row
