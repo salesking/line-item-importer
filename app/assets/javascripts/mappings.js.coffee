@@ -127,6 +127,13 @@ jQuery ->
     escapeMarkup: (m) ->
       m
 
+  $('#mapping_document_id').on "select2-selecting", (e) ->
+    $('#document_attributes').hide() 
+
+  $('#clear_document_choser').on 'click', (e) ->
+    $('#mapping_document_id').select2('data', {id: null, text: null})
+    $('#document_attributes').show()
+
 removeSelectValue = (el) ->
   $(el).val('')
   $(el).select2('val', '')

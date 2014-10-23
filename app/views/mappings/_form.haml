@@ -36,6 +36,8 @@
         .clearfix.document_id
           %label Existierendes Dokument
           .input= f.hidden_field :document_id
+          =# link_to(icon('trash-o'), data: {confirm: t('attachments.delete_confirm'), method: :delete})
+          = link_to icon('trash-o'), '#', id: "clear_document_choser"
           %span.help-block= Mapping.human_attribute_name(:document_id)
 
 
@@ -57,7 +59,7 @@
           - line_item_mapping_fields.each do |field_attributes|
             %li.field
               .target{field_attributes}= field_attributes['data-target']
-    .clearfix
+    .clearfix#document_attributes
       %h4= t('.document_mapping')
       .input
         %ul.target-fields
