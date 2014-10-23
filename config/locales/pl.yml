@@ -6,7 +6,9 @@ pl:
         column_separator: Separator kolumn
         encoding: Kodowanie znaków
         quote_char: Znak cudzysłowia
-        quote_character: Znak cudzysłowia
+        disk_filename: 
+        filename: 
+        quote_character: 
       data_row:
         external_id: 
         log: Rejestr
@@ -31,6 +33,7 @@ pl:
             line_item: Chcę umieścić wszystkie wiersze jako pozycję w jednym dokumencie (istniejącym lub nowym)
         import_type: 'Na początek wybierz w jaki sposób chcesz zaimportować informacje:'
         mapping_elements: 
+        created_at: 
       mapping_element:
         conv_opts: Opcje konwersji
         conv_type: Typ konwersji
@@ -71,6 +74,7 @@ pl:
       page_title: 
       preview: Podgląd pliku CSV
       preview_info: Poniższa tabela zawiera jedynie przegląd przesłanego pliku.
+      upload_button: 
     proceed_to_mapping: 
     upload: 
   data_rows:
@@ -91,6 +95,9 @@ pl:
     title_failed: 
     title_success: 
     total: 
+    show:
+      open_document: 
+    destroyed_successfully: 
   layouts:
     application:
       attachments: 
@@ -107,6 +114,7 @@ pl:
     revert: Cofnij zmiany
     show: Pokaż
     step: 'Krok %{step} z %{total}:'
+    back: 
   mappings:
     delete_confirm: 
     destroy_failed: 

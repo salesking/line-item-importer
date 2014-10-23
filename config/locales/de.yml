@@ -3,9 +3,11 @@ de:
     attributes:
       attachment:
         col_sep: Feldtrenner
-        column_separator: Column separator
+        column_separator: Feldtrenner
         encoding: Encoding
         quote_char: Texttrenner
+        disk_filename: Disk filename
+        filename: Dateiname
         quote_character: Quote character
       data_row:
         external_id: Link in SalesKing
@@ -31,6 +33,7 @@ de:
             line_item: Ich möchte alle Zeilen in ein Dokument importieren (bestehend oder neu)
         import_type: Wählen Sie eine Importvariante
         mapping_elements: Feldzuweisung
+        created_at: Created at
       mapping_element:
         conv_opts: Konvertierungsoptionen
         conv_type: Konvertierungstyp
@@ -67,6 +70,7 @@ de:
       page_title: Datei hochladen
       preview: Vorschau
       preview_info: Dies ist eine Vorschau - es werden die ersten drei Zeilen aus dem csv angezeigt.
+      upload_button: Datei hochladen
     proceed_to_mapping: Weiter zur Feldzuweisung
     upload: Hochladen
   data_rows:
@@ -101,6 +105,9 @@ de:
     total:
       one: Insgesamt %{count} Zeile
       other: Insgesamt %{count} Zeilen
+    show:
+      open_document: Dokument öffnen
+    destroyed_successfully: Erfolgreich gelöscht
   layouts:
     application:
       attachments: Datensätze
@@ -117,6 +124,7 @@ de:
     revert: Rückgängig
     show: Zeige
     step: 'Schritt %{step} von %{total}:'
+    back: Zurück
   mappings:
     delete_confirm: Das Löschen einer Feldzuweisung löscht nicht den Import. Mit Löschung fortfahren?
     destroy_failed: Feldzuweisung konnte nicht gelöscht werden.

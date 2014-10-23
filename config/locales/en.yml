@@ -6,7 +6,9 @@ en:
         column_separator: Column separator
         encoding: Encoding
         quote_char: Quote character
-        quote_character: Quote character
+        disk_filename: Disk filename
+        filename: Filname
+        quote_character: 
       data_row:
         external_id: Link in SalesKing
         log: Log
@@ -31,6 +33,7 @@ en:
             line_item: I want to import all rows into one document (existing or new)
         import_type: 'First of all, choose how do you want to import your data:'
         mapping_elements: Mapping
+        created_at: 
       mapping_element:
         conv_opts: Convert options
         conv_type: Convert type
@@ -67,6 +70,7 @@ en:
       page_title: Upload file
       preview: Preview
       preview_info: This is just a preview - it shows only first three rows of the csv.
+      upload_button: Upload file
     proceed_to_mapping: Proceed to mapping
     upload: Upload
   data_rows:
@@ -101,6 +105,9 @@ en:
     total:
       one: Total %{count} row
       other: Total %{count} rows
+    show:
+      open_document: Open document
+    destroyed_successfully: Successfully destroyed
   layouts:
     application:
       attachments: Datasets
@@ -117,6 +124,7 @@ en:
     revert: Revert
     show: Show
     step: 'Step %{step} of %{total}:'
+    back: Back
   mappings:
     delete_confirm: Removing a mapping does not remove an import. Do you wish to continue?
     destroy_failed: Mapping could not be removed.
