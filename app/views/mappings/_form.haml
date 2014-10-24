@@ -3,7 +3,7 @@
     .col-md-6.fit-to-top
       %span.big-letters= t('mappings.reuse')
   .row.mapping-border
-    .col-md-8.existing-mapping
+    .col-md-10.existing-mapping
       .clearfix
         %h4= t('mappings.select_reuse')
         = select_tag 'mapping_id', options_for_select(mapping_options), :include_blank => true, id: 'reuse-select-options'

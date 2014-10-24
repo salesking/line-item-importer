@@ -136,6 +136,7 @@ jQuery ->
 
 
   $('#radio_document').on 'click', (e) ->
+    $('#radio_document')
     $('#document_attributes').show()
 
   $('#radio_line_item').on 'click', (e) ->

@@ -65,3 +65,13 @@
 	position: absolute;
 	margin-top: 5px !important;
 }
+
+/* max width for select options */
+#reuse-select-options {
+	width: 350px;
+}
+
+#reuse-select-options option {
+	overflow: auto;
+	text-overflow: ellipsis;
+}
