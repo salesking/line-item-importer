@@ -21,8 +21,7 @@ gem 'chronic'
 group :test, :development do
   gem 'mysql2'
   gem 'pry-rails'
-  gem 'rspec-rails' #, '~> 2.6'
-  gem 'localeapp'
+  gem 'rspec-rails'
   gem 'byebug'
 end
 group :test do
