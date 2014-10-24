@@ -42,3 +42,7 @@ input.minimi{ width: 30px; }
 #form_bottom {
 	margin-top: 10px;
 }
+
+#document_attributes {
+	display: none;
+}

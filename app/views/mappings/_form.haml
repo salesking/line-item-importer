@@ -17,11 +17,11 @@
         %h4=Mapping.human_attribute_name(:import_type)
         .radio
           %label
-            = f.radio_button :import_type, 'document'
+            = f.radio_button :import_type, 'document', id: "radio_document"
             = t('activerecord.attributes.mapping.enum_values.import_type.document')
         .radio
           %label
-            = f.radio_button :import_type, 'line_item', checked: true
+            = f.radio_button :import_type, 'line_item', checked: true, id: "radio_line_item"
             = t('activerecord.attributes.mapping.enum_values.import_type.line_item')
 
     .row
@@ -36,7 +36,6 @@
         .clearfix.document_id
           %label Existierendes Dokument
           .input= f.hidden_field :document_id
-          =# link_to(icon('trash-o'), data: {confirm: t('attachments.delete_confirm'), method: :delete})
           = link_to icon('trash-o'), '#', id: "clear_document_choser"
           %span.help-block= Mapping.human_attribute_name(:document_id)
 

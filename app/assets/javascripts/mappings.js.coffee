@@ -134,6 +134,13 @@ jQuery ->
     $('#mapping_document_id').select2('data', {id: null, text: null})
     $('#document_attributes').show()
 
+
+  $('#radio_document').on 'click', (e) ->
+    $('#document_attributes').show()
+
+  $('#radio_line_item').on 'click', (e) ->
+    $('#document_attributes').hide()
+
 removeSelectValue = (el) ->
   $(el).val('')
   $(el).select2('val', '')
