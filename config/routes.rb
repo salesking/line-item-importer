@@ -10,6 +10,7 @@ Rails.application.routes.draw do
   match 'login_success' => 'sessions#new', via: :get, as: :login_success
 
   match '/documents' => 'documents#autocomplete', via: :get, as: :autocomplete
+  match 'attachments/:id/mappings/check_document' => 'mappings#check_document', via: :get, as: :check_document
 
   root to: 'frontend#index'
 end

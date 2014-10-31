@@ -15,12 +15,12 @@
             %li= link_to t('.mappings'),    mappings_path,    class: cp(mappings_path)
             %li= link_to t('.imports'),     imports_path,     class: cp(imports_path)
 
-    %br
-    %br
-
     - flash.each do |key, value|
       %div{class: flash_class(key)}
         = value
+    %br
+    %br
+
 
     = yield
 

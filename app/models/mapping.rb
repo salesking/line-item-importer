@@ -16,6 +16,8 @@ class Mapping < ActiveRecord::Base
 
   validates :mapping_elements, presence: true
 
+  # before_validation :check_if_document_is_present_and_is_draft
+
   default_scope ->{order('mappings.id desc')} # should this be here?
 
   scope :by_company, lambda {|company_id| where(company_id: company_id)}
@@ -27,6 +29,17 @@ class Mapping < ActiveRecord::Base
 
   def title
     I18n.t('mappings.title', count: mapping_elements.count, fields: mapping_elements.collect(&:target).to_sentence)
+  end
+
+  private
+  def check_if_document_is_present_and_is_draft
+    if self.document_id
+      document = Sk.const_get(self.document_type.classify).find(self.document_id)
+      byebug
+      if document.status != 'draft'
+        errors.add(:document_id, "Dokument ist kein Draft mehr")
+      end
+    end
   end
 
 end

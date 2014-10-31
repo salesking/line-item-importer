@@ -6,6 +6,8 @@ jQuery ->
     else
       $('#reuse').show();
       $('#new_mapping_body').hide();
+      mapping = $( "select option:selected" ).val()
+      checkDocument(mapping)
 
   $('.target-fields').on 'click', '.kill', (e) -> revertField(e, this)
 
@@ -23,6 +25,25 @@ jQuery ->
     addEnumFields(el) if $('.target', el).attr('data-enum') != undefined
     addDateFields(el) if $('.target', el).attr('data-format') == 'date'
     addPriceField(el) if ['price_single', 'cost'].indexOf($('.target', el).attr('data-name')) != -1
+
+  checkDocument = (mapping_id) ->
+    $.ajax '../mappings/check_document',
+      dataType: 'json',
+      data: {mapping_id: mapping_id}      
+      success: (result, textStatus, jqXHR) ->
+        switch result.status
+          when "draft" then $('.existing-mapping').append "<p>" + result.status + "</p>"
+          when "" then showDocumentInfo(result)
+          else
+            showDocumentInfo(result)
+
+  provideDocumentSelector = (result) ->
+
+  showDocumentInfo = (result) ->
+    $('.existing-mapping').append "<div id='document_infos'> " +
+      "<h4> <a href='" + result.link + "'>Assigned document</a> can't be used again because its status is set to " + result.status + "</h4>"
+      + "</div>"
+    $(".document_id").detach().appendTo('.existing-mapping')
 
   addFields = (el, ui) ->
     $('.target', el).after "<div class='source' " +
