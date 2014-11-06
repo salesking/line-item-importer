@@ -36,8 +36,8 @@ class Mapping < ActiveRecord::Base
     if self.document_id
       document = Sk.const_get(self.document_type.classify).find(self.document_id)
       if document.status != 'draft'
-        errors[:base] << "Dokument ist kein Draft mehr."
-        # errors[:base] << t('activerecord.errors.models.mapping.document_type_invalid')
+        # errors[:base] << "Dokument ist kein Draft mehr."
+        errors[:base] << I18n.t('activerecord.errors.models.mapping.document_type_invalid')
       end
     end
   end

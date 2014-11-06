@@ -34,13 +34,14 @@ class MappingsController < ApplicationController
   end
 
   def check_document
+    data = {}
     mapping = Mapping.find params[:mapping_id]
     if !mapping.document_id.empty?
       document = Sk.const_get(mapping.document_type.classify).find(mapping.document_id)
       salesking_link = salesking_document_link(mapping.document_type, document.id)
-      data = {status: document.status, title: document.title, document_id: document.id, link: salesking_link}
-    else
-      data = {status: "no_document_available"}
+      if document.status != "draft"
+        data[:msg] = I18n.t('mappings.document_info_message',status: document.status, link: salesking_link)
+      end
     end
     render :json => data, :status => :ok
   end

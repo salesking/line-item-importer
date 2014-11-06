@@ -1,4 +1,8 @@
 jQuery ->
+  ###
+  If nothing is selected hide submit button for reuse and show mapping select form.
+  If existing mapping is selected show submit button, hide mapping select form and check the current selections document
+  ###
   $('#reuse-select-options').on 'change', (e) -> 
     if $(this).val() <= 1
       $('#reuse').hide();
@@ -27,32 +31,33 @@ jQuery ->
     addDateFields(el) if $('.target', el).attr('data-format') == 'date'
     addPriceField(el) if ['price_single', 'cost'].indexOf($('.target', el).attr('data-name')) != -1
 
+  ###
+  Makes a request to mappings controller which checks if the assigned document is still a draft.
+  Shows document info if the document is not a draft.
+  ###
   checkDocument = (mapping_id) ->
     $.ajax '../mappings/check_document',
       dataType: 'json',
       data: {mapping_id: mapping_id}      
       success: (result, textStatus, jqXHR) ->
-        switch result.status
-          when "draft" then hideDocumentInfo()
-          when "" then showDocumentInfo(result)
-          else
-            showDocumentInfo(result)
+        if result.hasOwnProperty('msg')
+          showDocumentInfo(result)
+        else
+          hideDocumentInfo()
 
   hideDocumentInfo = () ->
     $('#document_infos').remove()
     $(".document_id").detach().insertAfter('#document_id_placeholder')
+    $(".help-block").show()
 
+  # Show document info and append search bar for exisitings documents
   showDocumentInfo = (result) ->
     $('#reuse').hide();
     $('.existing-mapping').append "<br><div id='document_infos' class='alert alert-danger'> " +
-      "<h4>The document assigned to the mapping can't be used again because its status is set to " +
-      "<span style='font-style:italic'>" + result.status + "</span></h4>" +
-      "<ul>" +
-      "<li>You can change the document type <a href='" + result.link + "' target='_blank'>here</a> and reload this page.</li>" +
-      "<li>or select another document of type draft below</li>"+ 
-      "<li>or create a new fieldmapping</li>" +
-      "</ul></div>"
+      result.msg +
+      "</div>"
     $(".document_id").detach().appendTo('.existing-mapping')
+    $(".help-block").hide()
 
   addFields = (el, ui) ->
     $('.target', el).after "<div class='source' " +
@@ -166,7 +171,6 @@ jQuery ->
     $('#mapping_document_id').select2('data', {id: null, text: null})
     $('#document_attributes').show()
     $('#reuse').hide();
-
 
   $('#radio_document').on 'click', (e) ->
     $('#radio_document')
