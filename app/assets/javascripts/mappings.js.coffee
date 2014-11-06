@@ -3,6 +3,7 @@ jQuery ->
     if $(this).val() <= 1
       $('#reuse').hide();
       $('#new_mapping_body').show();
+      hideDocumentInfo()
     else
       $('#reuse').show();
       $('#new_mapping_body').hide();
@@ -32,17 +33,25 @@ jQuery ->
       data: {mapping_id: mapping_id}      
       success: (result, textStatus, jqXHR) ->
         switch result.status
-          when "draft" then $('.existing-mapping').append "<p>" + result.status + "</p>"
+          when "draft" then hideDocumentInfo()
           when "" then showDocumentInfo(result)
           else
             showDocumentInfo(result)
 
-  provideDocumentSelector = (result) ->
+  hideDocumentInfo = () ->
+    $('#document_infos').remove()
+    $(".document_id").detach().insertAfter('#document_id_placeholder')
 
   showDocumentInfo = (result) ->
+    $('#reuse').hide();
     $('.existing-mapping').append "<div id='document_infos'> " +
-      "<h4> <a href='" + result.link + "'>Assigned document</a> can't be used again because its status is set to " + result.status + "</h4>"
-      + "</div>"
+      "<h4>The document assigned to the mapping can't be used again because its status is set to " +
+      "<span style='font-style:italic'>" + result.status + "</span></h4>" +
+      "<ul>" +
+      "<li>You can change the document type <a href='" + result.link + "' target='_blank'>here</a> and reload the page.</li>" +
+      "<li>Select another document of type draft</li>"+ 
+      "<li>Create a new fieldmapping</li>" +
+      "</ul></div>"
     $(".document_id").detach().appendTo('.existing-mapping')
 
   addFields = (el, ui) ->
@@ -149,7 +158,9 @@ jQuery ->
       m
 
   $('#mapping_document_id').on "select2-selecting", (e) ->
-    $('#document_attributes').hide() 
+    $('#document_attributes').hide()
+    if $('#new_mapping_body').is(":hidden")
+      $('#reuse').show();
 
   $('#clear_document_choser').on 'click', (e) ->
     $('#mapping_document_id').select2('data', {id: null, text: null})

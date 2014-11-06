@@ -8,7 +8,7 @@ class MappingsController < ApplicationController
 
   def create
     if params[:reuse] && !params[:mapping_id].empty?
-      @mapping = Mapping.find params[:mapping_id]
+      @mapping = find_or_clone_mapping      
     else
       @mapping = Mapping.new(mapping_params)
       @mapping.user = current_user
@@ -52,5 +52,21 @@ class MappingsController < ApplicationController
 
   def include_gon_translation
     gon[:document_id_placeholder] = t('mappings.form.document_id_placeholder')
+  end
+
+  def find_or_clone_mapping
+    mapping = Mapping.find params[:mapping_id]
+
+    if !params[:mapping][:document_id].empty? && mapping.document_id != params[:mapping][:document_id]
+      new_mapping = mapping.dup
+      new_mapping.document_id = params[:mapping][:document_id]
+      mapping.mapping_elements.each do |mapping_element|
+        new_mapping.mapping_elements << mapping_element.dup
+      end
+
+      new_mapping
+    else
+      mapping
+    end
   end
 end

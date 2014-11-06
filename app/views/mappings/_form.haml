@@ -32,7 +32,7 @@
             %label
               = f.radio_button :document_type, document_type, checked: document_type == 'invoice'
               = t(document_type, scope: 'activerecord.attributes.mapping.enum_values.document_type')
-
+        .clearfix#document_id_placeholder
         .clearfix.document_id
           %label Existierendes Dokument
           .input= f.hidden_field :document_id
