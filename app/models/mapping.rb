@@ -16,7 +16,7 @@ class Mapping < ActiveRecord::Base
 
   validates :mapping_elements, presence: true
 
-  # before_validation :check_if_document_is_present_and_is_draft
+  before_validation :check_if_document_is_present_and_is_draft
 
   default_scope ->{order('mappings.id desc')} # should this be here?
 
@@ -33,11 +33,11 @@ class Mapping < ActiveRecord::Base
 
   private
   def check_if_document_is_present_and_is_draft
+    byebug
     if self.document_id
       document = Sk.const_get(self.document_type.classify).find(self.document_id)
-      byebug
       if document.status != 'draft'
-        errors.add(:document_id, "Dokument ist kein Draft mehr")
+        errors[:base] << "Dokument ist kein Draft mehr."
       end
     end
   end

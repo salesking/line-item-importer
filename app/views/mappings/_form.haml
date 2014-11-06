@@ -7,7 +7,7 @@
       .clearfix
         %h4= t('mappings.select_reuse')
         = select_tag 'mapping_id', options_for_select(mapping_options), :include_blank => true, id: 'reuse-select-options'
-        = button_tag t('.reuse_this_mapping_button'), class: 'btn btn-primary btn-large', id: 'reuse', style: 'display:none'
+        = button_tag t('.proceed_to_import'), class: 'btn btn-primary btn-large', id: 'reuse', style: 'display:none'
   #new_mapping_body
     .row
       .col-md-6.fit-to-top
