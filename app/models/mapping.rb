@@ -33,11 +33,11 @@ class Mapping < ActiveRecord::Base
 
   private
   def check_if_document_is_present_and_is_draft
-    byebug
     if self.document_id
       document = Sk.const_get(self.document_type.classify).find(self.document_id)
       if document.status != 'draft'
         errors[:base] << "Dokument ist kein Draft mehr."
+        # errors[:base] << t('activerecord.errors.models.mapping.document_type_invalid')
       end
     end
   end
