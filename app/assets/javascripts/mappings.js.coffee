@@ -44,13 +44,13 @@ jQuery ->
 
   showDocumentInfo = (result) ->
     $('#reuse').hide();
-    $('.existing-mapping').append "<div id='document_infos'> " +
+    $('.existing-mapping').append "<br><div id='document_infos' class='alert alert-danger'> " +
       "<h4>The document assigned to the mapping can't be used again because its status is set to " +
       "<span style='font-style:italic'>" + result.status + "</span></h4>" +
       "<ul>" +
-      "<li>You can change the document type <a href='" + result.link + "' target='_blank'>here</a> and reload the page.</li>" +
-      "<li>Select another document of type draft</li>"+ 
-      "<li>Create a new fieldmapping</li>" +
+      "<li>You can change the document type <a href='" + result.link + "' target='_blank'>here</a> and reload this page.</li>" +
+      "<li>or select another document of type draft below</li>"+ 
+      "<li>or create a new fieldmapping</li>" +
       "</ul></div>"
     $(".document_id").detach().appendTo('.existing-mapping')
 
@@ -165,6 +165,7 @@ jQuery ->
   $('#clear_document_choser').on 'click', (e) ->
     $('#mapping_document_id').select2('data', {id: null, text: null})
     $('#document_attributes').show()
+    $('#reuse').hide();
 
 
   $('#radio_document').on 'click', (e) ->
