@@ -34,10 +34,14 @@ class Mapping < ActiveRecord::Base
   private
   def check_if_document_is_present_and_is_draft
     if !self.document_id.blank?
-      document = Sk.const_get(self.document_type.classify).find(self.document_id)
-      if document.status != 'draft'
-        # errors[:base] << "Dokument ist kein Draft mehr."
-        errors[:base] << I18n.t('activerecord.errors.models.mapping.document_type_invalid')
+      begin
+        document = Sk.const_get(self.document_type.classify).find(self.document_id)
+        if document.status != 'draft'
+          # errors[:base] << "Dokument ist kein Draft mehr."
+          errors[:base] << I18n.t('activerecord.errors.models.mapping.document_type_invalid')
+        end
+      rescue => e
+        errors[:base] << "Server is not responding or document does not exist anymore."
       end
     end
   end
