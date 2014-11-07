@@ -2,6 +2,7 @@ FactoryGirl.define do
   factory :mapping do
     import_type   'document'
     document_type 'invoice'
+    document_id		''
     mapping_elements = []
 
     before(:create) do |mapping|

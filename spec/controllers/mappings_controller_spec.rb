@@ -121,6 +121,7 @@ describe MappingsController do
             {
               "import_type" => "line_item",
               "document_type" => "invoice",
+              "document_id" => "",
               "mapping_elements_attributes"=>{"0"=>{"source"=>"2", "target"=>"email", "model_to_import" => "line_item"}, "1"=>{"source"=>"1", "target"=>"organisation", "model_to_import" => "line_item"}}
             }
           }
