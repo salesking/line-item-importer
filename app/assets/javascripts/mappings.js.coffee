@@ -52,6 +52,7 @@ jQuery ->
 
   # Show document info and append search bar for exisitings documents
   showDocumentInfo = (result) ->
+    hideDocumentInfo()
     $('#reuse').hide();
     $('.existing-mapping').append "<br><div id='document_infos' class='alert alert-danger'> " +
       result.msg +
