@@ -9,23 +9,14 @@ class Sk
   conf = YAML.load_file(Rails.root.join('config', 'salesking_app.yml'))
   App  = SK::SDK::Oauth.new(conf[Rails.env])
 
-  Invoice    = Class.new(SK::SDK::Base)
-  Order      = Class.new(SK::SDK::Base)
-  Estimate   = Class.new(SK::SDK::Base)
-  CreditNote = Class.new(SK::SDK::Base)
-
-  Invoice::LineItem    = Class.new(SK::SDK::Base)
-  Order::LineItem      = Class.new(SK::SDK::Base)
-  Estimate::LineItem   = Class.new(SK::SDK::Base)
-  CreditNote::LineItem = Class.new(SK::SDK::Base)
-
-  Invoice::Item    = Class.new(SK::SDK::Base)
-  Order::Item      = Class.new(SK::SDK::Base)
-  Estimate::Item   = Class.new(SK::SDK::Base)
-  CreditNote::Item = Class.new(SK::SDK::Base)
-
-  Contact    = Class.new(SK::SDK::Base)
-  Address    = Class.new(SK::SDK::Base)
+  class Contact < SK::SDK::Base; end
+  class Address < SK::SDK::Base; end
+  class Invoice < SK::SDK::Base; end
+  class Order < SK::SDK::Base; end
+  class CreditNote < SK::SDK::Base; end
+  class Estimate < SK::SDK::Base; end
+  class Item < SK::SDK::Base; end
+  class LineItem < SK::SDK::Base; end
 
   # init SalesKing classes and set connection oAuth token
   def self.init(site, token)
@@ -34,8 +25,17 @@ class Sk
     end
   end
 
+  # reset SalesKing class connections so on user does not see the oAuth token
+  # from another
+  def self.reset_connection
+    (SK::SDK::Base.descendants + [SK::SDK::Base]).each do |base|
+      base.set_connection(site: '', token: '')
+    end
+  end
+
   # read json-schema
   def self.read_schema(kind)
     SK::Api::Schema.read(kind, '1.0')
   end
 end
+

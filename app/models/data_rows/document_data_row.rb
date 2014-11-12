@@ -6,8 +6,8 @@ module DataRows
 
     def create_document
       document  = imported_class.new
-      line_item = imported_class::LineItem.new
-
+      line_item = Sk::Item.new
+      line_item.type = 'LineItem'
       document_mapping_elements .each(&mapping_element_assignment(document, @data))
       line_item_mapping_elements.each(&mapping_element_assignment(line_item, @data))
 

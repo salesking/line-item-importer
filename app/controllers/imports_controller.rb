@@ -7,7 +7,9 @@ class ImportsController < ApplicationController
     initialize_salesking_connection
     if @import.save
       redirect_to @import
+      Sk.reset_connection
     else
+      Sk.reset_connection
       render action:  "new"
     end
   end

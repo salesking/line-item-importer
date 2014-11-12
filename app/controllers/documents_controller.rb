@@ -6,6 +6,7 @@ class DocumentsController < ApplicationController
     type = document_type
     return if type.nil?
     @results = Sk.const_get(type).where(permitted_params.merge(filter: {status_draft: 1}))
+    Sk.reset_connection
     render json: {results: process_results, total_pages: @results.total_pages}
   end
 
