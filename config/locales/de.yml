@@ -79,6 +79,7 @@ de:
     success: Erfolgreiche Zeilen
   errors:
     sk_login_required: Bitte bei SalesKing.eu einloggen und über "Einstellungen" > "Apps" aktivieren.
+    document_not_found: Das zugehörige Dokument der gewählten Feldzuweisung existiert nicht mehr.
   imports:
     create: Daten importieren
     delete_confirm: Das Löschen eines Imports löst KEINE Löschung der Dokumente in Ihrem Account aus. Mit Löschung fortfahren?

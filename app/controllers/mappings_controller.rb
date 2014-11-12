@@ -7,6 +7,7 @@ class MappingsController < ApplicationController
   before_filter :include_gon_translation
 
   def create
+    initialize_salesking_connection
     if params[:reuse] && !params[:mapping_id].empty?
       @mapping = find_or_clone_mapping      
     else
@@ -34,6 +35,7 @@ class MappingsController < ApplicationController
   end
 
   def check_document
+    initialize_salesking_connection
     data = {}
     mapping = Mapping.find params[:mapping_id]
     if mapping && !mapping.document_id.empty?
@@ -46,10 +48,14 @@ class MappingsController < ApplicationController
           end
         end
       rescue => e
-        data[:msg] = e.message
+        if e.response.code == "404"
+          data[:msg] = I18n.t('errors.document_not_found')
+        else
+          data[:msg] = e.message
+        end
       end
-
     end
+    Sk.reset_connection
     render :json => data, :status => :ok
   end
 

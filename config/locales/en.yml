@@ -79,6 +79,7 @@ en:
     success: Successfull rows
   errors:
     sk_login_required: Please login to SalesKing.eu and navigate to "Settings" > "Apps" to activate.
+    document_not_found: The mapping's document does not exist anymore.
   imports:
     create: Import data
     delete_confirm: Deleting an import does not remove created documents in your SalesKing account. Are you sure you want to continue?

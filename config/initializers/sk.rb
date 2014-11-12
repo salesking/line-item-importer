@@ -20,17 +20,14 @@ class Sk
 
   # init SalesKing classes and set connection oAuth token
   def self.init(site, token)
-    (SK::SDK::Base.descendants + [SK::SDK::Base]).each do |base|
-      base.set_connection(site: site, token: token)
-    end
+    SK::SDK::Base.set_connection(site: site, token: token)
   end
 
   # reset SalesKing class connections so on user does not see the oAuth token
   # from another
   def self.reset_connection
-    (SK::SDK::Base.descendants + [SK::SDK::Base]).each do |base|
-      base.set_connection(site: '', token: '')
-    end
+    SK::SDK::Base.site = nil
+    SK::SDK::Base.headers['Authorization'] = nil
   end
 
   # read json-schema
