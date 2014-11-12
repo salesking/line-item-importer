@@ -8,7 +8,6 @@ Bundler.require(*Rails.groups)
 
 module LineItemImporter
   class Application < Rails::Application
-
     config.middleware.use 'Rack::RawUpload', :paths => ['/attachments']
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration should go into files in config/initializers

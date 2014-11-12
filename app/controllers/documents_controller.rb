@@ -1,8 +1,10 @@
 class DocumentsController < ApplicationController
   respond_to :json
 
+  before_filter :initialize_salesking_connection, only: [:autocomplete]
+  after_filter :reset_salesking_connection, only: [:autocomplete]
+
   def autocomplete
-    initialize_salesking_connection
     type = document_type
     return if type.nil?
     @results = Sk.const_get(type).where(permitted_params.merge(filter: {status_draft: 1}))

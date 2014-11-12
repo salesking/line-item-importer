@@ -2,9 +2,10 @@ class ImportsController < ApplicationController
   load_and_authorize_resource :attachment, only: [:new, :create, :destroy]
   load_and_authorize_resource
   before_filter :init_import, only: [:new, :create]
+  before_filter :initialize_salesking_connection, only: [:create]
+  after_filter :reset_salesking_connection, only: [:create]
 
   def create
-    initialize_salesking_connection
     if @import.save
       redirect_to @import
       Sk.reset_connection

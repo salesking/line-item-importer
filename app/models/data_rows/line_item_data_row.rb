@@ -4,9 +4,17 @@ module DataRows
 
     private
     def create_or_update_document
+      item_count = 0
+      
+      if document.try(:items) && document.items.is_a?(Array)
+        item_count = document.items.length
+      else
+        document.items = []
+      end
+      
       # you can't do document.items << { new item }
-      document.items = @data.map do |row|
-        create_line_item(row)
+      @data.each do |row|
+        document.items << create_line_item(row, item_count+=1)
       end
 
       # VERY IMPORTANT
@@ -22,9 +30,10 @@ module DataRows
       end
     end
 
-    def create_line_item(row)
+    def create_line_item(row, position)
       line_item = Sk::Item.new
       line_item.type = 'LineItem'
+      line_item.position = position
       line_item_mapping_elements.each(&mapping_element_assignment(line_item, row))
       # default price single to 1 so import does not fail
       line_item.price_single = 1 unless line_item.respond_to?(:price_single)
@@ -38,6 +47,5 @@ module DataRows
     def document
       @document ||= mapping.document_id.present? && imported_class.find(mapping.document_id).presence || imported_class.new
     end
-
   end
 end

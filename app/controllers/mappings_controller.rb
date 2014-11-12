@@ -6,8 +6,10 @@ class MappingsController < ApplicationController
 
   before_filter :include_gon_translation
 
+  before_filter :initialize_salesking_connection, only: [:create, :check_document]
+  after_filter :reset_salesking_connection, only: [:create, :check_document]
+
   def create
-    initialize_salesking_connection
     if params[:reuse] && !params[:mapping_id].empty?
       @mapping = find_or_clone_mapping      
     else
@@ -35,7 +37,6 @@ class MappingsController < ApplicationController
   end
 
   def check_document
-    initialize_salesking_connection
     data = {}
     mapping = Mapping.find params[:mapping_id]
     if mapping && !mapping.document_id.empty?
@@ -55,7 +56,6 @@ class MappingsController < ApplicationController
         end
       end
     end
-    Sk.reset_connection
     render :json => data, :status => :ok
   end
 

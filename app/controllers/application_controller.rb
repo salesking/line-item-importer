@@ -14,6 +14,10 @@ class ApplicationController < ActionController::Base
     Sk.init(Sk::App.sk_api_url, session['access_token'])
   end
 
+  def reset_salesking_connection
+    Sk.reset_connection
+  end
+
   def current_user
     user_id, company_id, access_token = session['user_id'], session['company_id'], session['access_token']
     if [user_id, company_id, access_token].all?(&:present?)
