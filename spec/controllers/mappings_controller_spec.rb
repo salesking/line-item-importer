@@ -159,6 +159,42 @@ describe MappingsController do
           end
         end
       end
+
+      describe "GET #check_document" do
+        before(:each) do
+          @document_draft = double(id: "bJxojstGqr5iaaabxfpGMl", status: "draft")
+          @document_no_draft = double(id: "bWJyFsw1ir5jBdabxfpGMl", status: "no_draft")
+
+          Mapping.any_instance.stub(:check_if_document_is_present_and_is_draft).and_return true
+          @mapping_with_document_id = create(:mapping, company_id: 'another-company', document_id: "bJxojstGqr5iaaabxfpGMl", document_type: 'invoice')
+        end
+        
+        context "document is draft" do
+          it "checks a related document" do
+            Sk::Invoice.stub(:find).and_return @document_draft
+            get :check_document, format: :json, id: @authorized_attachment.id, mapping_id: @mapping_with_document_id.id
+            expect(response).to be_success
+            expect(response.body).to eq "{}"
+          end
+        end
+
+        context "document is no draft" do
+          it "checks a related document" do
+            Sk::Invoice.stub(:find).and_return @document_no_draft
+            get :check_document, format: :json, id: @authorized_attachment.id, mapping_id: @mapping_with_document_id.id
+            resp_hsh = ActiveSupport::JSON.decode(response.body)
+            expect(resp_hsh["msg"]).to include("no_draft")
+          end
+        end
+
+        context "document does not exist anymore" do
+          it "handles error correctly" do
+            Sk::Invoice.stub(:find).and_return nil
+            get :check_document, format: :json, id: @authorized_attachment.id, mapping_id: @mapping_with_document_id.id
+            expect(response.body).to eq "{}"
+          end
+        end
+      end
     end
   end
 end

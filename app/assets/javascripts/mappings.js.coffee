@@ -54,7 +54,7 @@ jQuery ->
   showDocumentInfo = (result) ->
     hideDocumentInfo()
     $('#reuse').hide();
-    $('.existing-mapping').append "<br><div id='document_infos' class='alert alert-danger'> " +
+    $('.existing-mapping').append "<div id='document_infos' class='alert alert-danger'> " +
       result.msg +
       "</div>"
     $(".document_id").detach().appendTo('.existing-mapping')

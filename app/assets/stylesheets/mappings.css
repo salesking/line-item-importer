@@ -46,3 +46,7 @@ input.minimi{ width: 30px; }
 #document_attributes {
 	display: none;
 }
+
+#document_infos {
+	margin-top: 10px;
+}

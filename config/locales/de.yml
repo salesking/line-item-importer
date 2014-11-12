@@ -130,7 +130,7 @@ de:
     destroy_failed: Imoporteinstellung konnte nicht gelöscht werden.
     destroyed_successfully: Importeinstellung erfolgreich gelöscht.
     dnd_info: Bitte ziehen Sie die Felder oben auf die Felder unten. Ziehen Sie mehrere Felder auf ein Zielfeld um Werte kommasepariert zusammen zu führen z.B. für Tags(Schlagworte).
-    document_info_message: "<h4>Der Status des zugehörigen Dokuments ist auf <span style='font-style:italic'>%{status}</span> gesetzt.</h4><ul><li>Sie können die Status <a href='%{link}' target='_blank'>hier</a> ändern und anschließend diese Seite neu laden.</li><li>oder ein anderes Dokument mit dem Status Draft unterhalb auswählen</li><li>oder eine neue Feldzuweisung anlegen</li></ul>"
+    document_info_message: "<h4>Der Status des zugehörigen Dokuments ist auf <span style='font-style:italic'>%{status}</span> gesetzt.</h4><ul><li>Sie können den Status <a href='%{link}' target='_blank'>hier</a> ändern und anschließend diese Seite neu laden.</li><li>oder ein anderes Dokument mit dem Status Draft unterhalb auswählen</li><li>oder eine neue Feldzuweisung anlegen</li></ul>"
     edit: Importeinstellung bearbeiten
     form:
       document_id_placeholder: Tippen um verfügbare Entwürfe zu durchsuchen
