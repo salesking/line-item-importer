@@ -20,9 +20,11 @@ describe DataRows::LineItemDataRow do
     end
 
     it 'creates a line item' do
-      line_item = data_row.send(:create_line_item, pfudor)
+      position = 1
+      line_item = data_row.send(:create_line_item, pfudor, position)
       expect(line_item.name).to eq 'fluffy'
       expect(line_item.description).to eq 'unicorns dancing'
+      expect(line_item.position).to eq 1
     end
   end
 

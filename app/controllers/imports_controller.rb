@@ -2,8 +2,8 @@ class ImportsController < ApplicationController
   load_and_authorize_resource :attachment, only: [:new, :create, :destroy]
   load_and_authorize_resource
   before_filter :init_import, only: [:new, :create]
-  before_filter :initialize_salesking_connection, only: [:create]
-  after_filter :reset_salesking_connection, only: [:create]
+  before_filter :initialize_salesking_connection, only: [:create, :show]
+  after_filter :reset_salesking_connection, only: [:create, :show]
 
   def create
     if @import.save

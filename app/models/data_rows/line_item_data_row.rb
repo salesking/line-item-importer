@@ -20,7 +20,7 @@ module DataRows
       # VERY IMPORTANT
       # line_items is deprecated, but still available
       # takes precedence over #items
-      document.line_items = nil
+      document.attributes.delete(:line_items)
 
       if document.save
         self.external_id = document.id
