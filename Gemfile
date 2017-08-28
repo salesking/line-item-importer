@@ -16,11 +16,12 @@ gem 'sass-rails'
 gem 'coffee-rails'
 gem 'uglifier'
 gem 'therubyracer'
+gem 'eventmachine', '~>1.0.4'
 
 gem 'chronic'
 
 group :test, :development do
-  gem 'mysql2'
+  gem 'mysql2', '~> 0.3.13'
   gem 'pry-rails'
   gem 'rspec-rails'
   gem 'byebug'
